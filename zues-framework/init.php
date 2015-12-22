@@ -19,8 +19,6 @@ class Zues_Framework {
 	 */
 	function __construct() {
 
-
-
 		$this->constants();
 		$this->functions();
 		$this->structure();
@@ -80,8 +78,10 @@ class Zues_Framework {
 	 */
 	function structure() {
 
+		include_once ZUES_FRAMEWORK_DIR . '/structure/wrapper.php';
+
 		include_once ZUES_FRAMEWORK_DIR . '/structure/header.php';
-		include_once ZUES_FRAMEWORK_DIR . '/structure/primary-nav.php';
+		include_once ZUES_FRAMEWORK_DIR . '/structure/navigation.php';
 		include_once ZUES_FRAMEWORK_DIR . '/structure/post.php';
 		include_once ZUES_FRAMEWORK_DIR . '/structure/page.php';
 		include_once ZUES_FRAMEWORK_DIR . '/structure/comments.php';
@@ -129,5 +129,3 @@ class Zues_Framework {
 }
 
 $zues_framework = new Zues_Framework();
-
-do_action('zues_end');
