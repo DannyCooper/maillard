@@ -9,9 +9,18 @@
 add_action( 'zues_header', 'zues_header', 20 );
 add_action( 'zues_header', 'zues_nav_primary', 30 );
 
+add_action( 'zues_logo_text', 'zues_site_title', 10 );
+add_action( 'zues_logo_text', 'zues_site_description', 20 );
+
+// Navigation Hooks.
+
+add_action( 'zues_primary_nav', 'zues_output_primary_nav' );
+
 // Content hooks.
+add_action( 'zues_content_sidebar_wrapper_before', 'zues_wrap_open', 50 );
 add_action( 'zues_content_sidebar_wrapper', 'zues_content_area', 10 );
 add_action( 'zues_content_sidebar_wrapper', 'zues_sidebar_primary', 20 );
+add_action( 'zues_content_sidebar_wrapper_after', 'zues_wrap_close', 50 );
 
 // Entry Header hooks.
 add_action( 'zues_entry_header', 'zues_entry_title', 10 );
