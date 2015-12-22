@@ -11,12 +11,27 @@ if ( ! function_exists( 'zues_head' ) ) {
 	 */
 	function zues_head() {
 
-		$priority = array(
-			'template-parts/head.php',
-			'zues-framework/structure/template-parts/head.php',
-		);
+		?>
 
-		locate_template( $priority, true );
+		<!DOCTYPE html>
+		<html <?php echo get_language_attributes(); ?>>
+		<head>
+		<meta charset="<?php echo get_bloginfo( 'charset' ); ?>">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="profile" href="http://gmpg.org/xfn/11">
+		<link rel="pingback" href="<?php echo get_bloginfo( 'pingback_url' ) ?>">
+		<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri() . '/favicon.ico' ?>" />
+
+		<?php
+
+		wp_head();
+		do_action( 'zues_head' );
+
+		?>
+
+		</head>
+
+		<?php
 
 	}
 }
@@ -49,12 +64,20 @@ if ( ! function_exists( 'zues_header' ) ) {
 	 */
 	function zues_header() {
 
-		$priority = array(
-			'template-parts/header.php',
-			'zues-framework/structure/template-parts/header.php',
-		);
+		echo '<header '.zues_get_attr( 'header' ).' ">';
+			echo '<div class="wrap">';
+			 echo '<div  ' . zues_get_attr( 'branding' ) . ' >';
 
-		locate_template( $priority, true );
+					if ( get_header_image() ) {
+						zues_image_header();
+					} else {
+						zues_text_header();
+					}
+
+
+				echo '</div>';
+		echo '	</div>';
+	echo '	</header>';
 
 	}
 }
@@ -65,8 +88,8 @@ if ( ! function_exists( 'zues_text_header' ) ) {
 	 */
 	function zues_text_header() {
 
-		zues_site_title();
-		echo '<p '. zues_get_attr( 'site-description' ) . '>' . get_bloginfo( 'description' ) . '</p>';
+		do_action( 'zues_logo_text' );
+
 	}
 }
 
@@ -99,6 +122,17 @@ if ( ! function_exists( 'zues_site_title' ) ) {
 		} else {
 			echo '<h2 '. zues_get_attr( 'site-title' ) . '>'. $link . '</h2>';
 		}
+
+	}
+}
+
+if ( ! function_exists( 'zues_site_description' ) ) {
+	/**
+	 * Output the site title.
+	 */
+	function zues_site_description() {
+
+		echo '<p '. zues_get_attr( 'site-description' ) . '>' . get_bloginfo( 'description' ) . '</p>';
 
 	}
 }

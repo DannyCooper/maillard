@@ -40,12 +40,20 @@ if ( ! function_exists( 'zues_load_footer_template' ) ) {
 	 */
 	function zues_load_footer_template() {
 
-		$priority = array(
-			'template-parts/footer.php',
-			'zues-framework/structure/template-parts/footer.php',
-		);
+		if (
+		 	   ! is_active_sidebar( 'footer-1' )
+			&& ! is_active_sidebar( 'footer-2' )
+			&& ! is_active_sidebar( 'footer-3' )
+			&& ! is_active_sidebar( 'footer-4' ) ) {
+			return;
+		}
 
-		locate_template( $priority, true );
+		 echo '<div class="footer-widgets">';
+				 zues_widget_area( 'footer-1' );
+				 zues_widget_area( 'footer-2' ); 
+				 zues_widget_area( 'footer-3' );
+				 zues_widget_area( 'footer-4' );
+		 echo '</div>';
 	}
 }
 

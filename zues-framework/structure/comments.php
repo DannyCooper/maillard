@@ -93,12 +93,27 @@ if ( ! function_exists( 'zues_comments_nav' ) ) {
 	 */
 	function zues_comments_nav() {
 
-		$priority = array(
-			'template-parts/comments-nav.php',
-			'zues-framework/structure/template-parts/comments-nav.php',
-		);
+		if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 
-		locate_template( $priority, true );
+			<nav id="comment-nav-above" class="navigation comment-navigation">
+
+				<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'zues' ); ?></h2>
+
+				<div class="nav-links nav-links-comments clear">
+
+					<div class="nav-previous">
+						<?php previous_comments_link( esc_html__( '&larr; Older Comments', 'zues' ) ); ?>
+					</div>
+
+					<div class="nav-next">
+						<?php next_comments_link( esc_html__( 'Newer Comments &rarr;', 'zues' ) ); ?>
+					</div>
+
+				</div><!-- .nav-links -->
+
+			</nav><!-- #comment-nav-above -->
+
+		<?php endif; // Check for comment navigation. 
 
 	}
 }
