@@ -7,9 +7,15 @@
  * @package zues
  */
 
-/**
- * Zues footer function
- *
- * @see /zues-framework/structure/footer.php:13
- */
-zues_site_footer();
+ /**
+  * Zues footer function
+  *
+  * @see /zues-framework/structure/footer.php:13
+  */
+ zues_site_footer(); ?>
+
+ <?php do_action( 'zues_body_close_before' ); ?>
+ </body>
+ <?php do_action( 'zues_body_close_after' ); ?>
+
+ </html>

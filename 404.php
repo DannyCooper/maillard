@@ -4,25 +4,34 @@
  *
  * @package zues
  */
-?>
 
-<main <?php zues_attr( 'content' ); ?>>
+// Content hooks.
+remove_action( 'zues_content', 'zues_loop', 20 );
+add_action( 'zues_content', 'zues_404', 20 );
 
-<?php do_action( 'zues_404_before' ); ?>
+function zues_404() { ?>
 
-	<section class="error-404 not-found">
+   <main <?php zues_attr( 'content' ); ?>>
 
-		<div class="entry-content">
+   <?php do_action( 'zues_404_before' ); ?>
 
-			<header class="entry-header">
-				<h1 class="entry-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'zues' ); ?></h1>
-			</header>
+	   <section class="error-404 not-found">
 
-			<p><?php esc_html_e( 'Nothing was found at this location. Try searching, or check out the links below.', 'zues' ); ?></p>
+		   <div class="entry-content">
 
-		</div>
-	</section>
+			   <header class="entry-header">
+				   <h1 class="entry-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'zues' ); ?></h1>
+			   </header>
 
-<?php do_action( 'zues_404_after' ); ?>
+			   <p><?php esc_html_e( 'Nothing was found at this location. Try searching, or check out the links below.', 'zues' ); ?></p>
 
-</main>
+		   </div>
+	   </section>
+
+   <?php do_action( 'zues_404_after' ); ?>
+
+   </main>
+
+<?php }
+
+zues();

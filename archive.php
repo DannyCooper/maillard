@@ -7,12 +7,7 @@
  * @package zues
  */
 
-if ( have_posts() ) {
+ remove_action( 'zues_loop', 'zues_content', 20 );
+  add_action( 'zues_loop', 'zues_content_excerpt', 20 );
 
-	get_template_part( 'template-parts/loop' );
-
-} else {
-
-	get_template_part( 'template-parts/content', 'none' );
-
-}
+ zues();

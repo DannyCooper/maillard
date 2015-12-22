@@ -8,13 +8,4 @@
  */
 ?>
 
-<main <?php zues_attr( 'content' ); ?>>
-
-	<?php
-	/**
-	 * Load the standard zues-framework loop.
-	 * @see zues-framework/structure/post.php:21
-	 */
-	zues_loop(); ?>
-
-</main>
+zues();
