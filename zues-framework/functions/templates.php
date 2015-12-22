@@ -5,62 +5,6 @@
  * @package zues
  */
 
-	/**
-	 * Load wrapper.php, unless a more specific template exists.
-	 * Such as wrapper-archive.php.
-	 */
-class Zues_Wrapping {
-
-	/**
-	 * Stores the full path to the main template file
-	 */
-	static $main_template;
-
-	/**
-	 * Stores the base name of the template file; e.g. 'page' for 'page.php' etc.
-	 */
-	static $base;
-
-	/*
-     * Load the template
-	 */
-	static function wrap( $template ) {
-
-		self::$main_template = $template;
-
-		self::$base = substr( basename( self::$main_template ), 0, -4 );
-
-		if ( 'index' === self::$base ) {
-			self::$base = false;
-		}
-
-		$templates = array( 'wrapper.php' );
-
-		if ( self::$base ) {
-			array_unshift( $templates, sprintf( 'wrapper-%s.php', self::$base ) );
-		}
-
-		return locate_template( $templates );
-
-	}
-}
-
-add_filter( 'template_include', array( 'Zues_Wrapping', 'wrap' ), 99 );
-
-/**
- * Returns path of the template to be loaded.
- */
-function zues_template_path() {
-	return Zues_Wrapping::$main_template;
-}
-
-/**
- * Returns name of the template to be loaded.
- */
-function zues_template_base() {
-	return Zues_Wrapping::$base;
-}
-
 /**
  * Return a list of available header templates.
  *
