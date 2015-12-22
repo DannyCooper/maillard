@@ -10,7 +10,16 @@ if ( ! function_exists( 'zues_content_area' ) ) {
 	 * Load the relevant page template (uses WordPress hierarchy).
 	 */
 	function zues_content_area() {
-		include( zues_template_path() );
+		do_action( 'zues_content_before' );
+		echo '<main '. zues_get_attr( 'content' ).' >';
+		/**
+		 * Content area hook
+		 *
+		 * @hooked zues_loop - 20
+		 */
+		do_action( 'zues_content' );
+		echo '</main>';
+		do_action( 'zues_content_after' );
 	}
 }
 
@@ -340,5 +349,25 @@ if ( ! function_exists( 'zues_content_navigation' ) ) {
 		);
 
 		echo get_the_posts_navigation( $args ); // WPCS: XSS OK.
+	}
+}
+
+if ( ! function_exists( 'zues_wrap_open' ) ) {
+	/**
+	 * Output links to older/newer posts, for archive pages.
+	 */
+	function zues_wrap_open() {
+
+		echo '<div class="wrap">';
+	}
+}
+
+if ( ! function_exists( 'zues_wrap_close' ) ) {
+	/**
+	 * Output links to older/newer posts, for archive pages.
+	 */
+	function zues_wrap_close() {
+
+		echo '</div>';
 	}
 }
