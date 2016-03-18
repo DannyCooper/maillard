@@ -79,7 +79,6 @@ if ( ! function_exists( 'zues_setup' ) ) {
 			)
 		);
 
-		add_editor_style();
 	}
 }
 add_action( 'after_setup_theme', 'zues_setup' );
@@ -105,9 +104,9 @@ function zues_register_sidebars() {
 
 	zues_register_widget_area(
 		array(
-		'id'          => 'primary-sidebar',
+		'id'          => 'sidebar-primary',
 		'name'        => __( 'Primary Sidebar', 'zues' ),
-		'description' => __( 'Add sidebar description.', 'zues' ),
+		'description' => __( 'Widgets added here are shown in the sidebar next to your content.', 'zues' ),
 		)
 	);
 
@@ -115,7 +114,7 @@ function zues_register_sidebars() {
 		array(
 		'id'          => 'footer-1',
 		'name'        => __( 'Footer One', 'zues' ),
-		'description' => __( 'Add sidebar description.', 'zues' ),
+		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'zues' ),
 		)
 	);
 
@@ -123,7 +122,7 @@ function zues_register_sidebars() {
 		array(
 		'id'          => 'footer-2',
 		'name'        => __( 'Footer Two', 'zues' ),
-		'description' => __( 'Add sidebar description.', 'zues' ),
+		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'zues' ),
 		)
 	);
 
@@ -131,7 +130,7 @@ function zues_register_sidebars() {
 		array(
 		'id'          => 'footer-3',
 		'name'        => __( 'Footer Three', 'zues' ),
-		'description' => __( 'Add sidebar description.', 'zues' ),
+		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'zues' ),
 		)
 	);
 
@@ -139,7 +138,7 @@ function zues_register_sidebars() {
 		array(
 		'id'          => 'footer-4',
 		'name'        => __( 'Footer Four', 'zues' ),
-		'description' => __( 'Add sidebar description.', 'zues' ),
+		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'zues' ),
 		)
 	);
 
@@ -153,15 +152,10 @@ add_action( 'widgets_init', 'zues_register_sidebars', 5 );
 function zues_scripts() {
 	wp_enqueue_style( 'ot-zues-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'zues-scripts', THEME_URI . '/assets/js/scripts.js', array(), '', true );
+	wp_enqueue_script( 'zues-scripts', ZUES_THEME_URI . '/assets/js/scripts.js', array(), '', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'zues_scripts' );
-
-/**
- * A place for theme functions, actions and filters without modifying zues-framework.
- */
-require get_template_directory() . '/inc/functions.php';

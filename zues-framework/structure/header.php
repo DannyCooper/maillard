@@ -11,73 +11,28 @@ if ( ! function_exists( 'zues_head' ) ) {
 	 */
 	function zues_head() {
 
-		?>
+		$priority = array(
+			'template-parts/head.php',
+			'zues-framework/structure/template-parts/head.php',
+		);
 
-		<!DOCTYPE html>
-		<html <?php echo get_language_attributes(); ?>>
-		<head>
-		<meta charset="<?php echo get_bloginfo( 'charset' ); ?>">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="profile" href="http://gmpg.org/xfn/11">
-		<link rel="pingback" href="<?php echo get_bloginfo( 'pingback_url' ) ?>">
-		<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri() . '/favicon.ico' ?>" />
-
-		<?php
-
-		wp_head();
-		do_action( 'zues_head' );
-
-		?>
-
-		</head>
-
-		<?php
+		locate_template( $priority, true );
 
 	}
 }
 
-
-if ( ! function_exists( 'zues_site_header' ) ) {
-	/**
-	 * Output the site header.
-	 */
-	function zues_site_header() {
-
-		do_action( 'zues_header_before' );
-
-		/**
-		 * Zues header hook
-		 *
-		 * @hooked zues_header - 20
-		 * @hooked zues_nav_primary - 30
-		 */
-		do_action( 'zues_header' );
-
-		do_action( 'zues_header_before' );
-
-	}
-}
-
-if ( ! function_exists( 'zues_header' ) ) {
+if ( ! function_exists( 'zues_load_header_template' ) ) {
 	/**
 	 * Output the site title.
 	 */
-	function zues_header() {
+	function zues_load_header_template() {
 
-		echo '<header '.zues_get_attr( 'header' ).' ">';
-			echo '<div class="wrap">';
-			 echo '<div  ' . zues_get_attr( 'branding' ) . ' >';
+		$priority = array(
+			'template-parts/header.php',
+			'zues-framework/structure/template-parts/header.php',
+		);
 
-					if ( get_header_image() ) {
-						zues_image_header();
-					} else {
-						zues_text_header();
-					}
-
-
-				echo '</div>';
-		echo '	</div>';
-	echo '	</header>';
+		locate_template( $priority, true );
 
 	}
 }
@@ -88,8 +43,8 @@ if ( ! function_exists( 'zues_text_header' ) ) {
 	 */
 	function zues_text_header() {
 
-		do_action( 'zues_logo_text' );
-
+		zues_site_title();
+		echo '<p '. zues_get_attr( 'site-description' ) . '>' . get_bloginfo( 'description' ) . '</p>';
 	}
 }
 
@@ -122,17 +77,6 @@ if ( ! function_exists( 'zues_site_title' ) ) {
 		} else {
 			echo '<h2 '. zues_get_attr( 'site-title' ) . '>'. $link . '</h2>';
 		}
-
-	}
-}
-
-if ( ! function_exists( 'zues_site_description' ) ) {
-	/**
-	 * Output the site title.
-	 */
-	function zues_site_description() {
-
-		echo '<p '. zues_get_attr( 'site-description' ) . '>' . get_bloginfo( 'description' ) . '</p>';
 
 	}
 }
@@ -246,7 +190,7 @@ if ( ! function_exists( 'zues_admin_header_image' ) ) {
 		<?php if ( get_header_image() ) : ?>
 		<img src="<?php header_image(); ?>" alt="">
 		<?php endif; ?>
-	</div>
+	</div><!-- #heading -->
 <?php
 	}
 }

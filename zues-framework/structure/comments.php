@@ -11,6 +11,15 @@ if ( ! function_exists( 'zues_display_comments' ) ) {
 	 */
 	function zues_display_comments() {
 
+		/*
+		 * Returns a template file for the comments
+		 *
+		 * Usage:
+		 * add_filter( 'zues_comments_template', 'my_callback' );
+		 * function my_callback(){
+		 *     return '/my-comments.php';
+		 * }
+		 */
 		$template = apply_filters( 'zues_comments_template', '/comments.php' );
 
 		// If comments are open or we have at least one comment, load up the comment template.
@@ -53,7 +62,7 @@ if ( ! function_exists( 'zues_comment' ) ) {
 
 	            <?php edit_comment_link( '<i class="icon-edit"></i>', '' ); ?>
 
-	        </header>
+	        </header><!-- .comment-meta -->
 
 	        <div <?php zues_attr( 'comment-content' ); ?>>
 	            <?php comment_text(); ?>
@@ -93,27 +102,12 @@ if ( ! function_exists( 'zues_comments_nav' ) ) {
 	 */
 	function zues_comments_nav() {
 
-		if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
+		$priority = array(
+			'template-parts/comments-nav.php',
+			'zues-framework/structure/template-parts/comments-nav.php',
+		);
 
-			<nav id="comment-nav-above" class="navigation comment-navigation">
-
-				<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'zues' ); ?></h2>
-
-				<div class="nav-links nav-links-comments clear">
-
-					<div class="nav-previous">
-						<?php previous_comments_link( esc_html__( '&larr; Older Comments', 'zues' ) ); ?>
-					</div>
-
-					<div class="nav-next">
-						<?php next_comments_link( esc_html__( 'Newer Comments &rarr;', 'zues' ) ); ?>
-					</div>
-
-				</div><!-- .nav-links -->
-
-			</nav><!-- #comment-nav-above -->
-
-		<?php endif; // Check for comment navigation. 
+		locate_template( $priority, true );
 
 	}
 }

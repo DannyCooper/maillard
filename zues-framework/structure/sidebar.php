@@ -13,13 +13,22 @@ if ( ! function_exists( 'zues_sidebar_primary' ) ) {
 
 		echo '<aside '. zues_get_attr( 'sidebar', 'primary' ) . '">';
 
+			/**
+			 * Fires before the sidebar
+			 */
 			do_action( 'zues_sidebar_primary_before' );
 
+			/**
+			 * Primary Sidebar Hook
+			 */
 			do_action( 'zues_sidebar_primary' );
 
+			/**
+			 * Fires after the sidebar
+			 */
 			do_action( 'zues_sidebar_primary_after' );
 
-		echo '</aside>';
+		echo '</aside><!-- .sidebar-primary -->';
 
 	}
 }
@@ -32,7 +41,7 @@ if ( ! function_exists( 'zues_build_sidebar' ) ) {
 
 		echo '<div class="sidebar-primary-inner">';
 			dynamic_sidebar( 'primary-sidebar' );
-		echo '</div>';
+		echo '</div><!-- .sidebar-primary-inner -->';
 
 	}
 }

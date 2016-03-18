@@ -2,8 +2,6 @@
 /**
  * Class for displaying notices in wp-admin
  *
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
- *
  * @package zues
  */
 

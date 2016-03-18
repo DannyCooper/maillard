@@ -10,6 +10,11 @@
  * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
+ /**
+  * Fires before the zues framework
+  */
+do_action('zues_before');
+
 /**
  * The main class that loads all zues core framework files.
  */
@@ -37,22 +42,22 @@ class Zues_Framework {
 		define( 'ZUES_FRAMEWORK_VERSION', '1.0.0' );
 
 		/* Sets the path to the parent theme directory. */
-		define( 'THEME_DIR', get_template_directory() );
+		define( 'ZUES_THEME_DIR', get_template_directory() );
 
 		/* Sets the path to the parent theme directory URI. */
-		define( 'THEME_URI', get_template_directory_uri() );
+		define( 'ZUES_THEME_URI', get_template_directory_uri() );
 
 		/* Sets the path to the child theme directory. */
-		define( 'CHILD_THEME_DIR', get_stylesheet_directory() );
+		define( 'ZUES_CHILD_THEME_DIR', get_stylesheet_directory() );
 
 		/* Sets the path to the child theme directory URI. */
-		define( 'CHILD_THEME_URI', get_stylesheet_directory_uri() );
+		define( 'ZUES_CHILD_THEME_URI', get_stylesheet_directory_uri() );
 
 		/* Sets the path to the child theme directory. */
-		define( 'ZUES_FRAMEWORK_DIR', THEME_DIR . '/zues-framework' );
+		define( 'ZUES_FRAMEWORK_DIR', ZUES_THEME_DIR . '/zues-framework' );
 
 		/* Sets the path to the child theme directory URI. */
-		define( 'ZUES_FRAMEWORK_URI', THEME_URI . '/zues-framework' );
+		define( 'ZUES_FRAMEWORK_URI', ZUES_THEME_URI . '/zues-framework' );
 
 	}
 
@@ -79,9 +84,9 @@ class Zues_Framework {
 	function structure() {
 
 		include_once ZUES_FRAMEWORK_DIR . '/structure/wrapper.php';
-
+		include_once ZUES_FRAMEWORK_DIR . '/structure/general.php';
 		include_once ZUES_FRAMEWORK_DIR . '/structure/header.php';
-		include_once ZUES_FRAMEWORK_DIR . '/structure/navigation.php';
+		include_once ZUES_FRAMEWORK_DIR . '/structure/primary-nav.php';
 		include_once ZUES_FRAMEWORK_DIR . '/structure/post.php';
 		include_once ZUES_FRAMEWORK_DIR . '/structure/page.php';
 		include_once ZUES_FRAMEWORK_DIR . '/structure/comments.php';
@@ -107,7 +112,9 @@ class Zues_Framework {
 
 		wp_enqueue_style( 'olympus-reset', ZUES_FRAMEWORK_URI . '/assets/css/normalize.css' );
 		wp_enqueue_style( 'olympus-base', ZUES_FRAMEWORK_URI . '/assets/css/base.css' );
-		wp_enqueue_script( 'olympus-navigation', ZUES_FRAMEWORK_URI . '/assets/js/jquery.slimmenu.js', array( 'jquery' ), '', true );
+
+		wp_enqueue_script( 'superfish', ZUES_FRAMEWORK_URI . '/assets/js/superfish.js', array( 'jquery' ), '', true );
+		wp_enqueue_script( 'tinynav', ZUES_FRAMEWORK_URI . '/assets/js/tinynav.js', array( 'jquery' ), '', true );
 
 		// Register Font Awesome incase we want to use it later
 		wp_register_style( 'font-awesome', ZUES_FRAMEWORK_URI . '/assets/css/font-awesome.css' );
@@ -119,13 +126,33 @@ class Zues_Framework {
 	 */
 	function admin() {
 
-		// Class for generating admin notices
-		include_once ZUES_FRAMEWORK_DIR . '/classes/class-admin-notices.php';
+		if ( defined('USE_ZUES_ADMIN_NOTICES') ) {
 
-		// Class for required/recommend plugin notification and installation.
-		include_once ZUES_FRAMEWORK_DIR . '/libraries/TGMPA/class-tgm-plugin-activation.php';
+			// Class for generating admin notices
+			include_once ZUES_FRAMEWORK_DIR . '/classes/class-admin-notices.php';
+
+		}
+
+		if ( defined('USE_ZUES_CUSTOMIZER') ) {
+
+			// Class for required/recommend plugin notification and installation.
+			include_once ZUES_FRAMEWORK_DIR . '/libraries/customizer/customizer-library.php';
+
+		}
+
+		if ( defined('USE_TGMPA') ) {
+
+			// Class for required/recommend plugin notification and installation.
+			include_once ZUES_FRAMEWORK_DIR . '/libraries/TGMPA/class-tgm-plugin-activation.php';
+
+		}
 
 	}
 }
 
 $zues_framework = new Zues_Framework();
+
+/*
+ * Fires after the zues framework
+ */
+do_action('zues_end');

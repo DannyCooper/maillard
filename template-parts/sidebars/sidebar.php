@@ -5,9 +5,8 @@
  * @package zues
  */
 
-if ( ! is_active_sidebar( 'primary-sidebar' ) ) {
+if ( ! is_active_sidebar( 'sidebar-primary' ) ) {
 	return;
 }
 
-zues_primary_sidebar();
-
+zues_sidebar_primary();

@@ -9,6 +9,9 @@
  *
  * @package    zues
  * @author     Justin Tadlock <justin@justintadlock.com>
+ * @copyright  Copyright (c) 2008 - 2015, Justin Tadlock
+ * @link       http://themehybrid.com/hybrid-core
+ * @license    http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
 
 // Attributes for major structural elements.
@@ -352,12 +355,6 @@ function zues_attr_post( $attr ) {
 		} elseif ( 'attachment' === get_post_type() && wp_attachment_is_image() ) {
 
 			$attr['itemtype'] = 'http://schema.org/ImageObject';
-		} elseif ( 'attachment' === get_post_type() && zues_attachment_is_audio() ) {
-
-			$attr['itemtype'] = 'http://schema.org/AudioObject';
-		} elseif ( 'attachment' === get_post_type() && zues_attachment_is_video() ) {
-
-			$attr['itemtype'] = 'http://schema.org/VideoObject';
 		} else {
 			$attr['itemtype']  = 'http://schema.org/CreativeWork';
 		}

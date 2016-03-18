@@ -6,6 +6,5 @@
  *
  * @package zues
  */
-?>
 
 zues();

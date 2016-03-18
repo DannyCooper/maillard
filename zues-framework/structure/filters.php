@@ -17,3 +17,19 @@ if ( ! function_exists( 'zues_excerpt_more' ) ) {
 	}
 }
 add_filter( 'excerpt_more', 'zues_excerpt_more' );
+
+
+/**
+ * Remove sidebar from full width page template.
+ */
+function remove_sidebar_from_full_width_template() {
+
+	// Remove sidebar from just this page-template.
+	if ( is_page_template( 'page-templates/full-width.php' ) ) {
+
+		remove_action( 'zues_content_sidebar_wrapper', 'zues_sidebar_primary', 20 );
+
+	}
+
+}
+add_action( 'zues_content_sidebar_wrapper','remove_sidebar_from_full_width_template' );

@@ -10,16 +10,28 @@ if ( ! function_exists( 'zues_content_area' ) ) {
 	 * Load the relevant page template (uses WordPress hierarchy).
 	 */
 	function zues_content_area() {
-		do_action( 'zues_content_before' );
-		echo '<main '. zues_get_attr( 'content' ).' >';
+
 		/**
-		 * Content area hook
-		 *
-		 * @hooked zues_loop - 20
+		 * Fires before the content (outside the loop)
 		 */
-		do_action( 'zues_content' );
-		echo '</main>';
+		do_action( 'zues_content_before' );
+
+		echo '<main '. zues_get_attr( 'content' ).' >';
+
+			/**
+			 * Content area hook
+			 *
+			 * @hooked zues_loop - 20
+			 */
+			do_action( 'zues_content' );
+
+		echo '</main><!-- .content -->';
+
+		/**
+		 * Fires after the content (outside the loop)
+		 */
 		do_action( 'zues_content_after' );
+
 	}
 }
 
@@ -29,10 +41,11 @@ if ( ! function_exists( 'zues_loop' ) ) {
 	 */
 	function zues_loop() {
 
-		do_action( 'zues_content_before' );
+		if ( have_posts() ) : while ( have_posts() ) : the_post();
 
-		while ( have_posts() ) : the_post();
-
+			/**
+			 * Fires before the loop (within WordPress' loop)
+			 */
 			do_action( 'zues_loop_before' );
 
 			echo '<article ' . zues_get_attr( 'post' ) . '>'; // WPCS: XSS OK.
@@ -49,15 +62,38 @@ if ( ! function_exists( 'zues_loop' ) ) {
 				 */
 				do_action( 'zues_loop' );
 
-			echo '</article>';
+			echo '</article><!-- .post-'.get_the_ID().' -->';
 
+			/**
+			 * Fires after the loop (within WordPress' loop)
+			 */
 			do_action( 'zues_loop_after' );
 
-		endwhile;
+		endwhile; else :
 
-		do_action( 'zues_content_after' );
+			zues_no_content();
+
+		 endif;
+
 	}
 }
+
+if ( ! function_exists( 'zues_no_content' ) ) {
+	/**
+	 * Displayed when no posts are found.
+	 */
+	function zues_no_content() {
+
+		$priority = array(
+			'template-parts/content-none.php',
+			'zues-framework/structure/template-parts/content-none.php',
+		);
+
+		locate_template( $priority, true );
+
+	}
+}
+
 
 if ( ! function_exists( 'zues_entry_header' ) ) {
 	/**
@@ -65,14 +101,23 @@ if ( ! function_exists( 'zues_entry_header' ) ) {
 	 */
 	function zues_entry_header() {
 
+		/**
+		 * Fires before the entry header
+		 */
 		do_action( 'zues_entry_header_before' );
 
 		echo '<header class="entry-header">';
 
+			/**
+			 * Entry header hook
+			 */
 			do_action( 'zues_entry_header' );
 
-		echo '</header>';
+		echo '</header><!-- .entry-header -->';
 
+		/**
+		 * Fires after the entry header
+		 */
 		do_action( 'zues_entry_header_before' );
 	}
 }
@@ -112,7 +157,7 @@ if ( ! function_exists( 'zues_content' ) ) {
 			)
 		);
 
-		echo '</div>';
+		echo '</div><!-- .entry-content -->';
 
 	}
 }
@@ -134,7 +179,7 @@ if ( ! function_exists( 'zues_content_excerpt' ) ) {
 			)
 		);
 
-		echo '</div>';
+		echo '</div><!-- .entry-summary -->';
 
 	}
 }
@@ -153,7 +198,7 @@ if ( ! function_exists( 'zues_entry_meta' ) ) {
 		}
 
 		$posted_by = sprintf(
-			esc_html_x( 'by %s', 'post author', 'zies' ),
+			esc_html_x( 'by %s', 'post author', 'zues' ),
 			'<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>'
 		);
 
@@ -167,14 +212,14 @@ if ( ! function_exists( 'zues_entry_meta' ) ) {
 		<div class="entry-meta">
 			<span <?php zues_attr( 'entry-author' ); ?>>
 				<?php echo $posted_by; // WPCS: XSS OK. ?>
-			</span>
+			</span><!-- .entry-author -->
 			|
 			<time <?php zues_attr( 'entry-published' ); ?>>
 				<?php echo $posted_on; // WPCS: XSS OK. ?>
-			</time>
+			</time><!-- .entry-published -->
 
 			<?php comments_popup_link( esc_html__( 'Leave a comment', 'zues' ), esc_html__( '1 Comment', 'zues' ), esc_html__( '% Comments', 'zues' ) ); ?>
-		</div>
+		</div><!-- .entry-meta -->
 	<?php
 
 	}
@@ -241,7 +286,7 @@ if ( ! function_exists( 'zues_entry_footer' ) ) {
 					echo esc_html__( 'Categories: ', 'zues' );
 					echo wp_kses_post( $categories_list );
 					?>
-				 </span>
+				</span><!-- .cat-links -->
 
 			<?php endif;
 
@@ -257,11 +302,11 @@ if ( ! function_exists( 'zues_entry_footer' ) ) {
 					echo wp_kses_post( $tags_list );
 					?>
 
-				 </span>
+				</span><!-- .tag-links -->
 
 			<?php endif; // End if $tags_list.
 
-			echo '</footer>';
+			echo '</footer><!-- .entry-footer -->';
 
 	endif; // End if 'post' == get_post_type().
 
@@ -312,9 +357,9 @@ if ( ! function_exists( 'zues_featured_image' ) ) {
 			return;
 		}
 
-		echo '<div class="post-thumbnail">';
+		echo '<div class="entry-thumbnail">';
 			the_post_thumbnail( 'zues-blog-post' );
-		echo '</div>';
+		echo '</div><!-- .entry-thumbnail -->';
 
 	}
 }
@@ -332,7 +377,7 @@ if ( ! function_exists( 'zues_comments_link' ) ) {
 		}
 
 		if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) { ?>
-         <span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'zues' ), __( '1 Comment', 'zues' ), __( '% Comments', 'zues' ) ); ?></span>
+         <span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'zues' ), __( '1 Comment', 'zues' ), __( '% Comments', 'zues' ) ); ?></span><!-- .comments-link -->
         <?php }
 	}
 }
@@ -349,25 +394,5 @@ if ( ! function_exists( 'zues_content_navigation' ) ) {
 		);
 
 		echo get_the_posts_navigation( $args ); // WPCS: XSS OK.
-	}
-}
-
-if ( ! function_exists( 'zues_wrap_open' ) ) {
-	/**
-	 * Output links to older/newer posts, for archive pages.
-	 */
-	function zues_wrap_open() {
-
-		echo '<div class="wrap">';
-	}
-}
-
-if ( ! function_exists( 'zues_wrap_close' ) ) {
-	/**
-	 * Output links to older/newer posts, for archive pages.
-	 */
-	function zues_wrap_close() {
-
-		echo '</div>';
 	}
 }

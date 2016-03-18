@@ -31,7 +31,7 @@ if ( ! function_exists( 'zues_register_widget_area' ) ) {
 		'name'          => '',
 		'description'   => '',
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
+		'after_widget'  => '</section><!-- .widget -->',
 		'before_title'  => '<h3 class="widget-title">',
 		'after_title'   => '</h3>',
 		);

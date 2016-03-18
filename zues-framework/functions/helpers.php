@@ -27,7 +27,7 @@ function zues_is_theme_activated() {
  */
 function zues_autoloader( $dir ) {
 
-	$full_dir = THEME_DIR . $dir;
+	$full_dir = ZUES_THEME_DIR . $dir;
 	foreach ( glob( $full_dir.'*.php' ) as $filename ) {
 		include $filename; }
 
