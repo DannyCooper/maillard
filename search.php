@@ -2,10 +2,10 @@
 /**
  * The template for displaying search results pages.
  *
- * @package zues
+ * @package zeus
  */
 
- remove_action( 'zues_loop', 'zues_content', 20 );
- add_action( 'zues_loop', 'zues_content_excerpt', 20 );
+ remove_action( 'zeus_loop', 'zeus_content', 20 );
+ add_action( 'zeus_loop', 'zeus_content_excerpt', 20 );
 
- zues();
+ zeus();

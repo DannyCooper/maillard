@@ -4,7 +4,7 @@
  *
  * The template for displaying a full width page.
  *
- * @package zues
+ * @package zeus
  */
 
-zues();
+zeus();

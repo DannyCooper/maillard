@@ -2,11 +2,11 @@
 /**
  * The sidebar containing the main widget area.
  *
- * @package zues
+ * @package zeus
  */
 
 if ( ! is_active_sidebar( 'sidebar-primary' ) ) {
 	return;
 }
 
-zues_sidebar_primary();
+zeus_sidebar_primary();

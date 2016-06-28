@@ -4,5 +4,5 @@
  *
  * An example header for our theme.
  *
- * @package zues
+ * @package zeus
  */

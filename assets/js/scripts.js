@@ -1,7 +1,7 @@
 /**
  * Javascript code should be placed here, then enqueued using wp_enqueue_script();
  *
- * @package zues
+ * @package zeus
  */
 //
 // jQuery(function(){

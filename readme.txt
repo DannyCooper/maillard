@@ -1,4 +1,4 @@
-=== Zues ===
+=== Zeus ===
 
 Contributors: dannycooper
 Tags: light, white, one-column, two-columns, responsive-layout, featured-images, full-width-template, rtl-language-support, threaded-comments, custom-menu, custom-header, custom-background
@@ -12,7 +12,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-Zues is a minimal WordPress theme that can be used as a standalone theme, or as a framework to build something even better.
+Zeus is a minimal WordPress theme that can be used as a standalone theme, or as a framework to build something even better.
 
 == Installation ==
 
@@ -24,13 +24,16 @@ Zues is a minimal WordPress theme that can be used as a standalone theme, or as 
 
 = Does this theme support any plugins? =
 
-Zues includes support for Infinite Scroll in Jetpack.
+Zeus includes support for Infinite Scroll in Jetpack.
 
-Zues has been tested with the following plugins:
+Zeus has been tested with the following plugins:
 
 * Contact Form 7
 
 == Changelog ==
+
+= 1.1.0 - April 13, 2016 =
+* FIX: typo - change all instances of 'zues' to 'zeus'
 
 = 1.0.6 - March 8, 2016 =
 * ADDED: attr.php attribution
@@ -44,7 +47,7 @@ Zues has been tested with the following plugins:
 * ADDED: Lightweight responsive Navigation
 * ADDED: Credits to readme.txt
 * FIX: placement of wp_head()
-* FIX: prefix constants in zues-framework/init.php
+* FIX: prefix constants in zeus-framework/init.php
 * REMOVE: empty functions.php
 * REMOVE: unused customizer folder
 * REMOVE: hard-coded favicon
@@ -69,7 +72,7 @@ Zues has been tested with the following plugins:
 
 == Credits ==
 
-Zues WordPress Theme bundles the following third-party resources:
+Zeus WordPress Theme bundles the following third-party resources:
 
 * normalize.css, (C) 2012-2016 Nicolas Gallagher and Jonathan Neal, [MIT](http://opensource.org/licenses/MIT)
  * Source: http://necolas.github.io/normalize.css/

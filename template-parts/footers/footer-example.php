@@ -4,5 +4,5 @@
  *
  * An example footer for our theme.
  *
- * @package zues
+ * @package zeus
  */
