@@ -45,7 +45,7 @@ if ( ! function_exists( 'zeus_footer_attribution' ) ) {
 	 */
 	function zeus_footer_attribution() {
 
-		$footer_attribution = __( 'Powered by the <a href="http://olympusthemes.com">Zeus Theme</a>.', 'zeus' );
+		$footer_attribution = __( 'Powered by the <a href="http://olympusthemes.com">Zeus Theme</a>.', 'maillard' );
 
 		/*
 		 * Returns footer attribution html
@@ -69,7 +69,7 @@ if ( ! function_exists( 'zeus_footer_copyright' ) ) {
 	 */
 	function zeus_footer_copyright() {
 
-		$text = __( 'Copyright &copy; %1$s <a href="%2$s">%3$s</a> &middot; All Rights Reserved.', 'zeus' );
+		$text = __( 'Copyright &copy; %1$s <a href="%2$s">%3$s</a> &middot; All Rights Reserved.', 'maillard' );
 
 		$date = date( 'Y' );
 		$url = esc_url( home_url() );

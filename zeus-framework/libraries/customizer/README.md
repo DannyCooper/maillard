@@ -49,7 +49,7 @@ Customizer Sections can be defined like this:
 
 $sections[] = array(
 	'id' => 'example', // Required
-	'title' => __( 'Example Section', 'zeus' ), // Required
+	'title' => __( 'Example Section', 'maillard' ), // Required
 	'priority' => '30', // Optional
 	'description' => 'Example description', // Optional
 	'panel' => 'panel_id' // optional, and it requires WP >= 4.0
@@ -68,7 +68,7 @@ $panel = 'panel';
 
 $panels[] = array(
 	'id' => $panel,
-	'title' => __( 'Panel Examples', 'zeus' ),
+	'title' => __( 'Panel Examples', 'maillard' ),
 	'priority' => '100'
 );
 
@@ -76,14 +76,14 @@ $section = 'panel-section';
 
 $sections[] = array(
 	'id' => $section,
-	'title' => __( 'Panel Section', 'zeus' ),
+	'title' => __( 'Panel Section', 'maillard' ),
 	'priority' => '10',
 	'panel' => $panel
 );
 
 $options['example-panel-text'] = array(
 	'id' => 'example-panel-text',
-	'label'   => __( 'Example Text Input', 'zeus' ),
+	'label'   => __( 'Example Text Input', 'maillard' ),
 	'section' => $section,
 	'type'    => 'text',
 );
@@ -96,7 +96,7 @@ The Customizer_Library uses the core function `$wp_customize->add_panel( $id, $a
 ~~~php
 $options['example-text'] = array(
 	'id' => 'example-text',
-	'label'   => __( 'Example Text Input', 'zeus' ),
+	'label'   => __( 'Example Text Input', 'maillard' ),
 	'section' => $section,
 	'type'    => 'text',
 );
@@ -107,7 +107,7 @@ $options['example-text'] = array(
 ~~~php
 $options['example-url'] = array(
 	'id' => 'example-url',
-	'label'   => __( 'Example URL Input', 'zeus' ),
+	'label'   => __( 'Example URL Input', 'maillard' ),
 	'section' => $section,
 	'type'    => 'url',
 );
@@ -118,7 +118,7 @@ $options['example-url'] = array(
 ~~~php
 $options['example-checkbox'] = array(
 	'id' => 'example-checkbox',
-	'label'   => __( 'Example Checkbox', 'zeus' ),
+	'label'   => __( 'Example Checkbox', 'maillard' ),
 	'section' => $section,
 	'type'    => 'checkbox',
 	'default' => 0,
@@ -136,7 +136,7 @@ $choices = array(
 
 $options['example-select'] = array(
 	'id' => 'example-select',
-	'label'   => __( 'Example Select', 'zeus' ),
+	'label'   => __( 'Example Select', 'maillard' ),
 	'section' => $section,
 	'type'    => 'select',
 	'choices' => $choices,
@@ -148,7 +148,7 @@ $options['example-select'] = array(
 
 $options['example-dropdown-pages'] = array(
 	'id' => 'example-dropdown-pages',
-	'label'   => __( 'Example Drop Down Pages', 'zeus' ),
+	'label'   => __( 'Example Drop Down Pages', 'maillard' ),
 	'section' => $section,
 	'type'    => 'dropdown-pages',
 	'default' => ''
@@ -166,7 +166,7 @@ $choices = array(
 
 $options['example-radio'] = array(
 	'id' => 'example-radio',
-	'label'   => __( 'Example Radio', 'zeus' ),
+	'label'   => __( 'Example Radio', 'maillard' ),
 	'section' => $section,
 	'type'    => 'radio',
 	'choices' => $choices,
@@ -179,7 +179,7 @@ $options['example-radio'] = array(
 ~~~php
 $options['example-upload'] = array(
 	'id' => 'example-upload',
-	'label'   => __( 'Example Upload', 'zeus' ),
+	'label'   => __( 'Example Upload', 'maillard' ),
 	'section' => $section,
 	'type'    => 'upload',
 	'default' => '',
@@ -191,7 +191,7 @@ $options['example-upload'] = array(
 ~~~php
 $options['example-color'] = array(
 	'id' => 'example-color',
-	'label'   => __( 'Example Color', 'zeus' ),
+	'label'   => __( 'Example Color', 'maillard' ),
 	'section' => $section,
 	'type'    => 'color',
 	'default' => $color // hex
@@ -204,10 +204,10 @@ $options['example-color'] = array(
 ~~~php
 $options['example-textarea'] = array(
 	'id' => 'example-textarea',
-	'label'   => __( 'Example Textarea', 'zeus' ),
+	'label'   => __( 'Example Textarea', 'maillard' ),
 	'section' => $section,
 	'type'    => 'textarea',
-	'default' => __( 'Example textarea text.', 'zeus'),
+	'default' => __( 'Example textarea text.', 'maillard'),
 );
 ~~~
 
@@ -216,7 +216,7 @@ $options['example-textarea'] = array(
 ~~~php
 $options['example-font'] = array(
 	'id' => 'example-font',
-	'label'   => __( 'Example Font', 'zeus' ),
+	'label'   => __( 'Example Font', 'maillard' ),
 	'section' => $section,
 	'type'    => 'select',
 	'choices' => customizer_library_get_font_choices(),
@@ -229,7 +229,7 @@ $options['example-font'] = array(
 ~~~php
 $options['example-range'] = array(
 	'id' => 'example-range',
-	'label'   => __( 'Example Range Input', 'zeus' ),
+	'label'   => __( 'Example Range Input', 'maillard' ),
 	'section' => $section,
 	'type'    => 'range',
 	'input_attrs' => array(
@@ -246,11 +246,11 @@ $options['example-range'] = array(
 ~~~php
 $options['example-content'] = array(
 	'id' => 'example-content',
-	'label' => __( 'Example Content', 'zeus' ),
+	'label' => __( 'Example Content', 'maillard' ),
 	'section' => $section,
 	'type' => 'content',
-	'content' => '<p>' . __( 'Content to output. Use <a href="#">HTML</a> if you like.', 'zeus' ) . '</p>',
-	'description' => __( 'Optional: Example Description.', 'zeus' )
+	'content' => '<p>' . __( 'Content to output. Use <a href="#">HTML</a> if you like.', 'maillard' ) . '</p>',
+	'description' => __( 'Optional: Example Description.', 'maillard' )
 );
 ~~~
 

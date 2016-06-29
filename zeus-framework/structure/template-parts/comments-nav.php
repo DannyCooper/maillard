@@ -10,16 +10,16 @@
 
 	<nav id="comment-nav-above" class="navigation comment-navigation">
 
-		<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'zeus' ); ?></h2>
+		<h2 class="screen-reader-text"><?php esc_html_e( 'Comment navigation', 'maillard' ); ?></h2>
 
 		<div class="nav-links nav-links-comments clear">
 
 			<div class="nav-previous">
-				<?php previous_comments_link( esc_html__( '&larr; Older Comments', 'zeus' ) ); ?>
+				<?php previous_comments_link( esc_html__( '&larr; Older Comments', 'maillard' ) ); ?>
 			</div><!-- .nav-previous -->
 
 			<div class="nav-next">
-				<?php next_comments_link( esc_html__( 'Newer Comments &rarr;', 'zeus' ) ); ?>
+				<?php next_comments_link( esc_html__( 'Newer Comments &rarr;', 'maillard' ) ); ?>
 			</div><!-- .nav-next -->
 
 		</div><!-- .nav-links -->

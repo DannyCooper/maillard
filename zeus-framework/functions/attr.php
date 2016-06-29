@@ -184,7 +184,7 @@ function zeus_attr_sidebar( $attr, $context ) {
 
 		if ( $sidebar_name ) {
 			// Translators: The %s is the sidebar name. This is used for the 'aria-label' attribute.
-			$attr['aria-label'] = esc_attr( sprintf( _x( '%s Sidebar', 'sidebar aria label', 'zeus' ), $sidebar_name ) );
+			$attr['aria-label'] = esc_attr( sprintf( _x( '%s Sidebar', 'sidebar aria label', 'maillard' ), $sidebar_name ) );
 		}
 	}
 
@@ -214,7 +214,7 @@ function zeus_attr_menu( $attr, $context ) {
 
 		if ( $menu_name ) {
 			// Translators: The %s is the menu name. This is used for the 'aria-label' attribute.
-			$attr['aria-label'] = esc_attr( sprintf( _x( '%s Menu', 'nav menu aria label', 'zeus' ), $menu_name ) );
+			$attr['aria-label'] = esc_attr( sprintf( _x( '%s Menu', 'nav menu aria label', 'maillard' ), $menu_name ) );
 		}
 	}
 
@@ -410,7 +410,7 @@ function zeus_attr_entry_published( $attr ) {
 	$attr['itemprop'] = 'datePublished';
 
 	// Translators: Post date/time "title" attribute.
-	$attr['title']    = get_the_time( _x( 'l, F j, Y, g:i a', 'post time format', 'zeus' ) );
+	$attr['title']    = get_the_time( _x( 'l, F j, Y, g:i a', 'post time format', 'maillard' ) );
 
 	return $attr;
 }
@@ -520,7 +520,7 @@ function zeus_attr_comment_published( $attr ) {
 	$attr['datetime'] = get_comment_time( 'Y-m-d\TH:i:sP' );
 
 	// Translators: Comment date/time "title" attribute.
-	$attr['title']    = get_comment_time( _x( 'l, F j, Y, g:i a', 'comment time format', 'zeus' ) );
+	$attr['title']    = get_comment_time( _x( 'l, F j, Y, g:i a', 'comment time format', 'maillard' ) );
 	$attr['itemprop'] = 'datePublished';
 
 	return $attr;

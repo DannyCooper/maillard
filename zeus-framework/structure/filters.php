@@ -13,7 +13,7 @@ if ( ! function_exists( 'zeus_excerpt_more' ) ) {
 	 */
 	function zeus_excerpt_more( $more ) {
 		global $post;
-		return '<p><a class="moretag" href="'. get_permalink( $post->ID ) . '">'.__( 'Continue Reading', 'zeus' ).'&hellip;</a></p>';
+		return '<p><a class="moretag" href="'. get_permalink( $post->ID ) . '">'.__( 'Continue Reading', 'maillard' ).'&hellip;</a></p>';
 	}
 }
 add_filter( 'excerpt_more', 'zeus_excerpt_more' );

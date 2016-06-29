@@ -1,16 +1,132 @@
 /*
-Theme Name: Zeus
-Theme URI: https://olympusthemes.com/zeus
+Theme Name: Maillard
+Theme URI: https://olympusthemes.com/maillard
 Author: Danny Cooper
 Author URI: http://dannycooper.com
 Description: A simple, minimalist theme. Zeus provides a perfect base for child themes to be built upon.
 Version: 1.1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: zeus
+Text Domain: maillard
 
 Tags: light, white, one-column, two-columns, responsive-layout, featured-images, full-width-template, rtl-language-support, threaded-comments, custom-menu, custom-header, custom-background
 
-Zeus WordPress Theme, Copyright 2016 Danny Cooper
+Maillard WordPress Theme, Copyright 2016 Danny Cooper
 This theme, like WordPress, is licensed under the GPL.
 */
+
+body {
+    font-family: 'Hind';
+    font-size: 18px;
+    color: #292929
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Hind';
+}
+
+h1, .site-title {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 24px
+}
+
+p {
+ margin: 0 0 1rem;
+    }
+
+.menu-primary {
+    background: #232323
+}
+
+.menu-primary .menu {
+    border: 0
+}
+.menu-primary .menu li a {
+    color: #c4c4c4
+}
+
+.menu-primary ul {
+    text-align: center;
+}
+
+
+.site-branding {
+    text-align: center;
+}
+
+.site-title {
+    line-height: 1;
+    margin-bottom: 5px
+}
+
+.site-description {
+    font-size: 18px;
+    color: #6d6d6d;
+}
+
+.widget-area-featured-post {
+    width: 970px;
+    float: left
+}
+
+.widget-area-featured-categories {
+    width: 170px;
+    float: right
+}
+
+.wrap {
+    max-width: 1170px;
+}
+
+.home-post-thumbnail {
+    width: 270px;
+    float:left
+}
+
+.content {
+    width: 770px
+}
+
+.home-post-content {
+    width: 470px;
+    float: left;
+    margin-left: 30px;
+}
+
+.page-template-home .entry-title {
+    margin-bottom: 1.5rem;
+    font-size: 24px;
+    margin-top: 1rem
+}
+
+.page-template-home article {
+        border-bottom: 1px solid #e4e4e4;
+        margin-bottom: 2.5rem
+}
+
+.page-template-home .moretag {
+    color: #292929;
+    border-bottom: 1px solid #292929
+}
+
+.featured-post-title-wrapper {
+    margin-top: -159px;
+    margin-left: 30px;
+}
+
+.featured-post-title-heading {
+    background: #232323;
+    display: inline-block;
+    padding: 15px 20px;
+    color: #c9c9c9;
+    margin-bottom: 0
+}
+
+.featured-post-title {
+    background: #079d46;
+    display: inline-block;
+    padding: 15px 20px;
+    color: white
+}

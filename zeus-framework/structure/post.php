@@ -146,13 +146,13 @@ if ( ! function_exists( 'zeus_content' ) ) {
 
 		the_content(
 			sprintf(
-				__( 'Continue reading %s', 'zeus' ),
+				__( 'Continue reading %s', 'maillard' ),
 				'<span class="screen-reader-text">' . get_the_title() . '</span>'
 			)
 		);
 		wp_link_pages(
 			array(
-			'before' => '<div class="page-links">' . __( 'Pages:', 'zeus' ),
+			'before' => '<div class="page-links">' . __( 'Pages:', 'maillard' ),
 			'after'  => '</div>',
 			)
 		);
@@ -174,7 +174,7 @@ if ( ! function_exists( 'zeus_content_excerpt' ) ) {
 
 		wp_link_pages(
 			array(
-			'before' => '<div class="page-links">' . __( 'Pages:', 'zeus' ),
+			'before' => '<div class="page-links">' . __( 'Pages:', 'maillard' ),
 			'after'  => '</div>',
 			)
 		);
@@ -198,12 +198,12 @@ if ( ! function_exists( 'zeus_entry_meta' ) ) {
 		}
 
 		$posted_by = sprintf(
-			esc_html_x( 'by %s', 'post author', 'zeus' ),
+			esc_html_x( 'by %s', 'post author', 'maillard' ),
 			'<a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a>'
 		);
 
 		$posted_on = sprintf(
-			esc_html_x( 'Posted on %s | ', 'post date', 'zeus' ),
+			esc_html_x( 'Posted on %s | ', 'post date', 'maillard' ),
 			'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . get_the_date() . '</a>'
 		);
 
@@ -218,7 +218,7 @@ if ( ! function_exists( 'zeus_entry_meta' ) ) {
 				<?php echo $posted_on; // WPCS: XSS OK. ?>
 			</time><!-- .entry-published -->
 
-			<?php comments_popup_link( esc_html__( 'Leave a comment', 'zeus' ), esc_html__( '1 Comment', 'zeus' ), esc_html__( '% Comments', 'zeus' ) ); ?>
+			<?php comments_popup_link( esc_html__( 'Leave a comment', 'maillard' ), esc_html__( '1 Comment', 'maillard' ), esc_html__( '% Comments', 'maillard' ) ); ?>
 		</div><!-- .entry-meta -->
 	<?php
 
@@ -239,8 +239,8 @@ if ( ! function_exists( 'zeus_content_paging_nav' ) ) {
 
 		$args = array(
 			'type'         => 'list',
-			'next_text' => _x( 'Next', 'Next post', 'zeus' ) . ' &rarr;',
-			'prev_text' => '&larr; ' . _x( 'Previous', 'Previous post', 'zeus' ),
+			'next_text' => _x( 'Next', 'Next post', 'maillard' ) . ' &rarr;',
+			'prev_text' => '&larr; ' . _x( 'Previous', 'Previous post', 'maillard' ),
 		);
 
 		the_posts_pagination( $args );
@@ -277,13 +277,13 @@ if ( ! function_exists( 'zeus_entry_footer' ) ) {
 			echo '<footer class="entry-footer">';
 
 			/* translators: used between list items, there is a space after the comma */
-			$categories_list = get_the_category_list( __( ', ', 'zeus' ) );
+			$categories_list = get_the_category_list( __( ', ', 'maillard' ) );
 
 			if ( $categories_list && zeus_categorized_blog() ) : ?>
 
 				 <span class="cat-links">
 					<?php
-					echo esc_html__( 'Categories: ', 'zeus' );
+					echo esc_html__( 'Categories: ', 'maillard' );
 					echo wp_kses_post( $categories_list );
 					?>
 				</span><!-- .cat-links -->
@@ -291,14 +291,14 @@ if ( ! function_exists( 'zeus_entry_footer' ) ) {
 			<?php endif;
 
 			/* translators: used between list items, there is a space after the comma */
-			$tags_list = get_the_tag_list( '', __( ', ', 'zeus' ) );
+			$tags_list = get_the_tag_list( '', __( ', ', 'maillard' ) );
 
 			if ( $tags_list ) : ?>
 
 				 <span class="tag-links">
 
 					<?php
-					echo esc_html__( 'Tags: ', 'zeus' );
+					echo esc_html__( 'Tags: ', 'maillard' );
 					echo wp_kses_post( $tags_list );
 					?>
 
@@ -377,7 +377,7 @@ if ( ! function_exists( 'zeus_comments_link' ) ) {
 		}
 
 		if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) { ?>
-         <span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'zeus' ), __( '1 Comment', 'zeus' ), __( '% Comments', 'zeus' ) ); ?></span><!-- .comments-link -->
+         <span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'maillard' ), __( '1 Comment', 'maillard' ), __( '% Comments', 'maillard' ) ); ?></span><!-- .comments-link -->
         <?php }
 	}
 }
@@ -389,8 +389,8 @@ if ( ! function_exists( 'zeus_content_navigation' ) ) {
 	function zeus_content_navigation() {
 
 		$args = array(
-			'prev_text'          => __( '&laquo; Older posts', 'zeus' ),
-			'next_text'          => __( 'Newer posts &raquo;', 'zeus' ),
+			'prev_text'          => __( '&laquo; Older posts', 'maillard' ),
+			'next_text'          => __( 'Newer posts &raquo;', 'maillard' ),
 		);
 
 		echo get_the_posts_navigation( $args ); // WPCS: XSS OK.

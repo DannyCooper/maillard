@@ -33,7 +33,7 @@ Zeus has been tested with the following plugins:
 == Changelog ==
 
 = 1.1.0 - April 13, 2016 =
-* FIX: typo - change all instances of 'zues' to 'zeus'
+* FIX: typo - change all instances of 'zues' to 'maillard'
 
 = 1.0.6 - March 8, 2016 =
 * ADDED: attr.php attribution

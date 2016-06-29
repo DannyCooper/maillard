@@ -15,9 +15,9 @@ if ( ! function_exists( 'customizer_library_get_font_choices' ) ) :
 	 * @return array    The fonts in value/label pairs.
 	 */
 	function customizer_library_get_all_fonts() {
-		$heading1       = array( 1 => array( 'label' => sprintf( '--- %s ---', __( 'Standard Fonts', 'zeus' ) ) ) );
+		$heading1       = array( 1 => array( 'label' => sprintf( '--- %s ---', __( 'Standard Fonts', 'maillard' ) ) ) );
 		$standard_fonts = customizer_library_get_standard_fonts();
-		$heading2       = array( 2 => array( 'label' => sprintf( '--- %s ---', __( 'Google Fonts', 'zeus' ) ) ) );
+		$heading2       = array( 2 => array( 'label' => sprintf( '--- %s ---', __( 'Google Fonts', 'maillard' ) ) ) );
 		$google_fonts   = customizer_library_get_google_fonts();
 
 		/**
@@ -123,16 +123,16 @@ if ( ! function_exists( 'customizer_library_get_google_font_subsets' ) ) :
 	 */
 	function customizer_library_get_google_font_subsets() {
 		return array(
-		'all'          => __( 'All', 'zeus' ),
-		'cyrillic'     => __( 'Cyrillic', 'zeus' ),
-		'cyrillic-ext' => __( 'Cyrillic Extended', 'zeus' ),
-		'devanagari'   => __( 'Devanagari', 'zeus' ),
-		'greek'        => __( 'Greek', 'zeus' ),
-		'greek-ext'    => __( 'Greek Extended', 'zeus' ),
-		'khmer'        => __( 'Khmer', 'zeus' ),
-		'latin'        => __( 'Latin', 'zeus' ),
-		'latin-ext'    => __( 'Latin Extended', 'zeus' ),
-		'vietnamese'   => __( 'Vietnamese', 'zeus' ),
+		'all'          => __( 'All', 'maillard' ),
+		'cyrillic'     => __( 'Cyrillic', 'maillard' ),
+		'cyrillic-ext' => __( 'Cyrillic Extended', 'maillard' ),
+		'devanagari'   => __( 'Devanagari', 'maillard' ),
+		'greek'        => __( 'Greek', 'maillard' ),
+		'greek-ext'    => __( 'Greek Extended', 'maillard' ),
+		'khmer'        => __( 'Khmer', 'maillard' ),
+		'latin'        => __( 'Latin', 'maillard' ),
+		'latin-ext'    => __( 'Latin Extended', 'maillard' ),
+		'vietnamese'   => __( 'Vietnamese', 'maillard' ),
 		);
 	}
 endif;
@@ -192,15 +192,15 @@ if ( ! function_exists( 'customizer_library_get_standard_fonts' ) ) :
 	function customizer_library_get_standard_fonts() {
 		return array(
 		'serif' => array(
-			'label' => _x( 'Serif', 'font style', 'zeus' ),
+			'label' => _x( 'Serif', 'font style', 'maillard' ),
 			'stack' => 'Georgia,Times,"Times New Roman",serif',
 		),
 		'sans-serif' => array(
-			'label' => _x( 'Sans Serif', 'font style', 'zeus' ),
+			'label' => _x( 'Sans Serif', 'font style', 'maillard' ),
 			'stack' => '"Helvetica Neue",Helvetica,Arial,sans-serif',
 		),
 		'monospace' => array(
-			'label' => _x( 'Monospaced', 'font style', 'zeus' ),
+			'label' => _x( 'Monospaced', 'font style', 'maillard' ),
 			'stack' => 'Monaco,"Lucida Sans Typewriter","Lucida Typewriter","Courier New",Courier,monospace',
 		),
 		);

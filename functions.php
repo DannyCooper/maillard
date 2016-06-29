@@ -9,6 +9,7 @@
  * Load zeus framework.
  */
 require_once( get_template_directory() . '/zeus-framework/init.php' );
+require_once( get_template_directory() . '/inc/widgets/featured-post.php' );
 
 if ( ! function_exists( 'zeus_setup' ) ) {
 	/**
@@ -23,9 +24,9 @@ if ( ! function_exists( 'zeus_setup' ) ) {
          * Make theme available for translation.
          * Translations can be filed in the /languages/ directory.
          * If you're building a theme based on Core, use a find and replace
-         * to change 'zeus' to the name of your theme in all the template files
+         * to change 'maillard' to the name of your theme in all the template files
         */
-		load_theme_textdomain( 'zeus', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'maillard', get_template_directory() . '/languages' );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -51,7 +52,7 @@ if ( ! function_exists( 'zeus_setup' ) ) {
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-			'primary' => esc_html__( 'Primary Menu', 'zeus' ),
+			'primary' => esc_html__( 'Primary Menu', 'maillard' ),
 			)
 		);
 
@@ -105,40 +106,56 @@ function zeus_register_sidebars() {
 	zeus_register_widget_area(
 		array(
 		'id'          => 'sidebar-primary',
-		'name'        => __( 'Primary Sidebar', 'zeus' ),
-		'description' => __( 'Widgets added here are shown in the sidebar next to your content.', 'zeus' ),
+		'name'        => __( 'Primary Sidebar', 'maillard' ),
+		'description' => __( 'Widgets added here are shown in the sidebar next to your content.', 'maillard' ),
 		)
 	);
 
 	zeus_register_widget_area(
 		array(
 		'id'          => 'footer-1',
-		'name'        => __( 'Footer One', 'zeus' ),
-		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'zeus' ),
+		'name'        => __( 'Footer One', 'maillard' ),
+		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'maillard' ),
 		)
 	);
 
 	zeus_register_widget_area(
 		array(
 		'id'          => 'footer-2',
-		'name'        => __( 'Footer Two', 'zeus' ),
-		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'zeus' ),
+		'name'        => __( 'Footer Two', 'maillard' ),
+		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'maillard' ),
 		)
 	);
 
 	zeus_register_widget_area(
 		array(
 		'id'          => 'footer-3',
-		'name'        => __( 'Footer Three', 'zeus' ),
-		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'zeus' ),
+		'name'        => __( 'Footer Three', 'maillard' ),
+		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'maillard' ),
 		)
 	);
 
 	zeus_register_widget_area(
 		array(
 		'id'          => 'footer-4',
-		'name'        => __( 'Footer Four', 'zeus' ),
-		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'zeus' ),
+		'name'        => __( 'Footer Four', 'maillard' ),
+		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'maillard' ),
+		)
+	);
+
+	zeus_register_widget_area(
+		array(
+		'id'          => 'featured-post',
+		'name'        => __( 'Featured Post', 'maillard' ),
+		'description' => __( '', 'maillard' ),
+		)
+	);
+
+	zeus_register_widget_area(
+		array(
+		'id'          => 'featured-categories',
+		'name'        => __( 'Featured Categories', 'maillard' ),
+		'description' => __( '', 'maillard' ),
 		)
 	);
 
@@ -151,6 +168,7 @@ add_action( 'widgets_init', 'zeus_register_sidebars', 5 );
  */
 function zeus_scripts() {
 	wp_enqueue_style( 'ot-zeus-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'maillard-font-hind', 'https://fonts.googleapis.com/css?family=Hind:400,700' );
 
 	wp_enqueue_script( 'zeus-scripts', ZUES_THEME_URI . '/assets/js/scripts.js', array(), '', true );
 
@@ -159,3 +177,6 @@ function zeus_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'zeus_scripts' );
+
+add_action( 'zeus_header_before', 'zeus_nav_primary', 10 );
+remove_action( 'zeus_header_after', 'zeus_nav_primary', 10 );

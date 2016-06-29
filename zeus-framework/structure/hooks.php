@@ -31,7 +31,7 @@ add_action( 'zeus_loop', 'zeus_entry_header', 10 );
 add_action( 'zeus_loop', 'zeus_content', 20 );
 add_action( 'zeus_loop', 'zeus_entry_footer', 30 );
 add_action( 'zeus_loop_after', 'zeus_display_comments', 10 );
- add_action( 'zeus_loop_after', 'zeus_content_nav', 30 );
+add_action( 'zeus_loop_after', 'zeus_content_nav', 30 );
 
 // Archive Page Hooks.
 add_action( 'zeus_loop_before', 'zeus_archive_header', 20 );

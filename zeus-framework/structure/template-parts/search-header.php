@@ -11,6 +11,6 @@ if ( ! is_search() ) {
 
 <header <?php zeus_attr( 'archive-header' ) ?>>
 	<h1 <?php zeus_attr( 'archive-title' ) ?>>
-		<?php printf( esc_html__( 'Search Results for: %s', 'zeus' ), '<span>' . get_search_query() . '</span>' ); ?>
+		<?php printf( esc_html__( 'Search Results for: %s', 'maillard' ), '<span>' . get_search_query() . '</span>' ); ?>
 	</h1>
 </header><!-- .archive-header -->

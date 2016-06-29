@@ -50,14 +50,14 @@ if ( ! function_exists( 'zeus_comment' ) ) {
 	                <?php echo get_avatar( $comment->comment_author_email, 100 ); ?>
 	            </div>
 
-	            <?php printf( __( '<cite %s>%s</cite> - ', 'zeus' ), zeus_get_attr( 'comment-author' ), get_comment_author_link() ); ?>
+	            <?php printf( __( '<cite %s>%s</cite> - ', 'maillard' ), zeus_get_attr( 'comment-author' ), get_comment_author_link() ); ?>
 
 	            <?php
 	            // Check if author of comment is also author of post.
 	            zeus_bypostauthor( $comment ); ?>
 
 	            <time <?php zeus_attr( 'comment-published' ); ?>>
-	                <?php printf( esc_html__( '%s ago', 'zeus' ), human_time_diff( get_comment_time( 'U' ), current_time( 'timestamp' ) ) ); ?>
+	                <?php printf( esc_html__( '%s ago', 'maillard' ), human_time_diff( get_comment_time( 'U' ), current_time( 'timestamp' ) ) ); ?>
 	            </time>
 
 	            <?php edit_comment_link( '<i class="icon-edit"></i>', '' ); ?>
@@ -71,7 +71,7 @@ if ( ! function_exists( 'zeus_comment' ) ) {
 	        <?php comment_reply_link(); ?>
 
 	        <?php if ( $comment->comment_approved === '0' ) : ?>
-	            <em class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'zeus' ); ?></em>
+	            <em class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'maillard' ); ?></em>
 	        <?php endif; ?>
 	    </article>
 
@@ -88,7 +88,7 @@ if ( ! function_exists( 'zeus_bypostauthor' ) ) {
 		global $post;
 
 		// If current post author is also comment author, make it known visually.
-		$visual = ( $comment->user_id === $post->post_author ? '<span>' . esc_html__( 'Post author', 'zeus' ) . '</span>' : '');
+		$visual = ( $comment->user_id === $post->post_author ? '<span>' . esc_html__( 'Post author', 'maillard' ) . '</span>' : '');
 		echo $visual;
 	}
 }
