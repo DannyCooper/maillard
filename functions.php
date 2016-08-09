@@ -5,11 +5,12 @@
  * @package zeus
  */
 
+define( 'USE_ZEUS_CUSTOMIZER', true);
+
 /**
  * Load zeus framework.
  */
 require_once( get_template_directory() . '/zeus-framework/init.php' );
-require_once( get_template_directory() . '/inc/widgets/featured-post.php' );
 
 if ( ! function_exists( 'zeus_setup' ) ) {
 	/**
@@ -47,7 +48,9 @@ if ( ! function_exists( 'zeus_setup' ) ) {
         */
 		add_theme_support( 'post-thumbnails' );
 
-		add_image_size( 'zeus-blog-post', 700, 9999 );
+		add_image_size( 'homepage-featured-post', 970 ); // 970 pixels wide (and unlimited height)
+		add_image_size( 'homepage-blog-thumbnail', 270 ); // 270 pixels wide (and unlimited height)
+		add_image_size( 'zeus-blog-post', 770 ); // 770 pixels wide (and unlimited height)
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
@@ -168,9 +171,10 @@ add_action( 'widgets_init', 'zeus_register_sidebars', 5 );
  */
 function zeus_scripts() {
 	wp_enqueue_style( 'ot-zeus-style', get_stylesheet_uri() );
-	wp_enqueue_style( 'maillard-font-hind', 'https://fonts.googleapis.com/css?family=Hind:400,700' );
+	wp_enqueue_style( 'maillard-font-hind', '//fonts.googleapis.com/css?family=Hind:400,600,700' );
+	wp_enqueue_style( 'maillard-socicons', '//file.myfontastic.com/n6vo44Re5QaWo8oCKShBs7/icons.css' );
 
-	wp_enqueue_script( 'zeus-scripts', ZUES_THEME_URI . '/assets/js/scripts.js', array(), '', true );
+	wp_enqueue_script( 'zeus-scripts', ZEUS_THEME_URI . '/assets/js/scripts.js', array(), '', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -178,5 +182,54 @@ function zeus_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'zeus_scripts' );
 
-add_action( 'zeus_header_before', 'zeus_nav_primary', 10 );
+/**
+ * Move the navigation above the header.
+ */
 remove_action( 'zeus_header_after', 'zeus_nav_primary', 10 );
+add_action( 'zeus_header_before', 'zeus_nav_primary', 10 );
+
+/**
+ * @TODO
+ */
+remove_action( 'zeus_sub_footer', 'zeus_footer_attribution', 15 );
+add_action( 'zeus_sub_footer', 'maillard_social_footer', 15 );
+
+/**
+ * Load the widgets.
+ */
+require_once( get_stylesheet_directory() . '/inc/customizer.php' );
+
+/**
+ * @TODO
+ */
+function maillard_social_footer() {
+
+	$social_websites = array(
+		'facebook' => 'Facebook',
+		'twitter' => 'Twitter',
+		'instagram' => 'Instagram',
+		'youtube' => 'YouTube',
+		'pinterest' => 'Pinterest',
+		'rss' => 'RSS',
+		'contact' => 'Contact',
+		'linkedin' => 'LinkedIn',
+		'googleplus' => 'Google+',
+	);
+
+	echo '<div class="maillard-social-icons">';
+
+	foreach ( $social_websites as $id => $name ) {
+
+		if( $url = get_theme_mod( $id.'-url' ) ) {
+
+			echo '<a href="'. $url .'">
+				<span class="socicon socicon-'.$id.'"></span>
+			</a>';
+
+		}
+
+	}
+
+	echo '</div>';
+
+}
