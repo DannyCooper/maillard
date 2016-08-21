@@ -1,0 +1,6 @@
+body#tinymce.wp-editor {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    color: #292929;
+	line-height: 1.6
+}

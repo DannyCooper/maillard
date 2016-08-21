@@ -2,7 +2,7 @@
 /**
  * The template for displaying search results pages.
  *
- * @package zeus
+ * @package maillard
  */
 
 remove_action( 'zeus_loop', 'zeus_content', 20 );

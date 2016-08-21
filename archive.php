@@ -4,7 +4,7 @@
  *
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package zeus
+ * @package maillard
  */
 
  remove_action( 'zeus_loop', 'zeus_content', 20 );

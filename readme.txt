@@ -3,7 +3,7 @@
 Contributors: dannycooper
 Tags: light, white, one-column, two-columns, responsive-layout, featured-images, full-width-template, rtl-language-support, threaded-comments, custom-menu, custom-header, custom-background
 
-Version: 1.0.6
+Version: 1.0.0
 Requires at least: 4.0
 Tested up to: 4.4.2
 Stable tag: 1.0.5
@@ -31,41 +31,6 @@ Zeus has been tested with the following plugins:
 * Contact Form 7
 
 == Changelog ==
-
-= 1.1.0 - April 13, 2016 =
-* FIX: typo - change all instances of 'zeus' to 'maillard'
-
-= 1.0.6 - March 8, 2016 =
-* ADDED: attr.php attribution
-* REMOVE: favicon.ico
-* REMOVE: add_editor_style()
-
-= 1.0.5 - February 27, 2016 =
-* FIX: Repeating pagination on archive pages
-
-= 1.0.4 - February 26, 2016 =
-* ADDED: Lightweight responsive Navigation
-* ADDED: Credits to readme.txt
-* FIX: placement of wp_head()
-* FIX: prefix constants in zeus-framework/init.php
-* REMOVE: empty functions.php
-* REMOVE: unused customizer folder
-* REMOVE: hard-coded favicon
-
-= 1.0.3 - February 1, 2016 =
-* ADDED: Conditional loading of libraries
-* REMOVE: Invalid CSS
-* REMOVE: Undefined function calls
-* FIX: select elements max-width: 100%
-* FIX: Inconsistent wp_nav_menu display
-* FIX: Call if( have_posts() ) before while( have_posts() )
-* FIX: Typo in comments.php </section>
-* FIX: Incorrectly echoing search string in search-header.php
-
-= 1.0.1 - January 28, 2016 =
-* Fixed 'zies' text domain
-* Added initial documentation to hooks/filters
-* Fixed screenshot size (1200px x 900px)
 
 = 1.0 - November 1, 2015 =
 * Initial release

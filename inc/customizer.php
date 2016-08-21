@@ -1,5 +1,15 @@
 <?php
+/**
+ * Template Name: Full Width Template
+ *
+ * The template for displaying a full width page.
+ *
+ * @package maillard
+ */
 
+/**
+ * @TODO
+ */
 function customizer_library_demo_options() {
 
 	// Stores all the controls that will be added
@@ -14,11 +24,12 @@ function customizer_library_demo_options() {
 	// Adds the sections to the $options array
 	$options['sections'] = $sections;
 
-	$options['accent-url'] = array(
-		'id' => 'accent-url',
+	$options['accent-color'] = array(
+		'id' => 'accent-color',
 		'label'   => __( 'Accent Color', 'maillard' ),
 		'section' => 'colors',
 		'type'    => 'color',
+		'transport'   => 'postMessage'
 	);
 
 	// More Examples

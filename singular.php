@@ -4,7 +4,7 @@
  *
  * See /core/structure/post.php and /core/structure/hooks.php
  *
- * @package zeus
+ * @package maillard
  */
 
 zeus();

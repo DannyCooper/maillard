@@ -2,17 +2,17 @@
 /**
  * Zeus functions and definitions
  *
- * @package zeus
+ * @package maillard
  */
 
-define( 'USE_ZEUS_CUSTOMIZER', true);
+define( 'USE_ZEUS_CUSTOMIZER', true );
 
 /**
  * Load zeus framework.
  */
 require_once( get_template_directory() . '/zeus-framework/init.php' );
 
-if ( ! function_exists( 'zeus_setup' ) ) {
+if ( ! function_exists( 'maillard_setup' ) ) {
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
@@ -20,7 +20,7 @@ if ( ! function_exists( 'zeus_setup' ) ) {
 	 * runs before the init hook. The init hook is too late for some features, such
 	 * as indicating support for post thumbnails.
 	 */
-	function zeus_setup() {
+	function maillard_setup() {
 		/*
          * Make theme available for translation.
          * Translations can be filed in the /languages/ directory.
@@ -29,8 +29,10 @@ if ( ! function_exists( 'zeus_setup' ) ) {
         */
 		load_theme_textdomain( 'maillard', get_template_directory() . '/languages' );
 
+
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
+		add_editor_style( 'editor-styles.css' );
 
 		/*
          * Let WordPress manage the document title.
@@ -39,7 +41,14 @@ if ( ! function_exists( 'zeus_setup' ) ) {
          * provide it for us.
         */
 		add_theme_support( 'title-tag' );
-		add_theme_support( 'custom-header' );
+
+		$args = array(
+			'flex-height' => true,
+			'width' => 1170,
+			'flex-height' => true,
+			'height' => 250,
+		);
+		add_theme_support( 'custom-header', $args );
 
 		/*
          * Enable support for Post Thumbnails on posts and pages.
@@ -48,8 +57,8 @@ if ( ! function_exists( 'zeus_setup' ) ) {
         */
 		add_theme_support( 'post-thumbnails' );
 
-		add_image_size( 'homepage-featured-post', 970 ); // 970 pixels wide (and unlimited height)
-		add_image_size( 'homepage-blog-thumbnail', 270 ); // 270 pixels wide (and unlimited height)
+		add_image_size( 'homepage-featured-post', 1170, 654 ); // 970 pixels wide (and unlimited height)
+		add_image_size( 'homepage-blog-thumbnail', 250, 250, true ); // 250 pixels wide by 250px high
 		add_image_size( 'zeus-blog-post', 770 ); // 770 pixels wide (and unlimited height)
 
 		// This theme uses wp_nav_menu() in one location.
@@ -85,7 +94,8 @@ if ( ! function_exists( 'zeus_setup' ) ) {
 
 	}
 }
-add_action( 'after_setup_theme', 'zeus_setup' );
+add_action( 'after_setup_theme', 'maillard_setup' );
+
 
 if ( ! function_exists( 'zeus_content_width' ) ) {
 	/**
@@ -96,7 +106,7 @@ if ( ! function_exists( 'zeus_content_width' ) ) {
 	 * @global int $content_width
 	 */
 	function zeus_content_width() {
-		$GLOBALS['content_width'] = apply_filters( 'zeus_content_width', 700 );
+		$GLOBALS['content_width'] = apply_filters( 'zeus_content_width', 1170 );
 	}
 	add_action( 'after_setup_theme', 'zeus_content_width', 0 );
 }
@@ -171,7 +181,6 @@ add_action( 'widgets_init', 'zeus_register_sidebars', 5 );
  */
 function zeus_scripts() {
 	wp_enqueue_style( 'ot-zeus-style', get_stylesheet_uri() );
-	wp_enqueue_style( 'maillard-font-hind', '//fonts.googleapis.com/css?family=Hind:400,600,700' );
 	wp_enqueue_style( 'maillard-socicons', '//file.myfontastic.com/n6vo44Re5QaWo8oCKShBs7/icons.css' );
 
 	wp_enqueue_script( 'zeus-scripts', ZEUS_THEME_URI . '/assets/js/scripts.js', array(), '', true );
@@ -198,6 +207,7 @@ add_action( 'zeus_sub_footer', 'maillard_social_footer', 15 );
  * Load the widgets.
  */
 require_once( get_stylesheet_directory() . '/inc/customizer.php' );
+require_once( get_stylesheet_directory() . '/inc/customizer-output.php' );
 
 /**
  * @TODO
@@ -232,4 +242,38 @@ function maillard_social_footer() {
 
 	echo '</div>';
 
+}
+
+function maillard_instagram_widget_link_class() {
+	return 'maillard-instagram-widget-link';
+}
+
+add_filter( 'wpiw_link_class', 'maillard_instagram_widget_link_class' );
+
+
+function maillard_instagram_widget_ul_class( $classes ) {
+	return $classes . ' clear';
+}
+
+add_filter( 'wpiw_list_class', 'maillard_instagram_widget_ul_class' );
+
+/**
+ * @todo
+ */
+function maillard_footer_attribution( ){
+
+	$text = __( 'Copyright &copy; %1$s <a href="%2$s">%3$s</a> &middot; Powered by  the %4$s.', 'zeus' );
+
+	$date = date( 'Y' );
+	$url = esc_url( home_url() );
+	$name = get_bloginfo( 'name' );
+	$attribution = '<a href="https://olympusthemes.com/maillard">Maillard Theme</a>';
+
+	return sprintf( $text, $date, $url, $name, $attribution );
+
+}
+add_filter( 'zeus_footer_copyright', 'maillard_footer_attribution' );
+
+if( ! is_single() ) {
+	remove_action( 'zeus_loop', 'zeus_entry_footer', 30 );
 }

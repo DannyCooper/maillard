@@ -4,12 +4,12 @@ Theme URI: https://olympusthemes.com/maillard
 Author: Danny Cooper
 Author URI: http://dannycooper.com
 Description: A simple, minimalist theme. Zeus provides a perfect base for child themes to be built upon.
-Version: 1.1.0
+Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: maillard
 
-Tags: light, white, one-column, two-columns, responsive-layout, featured-images, full-width-template, rtl-language-support, threaded-comments, custom-menu, custom-header, custom-background
+Tags: one-column, two-columns, featured-images, full-width-template, rtl-language-support, threaded-comments, custom-menu, custom-header, custom-background
 
 Maillard WordPress Theme, Copyright 2016 Danny Cooper
 This theme, like WordPress, is licensed under the GPL.
@@ -17,10 +17,9 @@ This theme, like WordPress, is licensed under the GPL.
 
 
 body {
-    font-family: 'Hind';
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 17px;
     color: #292929;
-	line-height: 1.6
 }
 
 h1,
@@ -29,8 +28,12 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Hind';
-	line-height: 1.3;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	margin-bottom: 1rem
+}
+
+.site-title a {
+	color: #313131
 }
 
 .site-title,
@@ -65,7 +68,13 @@ p {
 }
 
 .site-header {
-    padding: 80px 0;
+	padding: 0
+}
+
+.site-header .wrap {
+    padding: 75px 0;
+	border-bottom: 1px solid #e4e4e4;
+    margin-bottom: 50px;
 }
 
 .site-branding {
@@ -74,7 +83,8 @@ p {
 
 .site-title {
     line-height: 1;
-	margin-bottom: .5rem
+	margin-bottom: .5rem;
+	letter-spacing: -.5px;
 }
 
 .site-description {
@@ -83,16 +93,27 @@ p {
 	line-height: 1
 }
 
+.home .content, .home .sidebar {
+	border-top: 1px solid #dbdbdb;
+	padding-top: 50px;
+}
+
+.homepage-widget-area {
+	margin-bottom: 50px;
+}
+
 .widget-area-featured-post {
     width: 970px;
     float: left;
-    margin-bottom: 50px;
+}
+
+.widget-area-featured-post .widget {
+    margin-bottom: 0
 }
 
 .widget-area-featured-categories {
     width: 170px;
     float: right;
-    margin-bottom: 50px;
 }
 
 .wrap {
@@ -100,9 +121,9 @@ p {
 }
 
 .home-post-thumbnail {
-    width: 270px;
+    width: 250px;
     float: left;
-    margin-right: 30px;
+    margin-right: 50px;
     margin-bottom: 50px;
 }
 
@@ -130,19 +151,30 @@ p {
     font-size: 24px;
 }
 
-.page-template-home article {
+.page-template-home article,
+.blog article {
     border-bottom: 1px solid #e4e4e4;
-    margin-bottom: 2.5rem;
+    margin-bottom: 50px;
 }
 
 .page-template-home .moretag {
     color: #292929;
     border-bottom: 1px solid #292929;
+	text-decoration: none
+}
+
+.more-link {
+	text-decoration: none
+}
+
+.featured-post {
+	position: relative;
 }
 
 .featured-post-title-wrapper {
-    margin-top: -159px;
-    margin-left: 45px;
+	position: absolute;
+    bottom: 30px;
+    left: 30px;
 }
 
 .featured-post-title-heading {
@@ -153,6 +185,7 @@ p {
     margin-bottom: 0;
     font-weight: 600;
     line-height: 1;
+	font-size: 18px;
 }
 
 .featured-post-title {
@@ -162,21 +195,36 @@ p {
     color: white;
     font-weight: 600;
     line-height: 1;
+	margin-bottom: 0
 }
 
-.featured-cat-title-wrapper {
-    margin-top: -54px;
-    margin-left: 16px;
+.featured-category {
+	position: relative;
 }
 
-.featured-cat-title {
+.featured-category-title-wrapper {
+    position: absolute;
+	bottom: 10px;
+	left: 10px
+}
+
+.featured-category-title {
     background: #079d46;
     display: inline-block;
     padding: 10px;
     color: white;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     line-height: 1;
+	margin-bottom: 0
+}
+
+.widget-area-featured-categories .widget {
+	margin-bottom: 30px
+}
+
+.widget-area-featured-categories .widget:last-child {
+    margin-bottom: 0px;
 }
 
 article:after {
@@ -189,6 +237,10 @@ article:after {
 border-bottom: 0
 }
 
+.maillard-social-icons {
+	float: right;
+	padding: 10px 0;
+}
 
 .maillard-social-icons a {
 	text-decoration: none
@@ -200,4 +252,272 @@ border-bottom: 0
     padding: 10px;
 	background: none;
 	color: #717171 !important
+}
+
+.footer-copyright {
+    float: left;
+    text-align: left;
+	padding: 10px 0;
+}
+
+.instagram-pics.instagram-size-thumbnail li {
+	padding-bottom: 0;
+	border-bottom: 0;
+	width: 48%;
+    float: left;
+    margin-right: 4%;
+}
+
+.instagram-pics.instagram-size-thumbnail li:nth-child(2n) {
+    margin-right: 0
+}
+
+.instagram-pics.instagram-size-thumbnail li img {
+    border: 5px solid #eeeeee;
+}
+
+.primary-sidebar, .widget-title {
+	font-size: 15px
+}
+
+.primary-sidebar img {
+	margin-bottom: .5rem
+}
+
+.entry-content h1,
+.entry-content h2,
+.entry-content h3,
+.entry-content h4,
+.entry-content h5,
+.entry-content h6 {
+	margin-top: 2rem;
+	margin-bottom: 1rem
+}
+
+h6 {
+	font-size: 1rem;
+	text-transform: uppercase;
+	font-weight: normal;
+}
+
+input[type='submit'], button {
+	background-color: blue;
+	color: white;
+	border: 0 /* @TODO */
+}
+
+input[type='submit']:hover, button:hover {
+	background-color: black;
+	color: white;
+	border: 0 /* @TODO */
+}
+
+.logged-in-as a {
+	text-decoration: none
+}
+
+@media only screen and (max-width: 1170px) {
+	body {
+		padding: 0;
+	}
+
+	.wrap {
+    margin: 0 5%;
+	}
+
+	.primary-sidebar {
+	    width: 100%;
+	    float: none;
+	}
+
+	.content {
+		width: 100%;
+		float: none;
+	}
+
+	.home-post-thumbnail {
+	    width: 15%;
+	    margin-right: 5%;
+	}
+
+	.home-post-content {
+	    width: 80%;
+		margin-top: 0
+	}
+
+	.tinynav {
+		margin: 0 auto
+	}
+
+}
+
+.maillard-instagram-widget-link, .maillard-instagram-widget-link a {
+	background: url('http://instagramstatic-a.akamaihd.net/h1/thirdparty/images/badges/ig-badge-view-24.png/c2f23494e67d.png');
+    text-indent: -9999px;
+	cursor: pointer;
+	width: 137px;
+	height: 24px;
+}
+
+.maillard-instagram-widget-link a {
+    width: 137px;
+    height: 24px;
+	display: block;
+}
+
+@media (max-width: 1170px) {
+
+	.widget-area-featured-post {
+	    width: 100%;
+	}
+
+	.widget-area-featured-categories {
+		margin-top: 30px;
+	    width: 100%;
+	}
+
+	.widget-area-featured-categories .widget {
+	    width: 22%;
+	    float: left;
+	    margin-right: 4%;
+	}
+
+	.widget-area-featured-categories .widget:last-child {
+	    margin-bottom: 0px;
+	    margin-right: 0;
+	}
+
+	.menu-primary {
+		padding: 10px;
+	}
+
+}
+
+@media (max-width: 600px) {
+
+	.homepage-widget-area {
+		display: none
+	}
+
+}
+
+.yrecipe {
+	background: #f7f7f7;
+    padding: 40px 50px;
+}
+
+#y-recipe-link-1 {
+	display: none
+}
+
+#yrecipe-title {
+	font-size: 24px;
+    padding-bottom: 10px;
+	border-bottom: 3px solid black;
+    margin-bottom: 30px;
+}
+
+#yrecipe-container .yrecipe-print-link {
+    padding-left: 0.5em;
+    margin-top: 8px;
+}
+#yrecipe-container .float-right, #yrecipe-container .fl-r {
+    float: right;
+}
+
+.yrecipe-print-link a {
+	background: url("http://localhost:8888/zues/wp-content/plugins/yummly-rich-recipes/images/print-icon.png") no-repeat scroll 0 1px transparent;
+	cursor: pointer;
+	padding: 0 0 0 20px;
+	display: block;
+	height: 20px;
+	font-size: 0.867em;
+	text-indent: -9999px;
+}
+
+.h-4 {
+	font-weight: bold;
+	font-size: 1.25em;
+}
+
+#yrecipe-prep-time,
+#yrecipe-cook-time,
+#yrecipe-total-time,
+#yrecipe-yield,
+#yrecipe-serving-size,
+#yrecipe-calories,
+#yrecipe-fat {
+	font-weight: 600
+}
+
+#yrecipe-prep-time span,
+#yrecipe-cook-time span,
+#yrecipe-total-time span,
+#yrecipe-yield span,
+#yrecipe-serving-size span,
+#yrecipe-calories span,
+#yrecipe-fat span {
+	font-weight: 400
+}
+
+#yrecipe-summary {
+	font-style: italic;
+}
+
+.ymeta {
+	margin-bottom: 1rem
+}
+
+.ymeta .fl-l {
+	float:left;
+	width: 50%
+}
+
+.ymeta p {
+	margin-bottom: .5rem
+}
+
+.yclear:after {
+    content: ' ';
+    display: block;
+    clear: both;
+}
+
+.menu-primary .menu .children li a {
+	border-bottom: 0
+}
+
+.menu-primary .menu .children li a:hover {
+	border-bottom: 0;
+	border-color: #585858
+}
+
+.page-template-no-sidebar .content {
+	margin: 0 auto;
+	border-top: 1px solid #dbdbdb;
+	padding-top: 50px;
+	float: none;
+}
+
+
+/*.site-content .wrap {
+	border-top: 1px solid #dbdbdb;
+	padding-top: 50px
+}*/
+
+.page-template-no-sidebar .site-content .wrap {
+	border-top: 0;
+	padding-top: 0
+}
+
+.entry-meta {
+	display: inline-block;
+	border-bottom: 1px solid #e8e7e7;
+	padding-bottom: 20px;
+}
+
+.archive .archive-header, .search .archive-header {
+	background: #f7f7f7;
+	padding: 40px 50px 24px;
+	border: 0;
 }

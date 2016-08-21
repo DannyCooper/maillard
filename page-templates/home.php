@@ -4,7 +4,7 @@
  *
  * The template for displaying a home page.
  *
- * @package zeus
+ * @package maillard
  */
 
 remove_action( 'zeus_content', 'zeus_loop', 10 );
@@ -34,7 +34,7 @@ function maillard_output_homepage_widgets() {
 function maillard_home_loop() {
 
 	$args = array(
-		'posts_per_page' => 3,
+		'posts_per_page' => 3, // @TODO add a filter.
 	);
 
 	$loop = new WP_Query( $args );
@@ -45,7 +45,7 @@ function maillard_home_loop() {
 
     			if ( has_post_thumbnail() ) {
                     echo '<div class="home-post-thumbnail">';
-                        the_post_thumbnail();
+                        the_post_thumbnail( 'homepage-blog-thumbnail' );
                     echo '</div>';
     			}
 
@@ -53,7 +53,7 @@ function maillard_home_loop() {
 
         			the_title( sprintf( '<h2 %s><a href="%s" rel="bookmark">', zeus_get_attr( 'entry-title' ), esc_url( get_permalink() ) ), '</a></h2>' );
 
-                    echo '<p>'.wp_trim_words( get_the_content(), 35 ).'</p>';
+                    echo '<p>'.wp_trim_words( get_the_content(), 45 ).'</p>';
 
                     echo '<p><a class="moretag" href="'.esc_url( get_permalink() ).'">Read More&hellip;</a></p>';
 
