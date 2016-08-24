@@ -1,16 +1,23 @@
 <?php
 /**
- * Template Name: Full Width Template
- *
- * The template for displaying a full width page.
+ * Add the maillard theme customization options to the WordPress Customizer.
  *
  * @package maillard
  */
 
+ /**
+  * @TODO
+  */
+function maillard_remove_contorl( $wp_customize ) {
+	$wp_customize->remove_control( 'header_textcolor' );
+}
+add_action( 'customize_register', 'maillard_remove_contorl', 11 );
+
+
 /**
  * @TODO
  */
-function customizer_library_demo_options() {
+function maillard_customizer_options() {
 
 	// Stores all the controls that will be added
 	$options = array();
@@ -29,11 +36,20 @@ function customizer_library_demo_options() {
 		'label'   => __( 'Accent Color', 'maillard' ),
 		'section' => 'colors',
 		'type'    => 'color',
-		'transport'   => 'postMessage'
+		'transport'   => 'postMessage',
+		'default' => '#15ab15'
+	);
+
+	$options['accent-hover-color'] = array(
+		'id' => 'accent-hover-color',
+		'label'   => __( 'Accent Hover Color', 'maillard' ),
+		'section' => 'colors',
+		'type'    => 'color',
+		'default' => '#0d842b'
 	);
 
 	// More Examples
-	$section = 'examples';
+	$section = 'social-media';
 	$sections[] = array(
 		'id' => $section,
 		'title' => __( 'Social Media Icons', 'maillard' ),
@@ -82,8 +98,8 @@ function customizer_library_demo_options() {
 		'type'    => 'url',
 	);
 
-	$options['contact-url'] = array(
-		'id' => 'contact-url',
+	$options['mail-url'] = array(
+		'id' => 'mail-url',
 		'label'   => __( 'Contact URL', 'maillard' ),
 		'section' => $section,
 		'type'    => 'url',
@@ -113,4 +129,4 @@ function customizer_library_demo_options() {
 
 	$customizer_library->add_options( $options );
 }
-add_action( 'init', 'customizer_library_demo_options' );
+add_action( 'init', 'maillard_customizer_options' );

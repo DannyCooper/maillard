@@ -38,13 +38,26 @@
 	//Update site link color in real time...
 	wp.customize( 'accent-color', function( value ) {
 		value.bind( function( newval ) {
-			$('.content a').css('color', newval );
+			$('.entry-content a').css('color', newval );
+		} );
+	} );
+
+	//Update site link color in real time...
+	wp.customize( 'accent-hover-color', function( value ) {
+		value.bind( function( newval ) {
+			$('.entry-content a:hover').css('color', newval );
 		} );
 	} );
 
 	wp.customize( 'accent-color', function( value ) {
 		value.bind( function( newval ) {
 			$('.submit, button').css('background-color', newval );
+		} );
+	} );
+
+	wp.customize( 'accent-hover-color', function( value ) {
+		value.bind( function( newval ) {
+			$('.submit:hover, button:hover').css('background-color', newval );
 		} );
 	} );
 

@@ -23,9 +23,21 @@ function ot_author_customizer_css() {
 		),
 
 		array(
+			'selector' => 'input[type="submit"]:hover, button:hover',
+			'style' => 'background-color',
+			'theme_mod' => 'accent-hover-color',
+		),
+
+		array(
 			'selector' => '.entry-content a, .comments-area a, .entry-footer a, .post-navigation a, .sub-footer a',
 			'style' => 'color',
 			'theme_mod' => 'accent-color',
+		),
+
+		array(
+			'selector' => '.entry-content a:hover, .comments-area a:hover, .entry-footer a:hover, .post-navigation a:hover, .sub-footer a:hover',
+			'style' => 'color',
+			'theme_mod' => 'accent-hover-color',
 		),
 
 		array(
