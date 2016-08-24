@@ -16,16 +16,17 @@ add_action( 'zeus_content_sidebar_wrapper', 'maillard_output_homepage_widgets', 
  */
 function maillard_output_homepage_widgets() {
 
-	echo '<div class="homepage-widget-area clear">';
-		echo '<div class="widget-area-featured-post">';
-			dynamic_sidebar( 'featured-post' );
-		echo '</div><!-- .widget-area-featured-post -->';
+	if ( is_active_sidebar( 'featured-post' ) || is_active_sidebar( 'featured-categories' ) ) {
+		echo '<div class="homepage-widget-area clear">';
+			echo '<div class="widget-area-featured-post">';
+				dynamic_sidebar( 'featured-post' );
+			echo '</div><!-- .widget-area-featured-post -->';
 
-		echo '<div class="widget-area-featured-categories">';
-			dynamic_sidebar( 'featured-categories' );
-		echo '</div><!-- .widget-area-featured-categories -->';
-	echo '</div>';
-
+			echo '<div class="widget-area-featured-categories">';
+				dynamic_sidebar( 'featured-categories' );
+			echo '</div><!-- .widget-area-featured-categories -->';
+		echo '</div>';
+	}
 }
 
 /**

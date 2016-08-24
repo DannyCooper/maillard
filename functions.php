@@ -47,6 +47,7 @@ if ( ! function_exists( 'maillard_setup' ) ) {
 			'width' => 1170,
 			'flex-height' => true,
 			'height' => 250,
+			'default-text-color' => '313131',
 		);
 		add_theme_support( 'custom-header', $args );
 
@@ -83,10 +84,9 @@ if ( ! function_exists( 'maillard_setup' ) ) {
 		);
 
 		// Set up the WordPress core custom background feature.
-		add_theme_support(
-			'custom-background', apply_filters(
+		add_theme_support( 'custom-background', apply_filters(
 				'zeus_custom_background_args', array(
-				'default-color' => 'E9E9E9',
+				'default-color' => 'ffffff',
 				'default-image' => '',
 				)
 			)
@@ -221,7 +221,7 @@ function maillard_social_footer() {
 		'youtube' => 'YouTube',
 		'pinterest' => 'Pinterest',
 		'rss' => 'RSS',
-		'contact' => 'Contact',
+		'mail' => 'Contact',
 		'linkedin' => 'LinkedIn',
 		'googleplus' => 'Google+',
 	);
@@ -262,7 +262,7 @@ add_filter( 'wpiw_list_class', 'maillard_instagram_widget_ul_class' );
  */
 function maillard_footer_attribution( ){
 
-	$text = __( 'Copyright &copy; %1$s <a href="%2$s">%3$s</a> &middot; Powered by  the %4$s.', 'zeus' );
+	$text = __( 'Copyright &copy; %1$s <a href="%2$s">%3$s</a> &middot; Powered by  the %4$s.', 'maillard' );
 
 	$date = date( 'Y' );
 	$url = esc_url( home_url() );
