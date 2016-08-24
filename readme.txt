@@ -1,18 +1,18 @@
-=== Zeus ===
+=== Maillard ===
 
 Contributors: dannycooper
-Tags: light, white, one-column, two-columns, responsive-layout, featured-images, full-width-template, rtl-language-support, threaded-comments, custom-menu, custom-header, custom-background
+Tags: one-column, two-columns, featured-images, full-width-template, rtl-language-support, threaded-comments, custom-menu, custom-header, custom-background
 
 Version: 1.0.0
 Requires at least: 4.0
-Tested up to: 4.4.2
-Stable tag: 1.0.5
+Tested up to: 4.6.0
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-Zeus is a minimal WordPress theme that can be used as a standalone theme, or as a framework to build something even better.
+Maillard is a beautiful WordPress Food Blog theme, that allows food bloggers to position their content, images and recipes in the best light possible.
 
 == Installation ==
 
@@ -24,20 +24,23 @@ Zeus is a minimal WordPress theme that can be used as a standalone theme, or as 
 
 = Does this theme support any plugins? =
 
-Zeus includes support for Infinite Scroll in Jetpack.
+Maillard includes support for Infinite Scroll in Jetpack.
 
-Zeus has been tested with the following plugins:
+Maillard has been tested with the following plugins:
 
 * Contact Form 7
 
 == Changelog ==
 
-= 1.0 - November 1, 2015 =
+= 1.0 - August 22, 2016 =
 * Initial release
 
 == Credits ==
 
-Zeus WordPress Theme bundles the following third-party resources:
+Maillard WordPress Theme bundles the following third-party resources:
+
+* Zues Framework, (C) 2016 Danny Cooper, [GPL-2](https://github.com/DannyCooper/zeus-framework)
+ * Source: https://github.com/DannyCooper/zeus-framework
 
 * normalize.css, (C) 2012-2016 Nicolas Gallagher and Jonathan Neal, [MIT](http://opensource.org/licenses/MIT)
  * Source: http://necolas.github.io/normalize.css/
@@ -47,6 +50,9 @@ Zeus WordPress Theme bundles the following third-party resources:
 
 * jquery.tinyNav.js, (C) 2011-2014 Viljami Salminen, [MIT](http://opensource.org/licenses/MIT)
  * Source: http://tinynav.viljamis.com/
+
+ * Socicon, (C) Socicon [SIL OFL 1.1](http://scripts.sil.org/OFL)
+  * Source: http://socicon.com/
 
 * FontAwesome, (C) Dave Gandy, [SIL OFL 1.1, MIT](http://fontawesome.io/license/)
  * Source: http://fontawesome.io/
