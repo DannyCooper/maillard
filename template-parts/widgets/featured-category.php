@@ -146,7 +146,7 @@ class Maillard_Featured_Category_Widget extends WP_Widget {
         </p>
 
 		<p>
-            <label for="<?php echo $this->get_field_name( 'image_url' ); ?>"><?php _e( 'Category Image:' ); ?></label>
+            <label for="<?php echo $this->get_field_name( 'image_url' ); ?>"><?php _e( 'Category Image:', 'maillard' ); ?></label>
             <input name="<?php echo $this->get_field_name( 'image_url' ); ?>" id="<?php echo $this->get_field_id( 'image_url' ); ?>" class="widefat img" type="text" size="36"  value="<?php echo esc_url( $image_url ); ?>" />
             <input class="select-img" type="button" value="Upload Image" />
         </p>
