@@ -18,8 +18,8 @@ class Maillard_Featured_Category_Widget extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'maillard_featured_category_widget',
-			__( 'Homepage Featured Category', 'maillard' ),
-			array( 'description' => __( 'Display a the featured category on the homepage template.', 'maillard' ) )
+			__( 'Homepage Featured Category', 'maillard-pro' ),
+			array( 'description' => __( 'Display a the featured category on the homepage template.', 'maillard-pro' ) )
 		);
 
 		add_action( 'admin_enqueue_scripts', array(&$this, 'scripts') );
@@ -137,7 +137,7 @@ class Maillard_Featured_Category_Widget extends WP_Widget {
 		?>
 
         <p>
-			<label for="<?php echo $this->get_field_id( 'category_id' ); ?>"><?php _e( 'Category to Display:', 'maillard' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'category_id' ); ?>"><?php _e( 'Category to Display:', 'maillard-pro' ); ?></label>
 			<select id="<?php echo $this->get_field_id('category_id'); ?>" name="<?php echo $this->get_field_name('category_id'); ?>" class="widefat" style="width:100%;">
 				 <?php foreach(get_terms('category','parent=0&hide_empty=0') as $term) { ?>
 				 <option <?php selected( $category_id, $term->term_id ); ?> value="<?php echo $term->term_id; ?>"><?php echo $term->name; ?></option>
@@ -146,18 +146,18 @@ class Maillard_Featured_Category_Widget extends WP_Widget {
         </p>
 
 		<p>
-            <label for="<?php echo $this->get_field_name( 'image_url' ); ?>"><?php _e( 'Category Image:', 'maillard' ); ?></label>
+            <label for="<?php echo $this->get_field_name( 'image_url' ); ?>"><?php _e( 'Category Image:', 'maillard-pro' ); ?></label>
             <input name="<?php echo $this->get_field_name( 'image_url' ); ?>" id="<?php echo $this->get_field_id( 'image_url' ); ?>" class="widefat img" type="text" size="36"  value="<?php echo esc_url( $image_url ); ?>" />
             <input class="select-img" type="button" value="Upload Image" />
         </p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'category_title' ); ?>"><?php _e( 'Category Name:', 'maillard' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'category_title' ); ?>"><?php _e( 'Category Name:', 'maillard-pro' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'category_title' ); ?>" name="<?php echo $this->get_field_name( 'category_title' ); ?>" type="text" value="<?php echo $category_title  ?>">
         </p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'bg_color' ); ?>"><?php _e( 'Category Title Background Color:', 'maillard' ); ?></label><br>
+			<label for="<?php echo $this->get_field_id( 'bg_color' ); ?>"><?php _e( 'Category Title Background Color:', 'maillard-pro' ); ?></label><br>
 			<input class="widefat color-picker" id="<?php echo $this->get_field_id( 'bg_color' ); ?>" name="<?php echo $this->get_field_name( 'bg_color' ); ?>" type="text" value="<?php echo $bg_color ?>">
         </p>
 

@@ -33,7 +33,7 @@ function maillard_customizer_options() {
 
 	$options['accent-color'] = array(
 		'id' => 'accent-color',
-		'label'   => __( 'Accent Color', 'maillard' ),
+		'label'   => __( 'Accent Color', 'maillard-pro' ),
 		'section' => 'colors',
 		'type'    => 'color',
 		'transport'   => 'postMessage',
@@ -42,7 +42,7 @@ function maillard_customizer_options() {
 
 	$options['accent-hover-color'] = array(
 		'id' => 'accent-hover-color',
-		'label'   => __( 'Accent Hover Color', 'maillard' ),
+		'label'   => __( 'Accent Hover Color', 'maillard-pro' ),
 		'section' => 'colors',
 		'type'    => 'color',
 		'default' => '#0d842b'
@@ -52,69 +52,69 @@ function maillard_customizer_options() {
 	$section = 'social-media';
 	$sections[] = array(
 		'id' => $section,
-		'title' => __( 'Social Media Icons', 'maillard' ),
+		'title' => __( 'Social Media Icons', 'maillard-pro' ),
 		'priority' => '10'
 	);
 
 	$options['facebook-url'] = array(
 		'id' => 'facebook-url',
-		'label'   => __( 'Facebook URL', 'maillard' ),
+		'label'   => __( 'Facebook URL', 'maillard-pro' ),
 		'section' => $section,
 		'type'    => 'url',
 	);
 
 	$options['twitter-url'] = array(
 		'id' => 'twitter-url',
-		'label'   => __( 'Twitter URL', 'maillard' ),
+		'label'   => __( 'Twitter URL', 'maillard-pro' ),
 		'section' => $section,
 		'type'    => 'url',
 	);
 
 	$options['instagram-url'] = array(
 		'id' => 'instagram-url',
-		'label'   => __( 'Instagram URL', 'maillard' ),
+		'label'   => __( 'Instagram URL', 'maillard-pro' ),
 		'section' => $section,
 		'type'    => 'url',
 	);
 
 	$options['youtube-url'] = array(
 		'id' => 'youtube-url',
-		'label'   => __( 'YouTube URL', 'maillard' ),
+		'label'   => __( 'YouTube URL', 'maillard-pro' ),
 		'section' => $section,
 		'type'    => 'url',
 	);
 
 	$options['pinterest-url'] = array(
 		'id' => 'pinterest-url',
-		'label'   => __( 'Pinterest URL', 'maillard' ),
+		'label'   => __( 'Pinterest URL', 'maillard-pro' ),
 		'section' => $section,
 		'type'    => 'url',
 	);
 
 	$options['rss-url'] = array(
 		'id' => 'rss-url',
-		'label'   => __( 'RSS URL', 'maillard' ),
+		'label'   => __( 'RSS URL', 'maillard-pro' ),
 		'section' => $section,
 		'type'    => 'url',
 	);
 
 	$options['mail-url'] = array(
 		'id' => 'mail-url',
-		'label'   => __( 'Contact URL', 'maillard' ),
+		'label'   => __( 'Contact URL', 'maillard-pro' ),
 		'section' => $section,
 		'type'    => 'url',
 	);
 
 	$options['linkedin-url'] = array(
 		'id' => 'linkedin-url',
-		'label'   => __( 'LinkedIn URL', 'maillard' ),
+		'label'   => __( 'LinkedIn URL', 'maillard-pro' ),
 		'section' => $section,
 		'type'    => 'url',
 	);
 
 	$options['googleplus-url'] = array(
 		'id' => 'googleplus-url',
-		'label'   => __( 'Google+ URL', 'maillard' ),
+		'label'   => __( 'Google+ URL', 'maillard-pro' ),
 		'section' => $section,
 		'type'    => 'url',
 	);

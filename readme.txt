@@ -1,4 +1,4 @@
-=== Maillard ===
+=== Maillard Pro ===
 
 Contributors: dannycooper
 Tags: one-column, two-columns, featured-images, full-width-template, rtl-language-support, threaded-comments, custom-menu, custom-header, custom-background
@@ -56,6 +56,9 @@ Maillard WordPress Theme bundles the following third-party resources:
 
 * FontAwesome, (C) Dave Gandy, [SIL OFL 1.1, MIT](http://fontawesome.io/license/)
  * Source: http://fontawesome.io/
+
+ * CMB2, (C) WebDevStudios, [GPL-2](http://opensource.org/licenses/gpl-2.0.php)
+  * Source: https://github.com/WebDevStudios/CMB2
 
 * Customizer_Library, (C) Devin Price, [GPL-2](http://opensource.org/licenses/gpl-2.0.php)
  * Source: https://github.com/devinsays/customizer-library

@@ -18,8 +18,8 @@ class Maillard_Featured_Post_Widget extends WP_Widget {
 	function __construct() {
 		parent::__construct(
 			'maillard_featured_post_widget',
-			__( 'Homepage Featured Post', 'maillard' ),
-			array( 'description' => __( 'Displays the featured post on the home page template.', 'maillard' ) )
+			__( 'Homepage Featured Post', 'maillard-pro' ),
+			array( 'description' => __( 'Displays the featured post on the home page template.', 'maillard-pro' ) )
 		);
 
 		add_action( 'admin_enqueue_scripts', array(&$this, 'scripts') );
@@ -127,7 +127,7 @@ class Maillard_Featured_Post_Widget extends WP_Widget {
 		?>
 
         <p>
-			<label for="<?php echo $this->get_field_id( 'post_id' ); ?>"><?php _e( 'Post to Display:', 'maillard' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'post_id' ); ?>"><?php _e( 'Post to Display:', 'maillard-pro' ); ?></label>
 			<select id="<?php echo $this->get_field_id('post_id'); ?>" name="<?php echo $this->get_field_name('post_id'); ?>" class="widefat" style="width:100%;">
 				 <?php foreach( get_posts( array('posts_per_page' => -1) ) as $post) { ?>
 				 <option <?php selected( $post_id, $post->ID ); ?> value="<?php echo $post->ID; ?>"><?php echo $post->post_name; ?></option>
@@ -136,18 +136,18 @@ class Maillard_Featured_Post_Widget extends WP_Widget {
         </p>
 
 		<p>
-			<label for="<?php echo $this->get_field_name( 'image_url' ); ?>"><?php _e( 'Post Image:', 'maillard' ); ?></label>
+			<label for="<?php echo $this->get_field_name( 'image_url' ); ?>"><?php _e( 'Post Image:', 'maillard-pro' ); ?></label>
             <input name="<?php echo $this->get_field_name( 'image_url' ); ?>" id="<?php echo $this->get_field_id( 'image_url' ); ?>" class="widefat img" type="text" size="36"  value="<?php echo esc_url( $image_url ); ?>" />
             <input class="select-img" type="button" value="Upload Image" />
         </p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'post_title' ); ?>"><?php _e( 'Post Title:', 'maillard' ); ?></label>
+			<label for="<?php echo $this->get_field_id( 'post_title' ); ?>"><?php _e( 'Post Title:', 'maillard-pro' ); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'post_title' ); ?>" name="<?php echo $this->get_field_name( 'post_title' ); ?>" type="text" value="<?php echo $post_title  ?>">
         </p>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'bg_color' ); ?>"><?php _e( 'Title Background Color:', 'maillard' ); ?></label><br>
+			<label for="<?php echo $this->get_field_id( 'bg_color' ); ?>"><?php _e( 'Title Background Color:', 'maillard-pro' ); ?></label><br>
 			<input class="widefat color-picker" id="<?php echo $this->get_field_id( 'bg_color' ); ?>" name="<?php echo $this->get_field_name( 'bg_color' ); ?>" type="text" value="<?php echo $bg_color ?>">
         </p>
 

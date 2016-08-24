@@ -25,9 +25,9 @@ if ( ! function_exists( 'maillard_setup' ) ) {
          * Make theme available for translation.
          * Translations can be filed in the /languages/ directory.
          * If you're building a theme based on Core, use a find and replace
-         * to change 'maillard' to the name of your theme in all the template files
+         * to change 'maillard-pro' to the name of your theme in all the template files
         */
-		load_theme_textdomain( 'maillard', get_template_directory() . '/languages' );
+		load_theme_textdomain( 'maillard-pro', get_template_directory() . '/languages' );
 
 
 		// Add default posts and comments RSS feed links to head.
@@ -65,7 +65,7 @@ if ( ! function_exists( 'maillard_setup' ) ) {
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-			'primary' => esc_html__( 'Primary Menu', 'maillard' ),
+			'primary' => esc_html__( 'Primary Menu', 'maillard-pro' ),
 			)
 		);
 
@@ -119,56 +119,56 @@ function zeus_register_sidebars() {
 	zeus_register_widget_area(
 		array(
 		'id'          => 'sidebar-primary',
-		'name'        => __( 'Primary Sidebar', 'maillard' ),
-		'description' => __( 'Widgets added here are shown in the sidebar next to your content.', 'maillard' ),
+		'name'        => __( 'Primary Sidebar', 'maillard-pro' ),
+		'description' => __( 'Widgets added here are shown in the sidebar next to your content.', 'maillard-pro' ),
 		)
 	);
 
 	zeus_register_widget_area(
 		array(
 		'id'          => 'footer-1',
-		'name'        => __( 'Footer One', 'maillard' ),
-		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'maillard' ),
+		'name'        => __( 'Footer One', 'maillard-pro' ),
+		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'maillard-pro' ),
 		)
 	);
 
 	zeus_register_widget_area(
 		array(
 		'id'          => 'footer-2',
-		'name'        => __( 'Footer Two', 'maillard' ),
-		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'maillard' ),
+		'name'        => __( 'Footer Two', 'maillard-pro' ),
+		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'maillard-pro' ),
 		)
 	);
 
 	zeus_register_widget_area(
 		array(
 		'id'          => 'footer-3',
-		'name'        => __( 'Footer Three', 'maillard' ),
-		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'maillard' ),
+		'name'        => __( 'Footer Three', 'maillard-pro' ),
+		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'maillard-pro' ),
 		)
 	);
 
 	zeus_register_widget_area(
 		array(
 		'id'          => 'footer-4',
-		'name'        => __( 'Footer Four', 'maillard' ),
-		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'maillard' ),
+		'name'        => __( 'Footer Four', 'maillard-pro' ),
+		'description' => __( 'The footer is divided into four widget areas, each spanning 25% of the layout\'s width.', 'maillard-pro' ),
 		)
 	);
 
 	zeus_register_widget_area(
 		array(
 		'id'          => 'featured-post',
-		'name'        => __( 'Featured Post', 'maillard' ),
-		'description' => __( '', 'maillard' ),
+		'name'        => __( 'Featured Post', 'maillard-pro' ),
+		'description' => __( '', 'maillard-pro' ),
 		)
 	);
 
 	zeus_register_widget_area(
 		array(
 		'id'          => 'featured-categories',
-		'name'        => __( 'Featured Categories', 'maillard' ),
-		'description' => __( '', 'maillard' ),
+		'name'        => __( 'Featured Categories', 'maillard-pro' ),
+		'description' => __( '', 'maillard-pro' ),
 		)
 	);
 
@@ -262,7 +262,7 @@ add_filter( 'wpiw_list_class', 'maillard_instagram_widget_ul_class' );
  */
 function maillard_footer_attribution( ){
 
-	$text = __( 'Copyright &copy; %1$s <a href="%2$s">%3$s</a> &middot; Powered by  the %4$s.', 'maillard' );
+	$text = __( 'Copyright &copy; %1$s <a href="%2$s">%3$s</a> &middot; Powered by  the %4$s.', 'maillard-pro' );
 
 	$date = date( 'Y' );
 	$url = esc_url( home_url() );
@@ -277,3 +277,82 @@ add_filter( 'zeus_footer_copyright', 'maillard_footer_attribution' );
 if( ! is_single() ) {
 	remove_action( 'zeus_loop', 'zeus_entry_footer', 30 );
 }
+
+/**
+ * Register new layouts in Genesis.
+ *
+ * Modifies the global `$_zeus_layouts` variable.
+ *
+ */
+function zeus_register_layout( $id = '', $args = array() ) {
+
+	global $_zeus_layouts;
+
+	if ( ! is_array( $_zeus_layouts ) )
+		$_zeus_layouts = array();
+
+	//* Don't allow empty $id, or double registrations
+	if ( ! $id || isset( $_zeus_layouts[$id] ) )
+		return false;
+
+	$defaults = array(
+		'label' => __( 'No Label Selected', 'zeus-framework' ),
+		'img'   => ZEUS_FRAMEWORK_URI . '/assets/images/layouts/none.gif',
+	);
+
+	$args = wp_parse_args( $args, $defaults );
+
+	$_zeus_layouts[$id] = $args;
+
+	return $args;
+
+}
+
+
+/**
+ * Unregister a layout in Genesis.
+ *
+ * Modifies the global $_zeus_layouts variable.
+ *
+ */
+function zeus_unregister_layout( $id = '' ) {
+
+	global $_zeus_layouts;
+
+	if ( ! $id || ! isset( $_zeus_layouts[$id] ) )
+		return false;
+
+	unset( $_zeus_layouts[$id] );
+
+	return true;
+
+}
+
+/**
+ * Return all registered Genesis layouts.
+ *
+ * @since 1.4.0
+ *
+ * @global array $_zeus_layouts Holds all layout data.
+ *
+ * @param string $type Layout type to return. Leave empty to return all types.
+ *
+ * @return array Registered layouts.
+ */
+function zeus_get_layouts() {
+
+	global $_zeus_layouts;
+
+	//* If no layouts exists, return empty array
+	if ( ! is_array( $_zeus_layouts ) ) {
+		$_zeus_layouts = array();
+	}
+
+	return $_zeus_layouts;
+
+}
+
+$args = array(
+	'label' => 'Content - Sidebar',
+);
+zeus_register_layout( 'content-sidebar', $args );
