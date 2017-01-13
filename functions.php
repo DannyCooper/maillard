@@ -58,14 +58,15 @@ if ( ! function_exists( 'maillard_setup' ) ) {
         */
 		add_theme_support( 'post-thumbnails' );
 
-		add_image_size( 'homepage-featured-post', 1170, 654 ); // 970 pixels wide (and unlimited height)
-		add_image_size( 'homepage-blog-thumbnail', 250, 250, true ); // 250 pixels wide by 250px high
-		add_image_size( 'zeus-blog-post', 770 ); // 770 pixels wide (and unlimited height)
+		add_image_size( 'maillard-homepage-featured-post', 1170, 654 ); // 970 pixels wide (and unlimited height)
+		add_image_size( 'maillard-homepage-blog-thumbnail', 250, 250, true ); // 250 pixels wide by 250px high
+		add_image_size( 'maillard-blog-post', 770 ); // 770 pixels wide (and unlimited height)
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
-			'primary' => esc_html__( 'Primary Menu', 'maillard' ),
+			'menu-1' => esc_html__( 'Primary Menu', 'maillard' ),
+			'menu-2' => esc_html__( 'Header Menu', 'maillard' ),
 			)
 		);
 
@@ -97,7 +98,7 @@ if ( ! function_exists( 'maillard_setup' ) ) {
 add_action( 'after_setup_theme', 'maillard_setup' );
 
 
-if ( ! function_exists( 'zeus_content_width' ) ) {
+if ( ! function_exists( 'maillard_content_width' ) ) {
 	/**
 	 * Set the content width in pixels, based on the theme's design and stylesheet.
 	 *
@@ -105,16 +106,16 @@ if ( ! function_exists( 'zeus_content_width' ) ) {
 	 *
 	 * @global int $content_width
 	 */
-	function zeus_content_width() {
-		$GLOBALS['content_width'] = apply_filters( 'zeus_content_width', 1170 );
+	function maillard_content_width() {
+		$GLOBALS['content_width'] = apply_filters( 'maillard_content_width', 1170 );
 	}
-	add_action( 'after_setup_theme', 'zeus_content_width', 0 );
+	add_action( 'after_setup_theme', 'maillard_content_width', 0 );
 }
 
 /**
  * Register the widget areas this theme supports
  */
-function zeus_register_sidebars() {
+function maillard_register_sidebars() {
 
 	zeus_register_widget_area(
 		array(
@@ -174,37 +175,39 @@ function zeus_register_sidebars() {
 
 }
 
-add_action( 'widgets_init', 'zeus_register_sidebars', 5 );
+add_action( 'widgets_init', 'maillard_register_sidebars', 5 );
 
 /**
  * Enqueue scripts and styles.
  */
-function zeus_scripts() {
-	wp_enqueue_style( 'ot-zeus-style', get_stylesheet_uri() );
-	wp_enqueue_style( 'maillard-socicons', '//file.myfontastic.com/n6vo44Re5QaWo8oCKShBs7/icons.css' );
+function maillard_scripts() {
+	wp_enqueue_style( 'ot-maillard-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'maillard-socicons', ZEUS_THEME_URI . '/assets/css/socicons.css' );
 
-	wp_enqueue_script( 'zeus-scripts', ZEUS_THEME_URI . '/assets/js/scripts.js', array(), '', true );
+	wp_enqueue_script( 'maillard-scripts', ZEUS_THEME_URI . '/assets/js/scripts.js', array(), '', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'zeus_scripts' );
+add_action( 'wp_enqueue_scripts', 'maillard_scripts' );
 
 /**
  * Move the navigation above the header.
  */
-remove_action( 'zeus_header_after', 'zeus_nav_primary', 10 );
-add_action( 'zeus_header_before', 'zeus_nav_primary', 10 );
+remove_action( 'zeus_header_after', 'zeus_nav', 10 );
+add_action( 'zeus_header_before', 'zeus_nav', 10 );
 
 /**
  * @TODO
  */
 remove_action( 'zeus_sub_footer', 'zeus_footer_attribution', 15 );
-add_action( 'zeus_sub_footer', 'maillard_social_footer', 15 );
+add_action( 'zeus_sub_footer', 'maillard_social_output', 15 );
+add_action( 'zeus_header', 'maillard_header_nav', 15 );
+add_action( 'zeus_nav_menu_after', 'maillard_social_output', 15 );
 
 /**
- * Load the widgets.
+ * @todo
  */
 require_once( get_stylesheet_directory() . '/inc/customizer.php' );
 require_once( get_stylesheet_directory() . '/inc/customizer-output.php' );
@@ -212,7 +215,7 @@ require_once( get_stylesheet_directory() . '/inc/customizer-output.php' );
 /**
  * @TODO
  */
-function maillard_social_footer() {
+function maillard_social_output() {
 
 	$social_websites = array(
 		'facebook' => 'Facebook',
@@ -220,10 +223,10 @@ function maillard_social_footer() {
 		'instagram' => 'Instagram',
 		'youtube' => 'YouTube',
 		'pinterest' => 'Pinterest',
-		'rss' => 'RSS',
-		'mail' => 'Contact',
 		'linkedin' => 'LinkedIn',
 		'googleplus' => 'Google+',
+		'rss' => 'RSS',
+		'mail' => 'Contact',
 	);
 
 	echo '<div class="maillard-social-icons">';
@@ -232,8 +235,8 @@ function maillard_social_footer() {
 
 		if( $url = get_theme_mod( $id.'-url' ) ) {
 
-			echo '<a href="'. $url .'">
-				<span class="socicon socicon-'.$id.'"></span>
+			echo '<a href="'. esc_url( $url ) .'">
+				<span class="socicon socicon-'.esc_attr( $id ).'"></span>
 			</a>';
 
 		}
@@ -244,13 +247,18 @@ function maillard_social_footer() {
 
 }
 
+/**
+ * @todo
+ */
 function maillard_instagram_widget_link_class() {
 	return 'maillard-instagram-widget-link';
 }
 
 add_filter( 'wpiw_link_class', 'maillard_instagram_widget_link_class' );
 
-
+/**
+ * @todo
+ */
 function maillard_instagram_widget_ul_class( $classes ) {
 	return $classes . ' clear';
 }
@@ -264,7 +272,7 @@ function maillard_footer_attribution( ){
 
 	$text = __( 'Copyright &copy; %1$s <a href="%2$s">%3$s</a> &middot; Powered by  the %4$s.', 'maillard' );
 
-	$date = date( 'Y' );
+	$date = date_i18n( 'Y' );
 	$url = esc_url( home_url() );
 	$name = get_bloginfo( 'name' );
 	$attribution = '<a href="https://olympusthemes.com/maillard">Maillard Theme</a>';
@@ -274,6 +282,22 @@ function maillard_footer_attribution( ){
 }
 add_filter( 'zeus_footer_copyright', 'maillard_footer_attribution' );
 
+/**
+ * @todo
+ */
+function maillard_header_nav() {
+
+	wp_nav_menu( array(
+	    'theme_location' => 'menu-2',
+		'menu_class' => 'zeus-nav-horizontal right',
+		'fallback_cb' => 'false'
+		)
+	);
+}
+
+/**
+ * @todo
+ */
 if( ! is_single() ) {
 	remove_action( 'zeus_loop', 'zeus_entry_footer', 30 );
 }

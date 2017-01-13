@@ -29,10 +29,15 @@ Maillard includes support for Infinite Scroll in Jetpack.
 Maillard has been tested with the following plugins:
 
 * Contact Form 7
+* Contact Form 7
 
 == Changelog ==
 
-= 1.0 - August 22, 2016 =
+= 1.1.0 - January 13, 2017 =
+* ADDED social header
+* ADDED header navigation
+
+= 1.0.0 - August 22, 2016 =
 * Initial release
 
 == Credits ==
