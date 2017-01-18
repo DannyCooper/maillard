@@ -50,17 +50,20 @@ p {
     background: #191919;
 }
 
-.menu-primary .menu {
+.menu-primary .zeus-nav-horizontal {
     border: 0;
 }
-.menu-primary .menu li a {
+.menu-primary .zeus-nav-horizontal li a {
     color: #c4c4c4;
 	padding: 16px 16px 13px;
-	border-bottom: 3px solid #232323;
+	border-bottom: 3px solid #191919;
+	font-size: 14px;
+	background: #191919;
+
 }
 
-.menu-primary .menu li.current_page_item a,
- .menu-primary .menu li a:hover {
+.menu-primary .zeus-nav-horizontal > li.current_page_item a,
+.menu-primary .zeus-nav-horizontal > li a:hover {
 	border-bottom: 3px solid #15ab15;
 }
 
@@ -92,11 +95,6 @@ p {
     font-size: 17px;
     color: #6d6d6d;
 	line-height: 1
-}
-
-.page-template-home .content, .page-template-home .sidebar {
-	border-top: 1px solid #dbdbdb;
-	padding-top: 50px;
 }
 
 .homepage-widget-area {
@@ -250,13 +248,12 @@ border-bottom: 0
 
 .maillard-social-icons .socicon {
 	color: #717171 !important;
-	margin-left: 10px
+	margin-left: 8px
 }
 
 .socicon:before {
     content: "\e041";
-    padding: 7px;
-    border: 1px solid;
+    padding: 8px;
     border-radius: 9999px;
     font-size: 13px;
 	vertical-align: middle;
@@ -265,63 +262,54 @@ border-bottom: 0
 .socicon-facebook:hover:before {
      color: white;
      background: #3b5998;
-     border-color: #3b5998;
 	 transition: background .25s;
  }
 
 .socicon-twitter:hover:before {
      color: white;
      background: #1da1f2;
-     border-color: #1da1f2;
 	 transition: background .25s;
  }
 
 .socicon-instagram:hover:before {
      color: white;
      background: #405de6;
-     border-color: #405de6;
 	 transition: background .25s;
  }
 
 .socicon-youtube:hover:before {
      color: white;
      background: #cd201f;
-     border-color: #cd201f;
 	 transition: background .25s;
  }
 
 .socicon-pinterest:hover:before {
      color: white;
      background: #bd081c;
-     border-color: #bd081c;
 	 transition: background .25s;
  }
 
 .socicon-rss:hover:before {
      color: white;
      background: #f26522;
-     border-color: #f26522;
 	 transition: background .25s;
  }
 
 .socicon-mail:hover:before {
      color: white;
      background: #616161;
-     border-color: #616161;
 	 transition: background .25s;
  }
 
 .socicon-linkedin:hover:before {
      color: white;
      background: #0077b5;
-     border-color: #0077b5;
 	 transition: background .25s;
  }
 
 .socicon-googleplus:hover:before {
      color: white;
      background: #dd4b39;
-     border-color: #dd4b39;
 	 transition: background .25s;
  }
 
@@ -564,11 +552,11 @@ input[type='submit']:hover, button:hover {
     clear: both;
 }
 
-.menu-primary .menu .children li a {
+.menu-primary .zeus-nav-horizontal .children li a {
 	border-bottom: 0
 }
 
-.menu-primary .menu .children li a:hover {
+.menu-primary .zeus-nav-horizontal .children li a:hover {
 	border-bottom: 0;
 	border-color: #585858
 }
@@ -613,10 +601,28 @@ input[type='submit']:hover, button:hover {
 
 .menu-header-container {
 	float: right;
-	margin-top: 15px;
+	margin-top: 6px;
 }
 
 .zeus-nav-horizontal a {
 	color: #6d6d6d;
 	font-size: 16px;
+}
+
+.widget-area-featured-post .featured-post {
+	width: 970px;
+	min-height: 200px;
+	background: #f3f3f3;
+}
+
+.widget-area-featured-categories .featured-category {
+	width: 170px;
+	min-height: 100px;
+	background: #f3f3f3;
+}
+
+.featured-post img,
+.featured-category img {
+	max-width: 100%;
+	max-height: 100%;
 }

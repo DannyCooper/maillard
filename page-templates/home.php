@@ -46,7 +46,7 @@ function maillard_home_loop() {
 
     			if ( has_post_thumbnail() ) {
                     echo '<div class="home-post-thumbnail">';
-                        the_post_thumbnail( 'homepage-blog-thumbnail' );
+                        the_post_thumbnail( 'maillard-homepage-blog-thumbnail' );
                     echo '</div>';
     			}
 
@@ -56,7 +56,7 @@ function maillard_home_loop() {
 
                     echo '<p>'.wp_trim_words( get_the_content(), 45 ).'</p>';
 
-                    echo '<p><a class="moretag" href="'.esc_url( get_permalink() ).'">Read More&hellip;</a></p>';
+                    echo '<p><a class="moretag" href="'.esc_url( get_permalink() ).'">'._e('Read More&hellip;','maillard').'</a></p>';
 
                 echo '</div>';
 

@@ -1,13 +1,33 @@
-var image_field;
-jQuery(function($){
-  $(document).on('click', 'input.select-img', function(evt){
-    image_field = $(this).siblings('.img');
-    tb_show('', 'media-upload.php?type=image&amp;TB_iframe=true');
-    return false;
-  });
-  window.send_to_editor = function(html) {
-    imgurl = $('img', html).attr('src');
-    image_field.val(imgurl);
-    tb_remove();
-  }
+jQuery(document).ready( function($) {
+	function media_upload( button_class ) {
+	    $( 'body' ).on( 'click', button_class, function( e ) {
+	        var $button = $( this ), frame;
+
+	        e.preventDefault();
+
+	        // Create a proper popup for selecting an image
+	        frame = wp.media({
+	            title:    translations.title,
+	            multiple: false,
+	            button: {
+	                text: translations.button_text
+	            }
+	        });
+
+	        // Add a callback for when an item is selected
+	        frame.state( 'library' ).on( 'select', function(){
+	            var image = this.get( 'selection' ).first();
+
+	            // Inspect the image variable further
+	             console.log( image.toJSON() )
+
+	            // Save the actual URL within the input
+	            $button.siblings( '.custom_media_url' ).val( image.get( 'url' ) );
+	        });
+
+	        // Finally, open the frame
+	        frame.open();
+	    });
+	}
+    media_upload('.custom_media_upload');
 });

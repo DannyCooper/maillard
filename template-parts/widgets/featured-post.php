@@ -28,14 +28,22 @@ class Maillard_Featured_Post_Widget extends WP_Widget {
 
 	public function scripts() {
 
-		    wp_enqueue_style( 'wp-color-picker' );
-			wp_enqueue_style('thickbox');
+		wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_script( 'wp-color-picker' );
 
-		    wp_enqueue_script( 'wp-color-picker' );
+		wp_enqueue_media();
 
-			wp_enqueue_script('media-upload');
-			wp_enqueue_script('thickbox');
-			wp_enqueue_script('upload_media_widget', ZEUS_THEME_URI . '/assets/js/upload-media.js', array('jquery'));
+		wp_register_script('upload_media_widget', ZEUS_THEME_URI . '/assets/js/upload-media.js', array('jquery'));
+
+		// Localize the script with new data
+		$translation_array = array(
+			'title' => __( 'Select image', 'maillard' ),
+			'button_text' => __( 'Use this image', 'maillard' ),
+		);
+		wp_localize_script( 'upload_media_widget', 'translations', $translation_array );
+
+		// Enqueued script with localized data.
+		wp_enqueue_script( 'upload_media_widget' );
 
 		}
 	/**
@@ -137,8 +145,8 @@ class Maillard_Featured_Post_Widget extends WP_Widget {
 
 		<p>
 			<label for="<?php echo $this->get_field_name( 'image_url' ); ?>"><?php _e( 'Post Image:', 'maillard' ); ?></label>
-            <input name="<?php echo $this->get_field_name( 'image_url' ); ?>" id="<?php echo $this->get_field_id( 'image_url' ); ?>" class="widefat img" type="text" size="36"  value="<?php echo esc_url( $image_url ); ?>" />
-            <input class="select-img" type="button" value="Upload Image" />
+			<input name="<?php echo $this->get_field_name( 'image_url' ); ?>" id="<?php echo $this->get_field_id( 'image_url' ); ?>" class="widefat img custom_media_url" type="text" size="36"  value="<?php echo esc_url( $image_url ); ?>" />
+            <input class="custom_media_upload" id="custom_media_button" type="button" value="<?php esc_attr_e('Upload Image', 'maillard'); ?>" />
         </p>
 
 		<p>

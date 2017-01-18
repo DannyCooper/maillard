@@ -36,7 +36,6 @@ function maillard_customizer_options() {
 		'label'   => __( 'Accent Color', 'maillard' ),
 		'section' => 'colors',
 		'type'    => 'color',
-		'transport'   => 'postMessage',
 		'default' => '#15ab15'
 	);
 
@@ -48,12 +47,36 @@ function maillard_customizer_options() {
 		'default' => '#0d842b'
 	);
 
-	// More Examples
+	// @todo
 	$section = 'social-media';
 	$sections[] = array(
 		'id' => $section,
 		'title' => __( 'Social Media Icons', 'maillard' ),
 		'priority' => '10'
+	);
+
+	$options['social_header_display'] = array(
+	    'id' => 'social_header_display',
+	    'label'   => __( 'Display in Header?', 'maillard' ),
+	    'section' => $section,
+		'type'    => 'select',
+	    'choices' => array(
+			0 => 'Hide',
+			1 => 'Display',
+		),
+	    'default' => 0,
+	);
+
+	$options['social_footer_display'] = array(
+	    'id' => 'social_footer_display',
+	    'label'   => __( 'Display in Footer?', 'maillard' ),
+	    'section' => $section,
+		'type'    => 'select',
+	    'choices' => array(
+			0 => 'Hide',
+			1 => 'Display',
+		),
+	    'default' => 0,
 	);
 
 	$options['facebook-url'] = array(

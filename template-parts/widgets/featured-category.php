@@ -29,13 +29,21 @@ class Maillard_Featured_Category_Widget extends WP_Widget {
 	public function scripts() {
 
 		    wp_enqueue_style( 'wp-color-picker' );
-			wp_enqueue_style('thickbox');
-
 		    wp_enqueue_script( 'wp-color-picker' );
 
-			wp_enqueue_script('media-upload');
-			wp_enqueue_script('thickbox');
-			wp_enqueue_script('upload_media_widget', ZEUS_THEME_URI . '/assets/js/upload-media.js', array('jquery'));
+			wp_enqueue_media();
+
+			wp_register_script('upload_media_widget', ZEUS_THEME_URI . '/assets/js/upload-media.js', array('jquery'));
+
+			// Localize the script with new data
+			$translation_array = array(
+			    'title' => __( 'Select image', 'maillard' ),
+			    'button_text' => __( 'Use this image', 'maillard' ),
+			);
+			wp_localize_script( 'upload_media_widget', 'translations', $translation_array );
+
+			// Enqueued script with localized data.
+			wp_enqueue_script( 'upload_media_widget' );
 
 		}
 	/**
@@ -61,7 +69,7 @@ class Maillard_Featured_Category_Widget extends WP_Widget {
 
 				if ( $category_id ) {
 
-					$featured_category = get_category( $category_id );
+					$featured_category = get_category( intval( $category_id ) );
 
 					// Get the URL of this category
 					$category_link = get_category_link( $featured_category->cat_ID );
@@ -72,7 +80,7 @@ class Maillard_Featured_Category_Widget extends WP_Widget {
 					echo '<div class="featured-category">';
 
 					if ( ! empty( $image_url ) ) {
-						echo '<img src="' . $image_url . '"/>';
+						echo '<img src="' . esc_url( $image_url ) . '"/>';
 					}
 
 					if($category_title) {
@@ -83,7 +91,7 @@ class Maillard_Featured_Category_Widget extends WP_Widget {
 
 					if ( ! empty( $title ) ) {
 						echo '<div class="featured-category-title-wrapper">';
-							echo '<h3 style="background-color:'. $bg_color.' " class="featured-category-title">'.$title.'</h3>';
+							echo '<h3 style="background-color:'. esc_attr( $bg_color ) .' " class="featured-category-title">'. esc_html( $title ) .'</h3>';
 						echo '</div>';
 					}
 
@@ -147,18 +155,18 @@ class Maillard_Featured_Category_Widget extends WP_Widget {
 
 		<p>
             <label for="<?php echo $this->get_field_name( 'image_url' ); ?>"><?php _e( 'Category Image:', 'maillard' ); ?></label>
-            <input name="<?php echo $this->get_field_name( 'image_url' ); ?>" id="<?php echo $this->get_field_id( 'image_url' ); ?>" class="widefat img" type="text" size="36"  value="<?php echo esc_url( $image_url ); ?>" />
-            <input class="select-img" type="button" value="Upload Image" />
+            <input name="<?php echo $this->get_field_name( 'image_url' ); ?>" id="<?php echo $this->get_field_id( 'image_url' ); ?>" class="widefat img custom_media_url" type="text" size="36"  value="<?php echo esc_url( $image_url ); ?>" />
+            <input class="custom_media_upload" id="custom_media_button" type="button" value="<?php esc_attr_e('Upload Image', 'maillard'); ?>" />
         </p>
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'category_title' ); ?>"><?php _e( 'Category Name:', 'maillard' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'category_title' ); ?>" name="<?php echo $this->get_field_name( 'category_title' ); ?>" type="text" value="<?php echo $category_title  ?>">
+			<input class="widefat" id="<?php echo $this->get_field_id( 'category_title' ); ?>" name="<?php echo $this->get_field_name( 'category_title' ); ?>" type="text" value="<?php echo esc_html( $category_title ); ?>">
         </p>
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'bg_color' ); ?>"><?php _e( 'Category Title Background Color:', 'maillard' ); ?></label><br>
-			<input class="widefat color-picker" id="<?php echo $this->get_field_id( 'bg_color' ); ?>" name="<?php echo $this->get_field_name( 'bg_color' ); ?>" type="text" value="<?php echo $bg_color ?>">
+			<input class="widefat color-picker" id="<?php echo $this->get_field_id( 'bg_color' ); ?>" name="<?php echo $this->get_field_name( 'bg_color' ); ?>" type="text" value="<?php echo esc_attr( $bg_color ); ?>">
         </p>
 
 
@@ -178,10 +186,10 @@ class Maillard_Featured_Category_Widget extends WP_Widget {
 
 		$instance = array();
 
-		$instance['category_id'] = ( ! empty( $new_instance['category_id'] ) ) ?  $new_instance['category_id']  : '';
-		$instance['category_title'] = ( ! empty( $new_instance['category_title'] ) ) ?  $new_instance['category_title']  : '';
-		$instance['image_url'] = ( ! empty( $new_instance['image_url'] ) ) ?  $new_instance['image_url']  : '';
-		$instance['bg_color'] = ( ! empty( $new_instance['bg_color'] ) ) ?  $new_instance['bg_color']  : '#079d46';
+		$instance['category_id'] = ( ! empty( $new_instance['category_id'] ) ) ? intval( $new_instance['category_id'] ) : '';
+		$instance['category_title'] = ( ! empty( $new_instance['category_title'] ) ) ?  esc_html ($new_instance['category_title'] ) : '';
+		$instance['image_url'] = ( ! empty( $new_instance['image_url'] ) ) ?  esc_url( $new_instance['image_url'] )  : '';
+		$instance['bg_color'] = ( ! empty( $new_instance['bg_color'] ) ) ?  sanitize_hex_color( $new_instance['bg_color'] )  : '#079d46';
 
 		return $instance;
 	}

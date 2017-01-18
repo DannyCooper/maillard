@@ -32,7 +32,7 @@ if ( ! function_exists( 'maillard_setup' ) ) {
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
-		add_editor_style( 'editor-styles.css' );
+		add_editor_style( '/assets/css/editor-styles.css' );
 
 		/*
          * Let WordPress manage the document title.
@@ -58,17 +58,8 @@ if ( ! function_exists( 'maillard_setup' ) ) {
         */
 		add_theme_support( 'post-thumbnails' );
 
-		add_image_size( 'maillard-homepage-featured-post', 1170, 654 ); // 970 pixels wide (and unlimited height)
 		add_image_size( 'maillard-homepage-blog-thumbnail', 250, 250, true ); // 250 pixels wide by 250px high
 		add_image_size( 'maillard-blog-post', 770 ); // 770 pixels wide (and unlimited height)
-
-		// This theme uses wp_nav_menu() in one location.
-		register_nav_menus(
-			array(
-			'menu-1' => esc_html__( 'Primary Menu', 'maillard' ),
-			'menu-2' => esc_html__( 'Header Menu', 'maillard' ),
-			)
-		);
 
 		/*
          * Switch default core markup for search form, comment form, and comments
@@ -90,6 +81,14 @@ if ( ! function_exists( 'maillard_setup' ) ) {
 				'default-color' => 'ffffff',
 				'default-image' => '',
 				)
+			)
+		);
+
+		// This theme uses wp_nav_menu() in two locations.
+		register_nav_menus(
+			array(
+			'menu-1' => esc_html__( 'Primary Menu', 'maillard' ),
+			'menu-2' => esc_html__( 'Header Menu', 'maillard' ),
 			)
 		);
 
@@ -202,15 +201,18 @@ add_action( 'zeus_header_before', 'zeus_nav', 10 );
  * @TODO
  */
 remove_action( 'zeus_sub_footer', 'zeus_footer_attribution', 15 );
-add_action( 'zeus_sub_footer', 'maillard_social_output', 15 );
-add_action( 'zeus_header', 'maillard_header_nav', 15 );
-add_action( 'zeus_nav_menu_after', 'maillard_social_output', 15 );
 
 /**
  * @todo
  */
 require_once( get_stylesheet_directory() . '/inc/customizer.php' );
 require_once( get_stylesheet_directory() . '/inc/customizer-output.php' );
+
+/**
+ * @todo
+ */
+require( get_stylesheet_directory() . '/template-parts/widgets/featured-category.php' );
+require( get_stylesheet_directory() . '/template-parts/widgets/featured-post.php' );
 
 /**
  * @TODO
@@ -246,6 +248,34 @@ function maillard_social_output() {
 	echo '</div>';
 
 }
+
+/**
+ * @todo
+ */
+function maillard_social_output_header() {
+
+	if( get_theme_mod( 'social_header_display' ) !== '1' ) {
+		return;
+	}
+
+	maillard_social_output();
+
+}
+add_action( 'zeus_nav_menu_after', 'maillard_social_output_header', 15 );
+
+/**
+ * @todo
+ */
+function maillard_social_output_footer() {
+
+	if( get_theme_mod( 'social_footer_display' ) !== '1' ) {
+		return;
+	}
+
+	maillard_social_output();
+
+}
+add_action( 'zeus_sub_footer', 'maillard_social_output_footer', 15 );
 
 /**
  * @todo
@@ -294,6 +324,8 @@ function maillard_header_nav() {
 		)
 	);
 }
+add_action( 'zeus_header', 'maillard_header_nav', 15 );
+
 
 /**
  * @todo
@@ -301,3 +333,6 @@ function maillard_header_nav() {
 if( ! is_single() ) {
 	remove_action( 'zeus_loop', 'zeus_entry_footer', 30 );
 }
+
+
+add_action( 'customize_preview_init', 'zeus_customizer_preview_js' );

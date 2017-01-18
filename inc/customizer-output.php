@@ -10,7 +10,7 @@
 /**
  * @TODO
  */
-function ot_author_customizer_css() {
+function maillard_customizer_css() {
 
 	echo "<style> \n ";
 
@@ -46,17 +46,29 @@ function ot_author_customizer_css() {
 			'theme_mod' => 'accent-color',
 		),
 
+		array(
+			'selector' => '.zeus-nav-horizontal .sub-menu:hover',
+			'style' => 'background-color',
+			'theme_mod' => 'accent-color',
+		),
+
+		array(
+			'selector' => '.zeus-nav-horizontal .sub-menu .sub-menu:hover',
+			'style' => 'background-color',
+			'theme_mod' => 'accent-hover-color',
+		),
+
 	);
 
 	foreach ( $custom_css as $mod ) {
-		generate_css( $mod['selector'], $mod['style'], $mod['theme_mod'] );
+		maillard_generate_css( $mod['selector'], $mod['style'], $mod['theme_mod'] );
 		echo "\n";
 	}
 
 	echo "\n </style> \n ";
 }
 
-add_action( 'wp_head', 'ot_author_customizer_css' );
+add_action( 'wp_head', 'maillard_customizer_css' );
 
 /**
  * This will generate a line of CSS for use in header output. If the setting
@@ -72,7 +84,7 @@ add_action( 'wp_head', 'ot_author_customizer_css' );
  * @return string Returns a single line of CSS with selectors and a property.
  * @since MyTheme 1.0
  */
-function generate_css( $selector, $style, $mod_name, $prefix = '', $postfix = '', $echo = true ) {
+function maillard_generate_css( $selector, $style, $mod_name, $prefix = '', $postfix = '', $echo = true ) {
 	$return = '';
 	$mod = get_theme_mod( $mod_name );
 	if ( ! empty( $mod ) ) {
@@ -82,7 +94,7 @@ function generate_css( $selector, $style, $mod_name, $prefix = '', $postfix = ''
 			$prefix.$mod.$postfix
 		);
 		if ( $echo ) {
-			echo $return;
+			echo $return ."\n";
 		}
 	}
 	return $return;

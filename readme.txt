@@ -3,10 +3,10 @@
 Contributors: dannycooper
 Tags: one-column, two-columns, featured-images, full-width-template, rtl-language-support, threaded-comments, custom-menu, custom-header, custom-background
 
-Version: 1.0.0
+Version: 1.1.0
 Requires at least: 4.0
-Tested up to: 4.6.0
-Stable tag: 1.0.0
+Tested up to: 4.7.1
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,7 +29,7 @@ Maillard includes support for Infinite Scroll in Jetpack.
 Maillard has been tested with the following plugins:
 
 * Contact Form 7
-* Contact Form 7
+* WP Instagram Widget
 
 == Changelog ==
 
