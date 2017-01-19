@@ -1,6 +1,6 @@
 <?php
 /**
- * Zeus functions and definitions
+ * Maillard functions and definitions
  *
  * @package maillard
  */
@@ -24,7 +24,7 @@ if ( ! function_exists( 'maillard_setup' ) ) {
 		/*
          * Make theme available for translation.
          * Translations can be filed in the /languages/ directory.
-         * If you're building a theme based on Core, use a find and replace
+         * If you're building a theme based on Maillard, use a find and replace
          * to change 'maillard' to the name of your theme in all the template files
         */
 		load_theme_textdomain( 'maillard', get_template_directory() . '/languages' );
@@ -220,15 +220,15 @@ require( get_stylesheet_directory() . '/template-parts/widgets/featured-post.php
 function maillard_social_output() {
 
 	$social_websites = array(
-		'facebook' => 'Facebook',
-		'twitter' => 'Twitter',
-		'instagram' => 'Instagram',
-		'youtube' => 'YouTube',
-		'pinterest' => 'Pinterest',
-		'linkedin' => 'LinkedIn',
-		'googleplus' => 'Google+',
-		'rss' => 'RSS',
-		'mail' => 'Contact',
+		'facebook' => __( 'Facebook', 'maillard' ),
+		'twitter' => __( 'Twitter', 'maillard' ),
+		'instagram' => __( 'Instagram', 'maillard' ),
+		'youtube' => __( 'YouTube', 'maillard' ),
+		'pinterest' => __( 'Pinterest', 'maillard' ),
+		'linkedin' => __( 'LinkedIn', 'maillard' ),
+		'googleplus' => __( 'Google+', 'maillard' ),
+		'rss' => __( 'RSS', 'maillard' ),
+		'mail' => __( 'Contact', 'maillard' ),
 	);
 
 	echo '<div class="maillard-social-icons">';
