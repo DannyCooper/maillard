@@ -91,7 +91,7 @@ function maillard_generate_css( $selector, $style, $mod_name, $prefix = '', $pos
 		$return = sprintf('%s { %s: %s; }',
 			$selector,
 			$style,
-			$prefix.$mod.$postfix
+			$prefix.sanitize_hex_color( $mod ).$postfix
 		);
 		if ( $echo ) {
 			echo $return ."\n";

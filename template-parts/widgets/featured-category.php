@@ -33,17 +33,17 @@ class Maillard_Featured_Category_Widget extends WP_Widget {
 
 			wp_enqueue_media();
 
-			wp_register_script('upload_media_widget', ZEUS_THEME_URI . '/assets/js/upload-media.js', array('jquery'));
+			wp_register_script('maillard-upload-media-widget', ZEUS_THEME_URI . '/assets/js/upload-media.js', array('jquery'));
 
 			// Localize the script with new data
 			$translation_array = array(
 			    'title' => __( 'Select image', 'maillard' ),
 			    'button_text' => __( 'Use this image', 'maillard' ),
 			);
-			wp_localize_script( 'upload_media_widget', 'translations', $translation_array );
+			wp_localize_script( 'maillard-upload-media-widget', 'maillard-widget-translations', $translation_array );
 
 			// Enqueued script with localized data.
-			wp_enqueue_script( 'upload_media_widget' );
+			wp_enqueue_script( 'maillard-upload-media-widget' );
 
 		}
 	/**
@@ -148,7 +148,7 @@ class Maillard_Featured_Category_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'category_id' ); ?>"><?php _e( 'Category to Display:', 'maillard' ); ?></label>
 			<select id="<?php echo $this->get_field_id('category_id'); ?>" name="<?php echo $this->get_field_name('category_id'); ?>" class="widefat" style="width:100%;">
 				 <?php foreach(get_terms('category','parent=0&hide_empty=0') as $term) { ?>
-				 <option <?php selected( $category_id, $term->term_id ); ?> value="<?php echo $term->term_id; ?>"><?php echo $term->name; ?></option>
+				 <option <?php selected( $category_id, $term->term_id ); ?> value="<?php echo intval( $term->term_id ); ?>"><?php echo esc_html( $term->name ); ?></option>
 				 <?php } ?>
 			 </select>
         </p>
@@ -187,8 +187,8 @@ class Maillard_Featured_Category_Widget extends WP_Widget {
 		$instance = array();
 
 		$instance['category_id'] = ( ! empty( $new_instance['category_id'] ) ) ? intval( $new_instance['category_id'] ) : '';
-		$instance['category_title'] = ( ! empty( $new_instance['category_title'] ) ) ?  esc_html ($new_instance['category_title'] ) : '';
-		$instance['image_url'] = ( ! empty( $new_instance['image_url'] ) ) ?  esc_url( $new_instance['image_url'] )  : '';
+		$instance['category_title'] = ( ! empty( $new_instance['category_title'] ) ) ?  esc_html( $new_instance['category_title'] ) : '';
+		$instance['image_url'] = ( ! empty( $new_instance['image_url'] ) ) ?  esc_url_raw( $new_instance['image_url'] )  : '';
 		$instance['bg_color'] = ( ! empty( $new_instance['bg_color'] ) ) ?  sanitize_hex_color( $new_instance['bg_color'] )  : '#079d46';
 
 		return $instance;

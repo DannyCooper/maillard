@@ -61,8 +61,8 @@ function maillard_customizer_options() {
 	    'section' => $section,
 		'type'    => 'select',
 	    'choices' => array(
-			0 => 'Hide',
-			1 => 'Display',
+			0 => __( 'Hide', 'maillard' ),
+			1 => __( 'Display', 'maillard' ),
 		),
 	    'default' => 0,
 	);
@@ -73,8 +73,8 @@ function maillard_customizer_options() {
 	    'section' => $section,
 		'type'    => 'select',
 	    'choices' => array(
-			0 => 'Hide',
-			1 => 'Display',
+			0 => __( 'Hide', 'maillard' ),
+			1 => __( 'Display', 'maillard' ),
 		),
 	    'default' => 0,
 	);

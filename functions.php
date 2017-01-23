@@ -180,7 +180,7 @@ add_action( 'widgets_init', 'maillard_register_sidebars', 5 );
  * Enqueue scripts and styles.
  */
 function maillard_scripts() {
-	wp_enqueue_style( 'ot-maillard-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'maillard-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'maillard-socicons', ZEUS_THEME_URI . '/assets/css/socicons.css' );
 
 	wp_enqueue_script( 'maillard-scripts', ZEUS_THEME_URI . '/assets/js/scripts.js', array(), '', true );

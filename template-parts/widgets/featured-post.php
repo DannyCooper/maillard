@@ -76,14 +76,14 @@ class Maillard_Featured_Post_Widget extends WP_Widget {
 					echo '<div class="featured-post">';
 
 					if ( ! empty( $image_url ) ) {
-						echo '<img src="' . $image_url . '"/>';
+						echo '<img src="' . esc_url( $image_url ) . '"/>';
 					}
 
 					if ( ! empty( $post_title ) ) {
 						echo '<div class="featured-post-title-wrapper">';
 							echo '<h3 class="featured-post-title-heading">Featured Post</h3><br>';
 
-							echo '<h3 style="background-color:'. $bg_color.'" class="featured-post-title">'.$post_title.'</h3>';
+							echo '<h3 style="background-color:'. esc_attr( $bg_color ).'" class="featured-post-title">'. esc_html( $post_title ).'</h3>';
 						echo '</div>';
 					}
 
@@ -175,10 +175,10 @@ class Maillard_Featured_Post_Widget extends WP_Widget {
 
 		$instance = array();
 
-		$instance['post_id'] = ( ! empty( $new_instance['post_id'] ) ) ?  $new_instance['post_id']  : '';
-		$instance['post_title'] = ( ! empty( $new_instance['post_title'] ) ) ?  $new_instance['post_title']  : '';
-		$instance['image_url'] = ( ! empty( $new_instance['image_url'] ) ) ?  $new_instance['image_url']  : '';
-		$instance['bg_color'] = ( ! empty( $new_instance['bg_color'] ) ) ?  $new_instance['bg_color']  : '#079d46';
+		$instance['post_id'] = ( ! empty( $new_instance['post_id'] ) ) ?  intval( $new_instance['post_id'] ) : '';
+		$instance['post_title'] = ( ! empty( $new_instance['post_title'] ) ) ?  esc_html( $new_instance['post_title'] ) : '';
+		$instance['image_url'] = ( ! empty( $new_instance['image_url'] ) ) ?  esc_url( $new_instance['image_url'] ) : '';
+		$instance['bg_color'] = ( ! empty( $new_instance['bg_color'] ) ) ? sanitize_hex_color( $new_instance['bg_color'] ) : '#079d46';
 
 		return $instance;
 	}
