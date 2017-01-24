@@ -7,10 +7,10 @@ jQuery(document).ready( function($) {
 
 	        // Create a proper popup for selecting an image
 	        frame = wp.media({
-	            title:    translations.title,
+	            title:    maillard_widget_translations.title,
 	            multiple: false,
 	            button: {
-	                text: translations.button_text
+	                text: maillard_widget_translations.button_text
 	            }
 	        });
 
@@ -19,7 +19,7 @@ jQuery(document).ready( function($) {
 	            var image = this.get( 'selection' ).first();
 
 	            // Inspect the image variable further
-	             console.log( image.toJSON() )
+	            // console.log( image.toJSON() )
 
 	            // Save the actual URL within the input
 	            $button.siblings( '.custom_media_url' ).val( image.get( 'url' ) );
@@ -30,4 +30,7 @@ jQuery(document).ready( function($) {
 	    });
 	}
     media_upload('.custom_media_upload');
+
+
+
 });

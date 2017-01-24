@@ -33,6 +33,17 @@ Maillard has been tested with the following plugins:
 
 == Changelog ==
 
+= 1.1.2 - January 24, 2017 =
+* FIXED customizer output escaping
+
+= 1.1.1 - January 24, 2017 =
+* IMPROVED how widgets scripts are loaded
+* IMPROVED excerpts on home.php
+* FIXED missing translations
+* FIXED unescaped strings
+* REMOVE general.php
+* CREDITS Acosmin
+
 = 1.1.0 - January 13, 2017 =
 * ADDED social header
 * ADDED header navigation
@@ -70,3 +81,7 @@ Maillard WordPress Theme bundles the following third-party resources:
 
  * Hybrid Core - functions-attr.php, (C) 2008-2015 Justin Tadlock, [GPL-2](http://opensource.org/licenses/gpl-2.0.php)
   * Source: https://github.com/justintadlock/hybrid-core/blob/3.0/inc/functions-attr.php
+
+== Notes ==
+
+This theme uses zeus_comments_nav() rather than the_comments_navigation(). It's a pluggable function so can be overwritten or unhooked entirely.

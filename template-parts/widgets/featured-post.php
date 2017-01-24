@@ -22,28 +22,34 @@ class Maillard_Featured_Post_Widget extends WP_Widget {
 			array( 'description' => __( 'Displays the featured post on the home page template.', 'maillard' ) )
 		);
 
-		add_action( 'admin_enqueue_scripts', array(&$this, 'scripts') );
+		add_action( 'admin_enqueue_scripts', array( &$this, 'scripts' ) );
 
 	}
 
 	public function scripts() {
 
-		wp_enqueue_style( 'wp-color-picker' );
-		wp_enqueue_script( 'wp-color-picker' );
+		global $wp_customize;
 
-		wp_enqueue_media();
+		$current_screen = get_current_screen();
 
-		wp_register_script('upload_media_widget', ZEUS_THEME_URI . '/assets/js/upload-media.js', array('jquery'));
+		if( $current_screen->id === "widgets" || isset( $wp_customize ) ) {
 
-		// Localize the script with new data
-		$translation_array = array(
-			'title' => __( 'Select image', 'maillard' ),
-			'button_text' => __( 'Use this image', 'maillard' ),
-		);
-		wp_localize_script( 'upload_media_widget', 'translations', $translation_array );
+		    wp_enqueue_style( 'wp-color-picker' );
+		    wp_enqueue_script( 'wp-color-picker' );
 
-		// Enqueued script with localized data.
-		wp_enqueue_script( 'upload_media_widget' );
+			wp_enqueue_media();
+
+			wp_enqueue_script( 'maillard-upload-media-widget', ZEUS_THEME_URI . '/assets/js/upload-media.js', array( 'jquery' ) );
+			wp_enqueue_script( 'maillard-color-picker', ZEUS_THEME_URI . '/assets/js/color-picker.js', array( 'wp-color-picker' ) );
+
+			// Localize the script with new data
+			$translation_array = array(
+			    'title' => __( 'Select image', 'maillard' ),
+			    'button_text' => __( 'Use this image', 'maillard' ),
+			);
+			wp_localize_script( 'maillard-upload-media-widget', 'maillard_widget_translations', $translation_array );
+
+		}
 
 		}
 	/**
@@ -102,32 +108,6 @@ class Maillard_Featured_Post_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
-		?>
-
-		<script type='text/javascript'>
-				( function( $ ){
-		   function initColorPicker( widget ) {
-				   widget.find( '.color-picker' ).wpColorPicker( {
-						   change: _.throttle( function() { // For Customizer
-								   $(this).trigger( 'change' );
-						   }, 3000 )
-				   });
-		   }
-			   function onFormUpdate( event, widget ) {
-				   initColorPicker( widget );
-		   }
-		   $( document ).on( 'widget-added widget-updated', onFormUpdate );
-
-		   $( document ).ready( function() {
-				   $( '#widgets-right .widget:has(.color-picker)' ).each( function () {
-						   initColorPicker( $( this ) );
-				   } );
-		   } );
-		}( jQuery ) );
-		 </script>
-
-		<?php
-
 		$post_id = ! empty( $instance['post_id'] ) ? $instance['post_id'] : '';
 		$post_title = ! empty( $instance['post_title'] ) ? $instance['post_title'] : '';
 		$image_url = ! empty( $instance['image_url'] ) ? $instance['image_url'] : '';
@@ -138,7 +118,7 @@ class Maillard_Featured_Post_Widget extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'post_id' ); ?>"><?php _e( 'Post to Display:', 'maillard' ); ?></label>
 			<select id="<?php echo $this->get_field_id('post_id'); ?>" name="<?php echo $this->get_field_name('post_id'); ?>" class="widefat" style="width:100%;">
 				 <?php foreach( get_posts( array('posts_per_page' => -1) ) as $post) { ?>
-				 <option <?php selected( $post_id, $post->ID ); ?> value="<?php echo $post->ID; ?>"><?php echo $post->post_name; ?></option>
+				 <option <?php selected( $post_id, $post->ID ); ?> value="<?php echo intval( $post->ID ); ?>"><?php echo esc_html( $post->post_name ); ?></option>
 				 <?php } ?>
 			 </select>
         </p>
@@ -151,12 +131,12 @@ class Maillard_Featured_Post_Widget extends WP_Widget {
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'post_title' ); ?>"><?php _e( 'Post Title:', 'maillard' ); ?></label>
-			<input class="widefat" id="<?php echo $this->get_field_id( 'post_title' ); ?>" name="<?php echo $this->get_field_name( 'post_title' ); ?>" type="text" value="<?php echo $post_title  ?>">
+			<input class="widefat" id="<?php echo $this->get_field_id( 'post_title' ); ?>" name="<?php echo $this->get_field_name( 'post_title' ); ?>" type="text" value="<?php echo esc_html( $post_title ) ?>">
         </p>
 
 		<p>
 			<label for="<?php echo $this->get_field_id( 'bg_color' ); ?>"><?php _e( 'Title Background Color:', 'maillard' ); ?></label><br>
-			<input class="widefat color-picker" id="<?php echo $this->get_field_id( 'bg_color' ); ?>" name="<?php echo $this->get_field_name( 'bg_color' ); ?>" type="text" value="<?php echo $bg_color ?>">
+			<input class="widefat color-picker" id="<?php echo $this->get_field_id( 'bg_color' ); ?>" name="<?php echo $this->get_field_name( 'bg_color' ); ?>" type="text" value="<?php echo esc_attr( $bg_color ) ?>">
         </p>
 
 		<?php

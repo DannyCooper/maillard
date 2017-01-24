@@ -55,9 +55,7 @@ function maillard_home_loop() {
 
         			the_title( sprintf( '<h2 %s><a href="%s" rel="bookmark">', zeus_get_attr( 'entry-title' ), esc_url( get_permalink() ) ), '</a></h2>' );
 
-                    echo '<p>'.wp_trim_words( get_the_content(), 45 ).'</p>';
-
-                    echo '<p><a class="moretag" href="'.esc_url( get_permalink() ).'">'._e('Read More&hellip;','maillard').'</a></p>';
+                    the_excerpt();
 
                 echo '</div>';
 
