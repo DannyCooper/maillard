@@ -1,15 +1,15 @@
 /*
 Theme Name: Maillard
-Theme URI: http://demo.olympusthemes.com/maillard/
+Theme URI: https://olympusthemes.com/maillard/
 Author: Danny Cooper
 Author URI: http://dannycooper.com
 Description: Maillard is a beautiful WordPress Food Blog theme, that allows food bloggers to position their content, images and recipes in the best light possible.
-Version: 1.1.2
+Version: 1.1.8
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: maillard
 
-Tags: one-column, two-columns, featured-images, full-width-template, rtl-language-support, threaded-comments, custom-menu, custom-header, custom-background
+Tags: food-and-drink, one-column, two-columns, right-sidebar, featured-images, full-width-template, rtl-language-support, threaded-comments, custom-menu, custom-logo, custom-background, custom-colors, blog, translation-ready, theme-options
 
 Maillard WordPress Theme, Copyright 2016 Danny Cooper
 This theme, like WordPress, is licensed under the GPL.
@@ -573,8 +573,6 @@ input[type='submit']:hover, button:hover {
 
 .page-template-no-sidebar .content {
 	margin: 0 auto;
-	border-top: 1px solid #dbdbdb;
-	padding-top: 50px;
 	float: none;
 }
 

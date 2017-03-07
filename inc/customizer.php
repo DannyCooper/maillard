@@ -8,10 +8,10 @@
  /**
   * @TODO
   */
-function maillard_remove_contorl( $wp_customize ) {
+function maillard_remove_control( $wp_customize ) {
 	$wp_customize->remove_control( 'header_textcolor' );
 }
-add_action( 'customize_register', 'maillard_remove_contorl', 11 );
+add_action( 'customize_register', 'maillard_remove_control', 11 );
 
 
 /**
@@ -114,20 +114,6 @@ function maillard_customizer_options() {
 		'type'    => 'url',
 	);
 
-	$options['rss-url'] = array(
-		'id' => 'rss-url',
-		'label'   => __( 'RSS URL', 'maillard' ),
-		'section' => $section,
-		'type'    => 'url',
-	);
-
-	$options['mail-url'] = array(
-		'id' => 'mail-url',
-		'label'   => __( 'Contact URL', 'maillard' ),
-		'section' => $section,
-		'type'    => 'url',
-	);
-
 	$options['linkedin-url'] = array(
 		'id' => 'linkedin-url',
 		'label'   => __( 'LinkedIn URL', 'maillard' ),
@@ -142,6 +128,20 @@ function maillard_customizer_options() {
 		'type'    => 'url',
 	);
 
+    $options['rss-url'] = array(
+		'id' => 'rss-url',
+		'label'   => __( 'RSS URL', 'maillard' ),
+		'section' => $section,
+		'type'    => 'url',
+	);
+
+	$options['mail-url'] = array(
+		'id' => 'mail-url',
+		'label'   => __( 'Contact URL', 'maillard' ),
+		'section' => $section,
+		'type'    => 'url',
+	);
+    
 	// Adds the sections to the $options array
 	$options['sections'] = $sections;
 

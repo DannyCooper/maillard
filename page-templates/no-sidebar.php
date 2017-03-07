@@ -7,7 +7,6 @@
  * @package maillard
  */
 
-remove_action( 'zeus_content_sidebar_wrapper', 'zeus_sidebar_primary', 20 );
-
+remove_action( 'zeus_content_sidebar_wrapper', 'zeus_sidebar', 20 );
 
 zeus();

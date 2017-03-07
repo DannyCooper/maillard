@@ -42,14 +42,13 @@ if ( ! function_exists( 'maillard_setup' ) ) {
         */
 		add_theme_support( 'title-tag' );
 
-		$args = array(
-			'flex-height' => true,
-			'width' => 1170,
-			'flex-height' => true,
-			'height' => 250,
-			'default-text-color' => '313131',
-		);
-		add_theme_support( 'custom-header', $args );
+		/**
+		 * Enable support for uploading a custom logo in the customizer.
+		 * Also add the option to hide the site title and tagline.
+		 */
+		add_theme_support( 'custom-logo', array(
+		   'header-text' => array( 'site-title', 'site-description' ),
+		) );
 
 		/*
          * Enable support for Post Thumbnails on posts and pages.
