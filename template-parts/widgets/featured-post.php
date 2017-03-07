@@ -79,6 +79,8 @@ class Maillard_Featured_Post_Widget extends WP_Widget {
 
 					$featured_post = get_post( $post_id );
 
+					echo '<a href="'. esc_url( get_permalink( $featured_post->ID ) ) .'">';
+
 					echo '<div class="featured-post">';
 
 					if ( ! empty( $image_url ) ) {
@@ -94,6 +96,8 @@ class Maillard_Featured_Post_Widget extends WP_Widget {
 					}
 
 					echo '</div>';
+
+					echo '</a>';
 
 				}
 

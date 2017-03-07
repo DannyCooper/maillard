@@ -1,12 +1,12 @@
 === Maillard ===
 
 Contributors: dannycooper
-Tags: one-column, two-columns, featured-images, full-width-template, rtl-language-support, threaded-comments, custom-menu, custom-header, custom-background
+Tags: food-and-drink, one-column, two-columns, featured-images, full-width-template, rtl-language-support, threaded-comments, custom-menu, custom-logo, custom-background
 
-Version: 1.1.0
+Version: 1.1.8
 Requires at least: 4.0
-Tested up to: 4.7.1
-Stable tag: 1.1.0
+Tested up to: 4.7.4
+Stable tag: 1.1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -30,8 +30,24 @@ Maillard has been tested with the following plugins:
 
 * Contact Form 7
 * WP Instagram Widget
+* Yummly Rich Recipes
 
 == Changelog ==
+
+= 1.1.8 - March 7, 2017 =
+* FIXED post link in template-parts/widgets/featured-post.php
+
+= 1.1.7 - January 25, 2017 =
+* FIXED theme URI
+
+= 1.1.6 - January 25, 2017 =
+* UPDATED theme URI
+
+= 1.1.5 - January 25, 2017 =
+* ADDED custom logo setting
+* REMOVED custom header setting
+* FIX no sidebar template
+* FIX featured post widget link
 
 = 1.1.2 - January 24, 2017 =
 * FIXED customizer output escaping
