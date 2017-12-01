@@ -1,71 +1,49 @@
 <?php
 /**
- * Template Name: Home Page Template
+ * Template Name: Home Template
+ * Template Post Type: page
  *
- * The template for displaying a home page.
- *
- * @package maillard
+ * @package    maillard
+ * @copyright  Copyright (c) 2017, Danny Cooper
+ * @license    http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
-remove_action( 'zeus_content', 'zeus_loop', 10 );
-add_action( 'zeus_content', 'maillard_home_loop', 10 );
-add_action( 'zeus_site_content_before', 'maillard_output_homepage_widgets', 5 );
+get_header(); ?>
 
-/**
- * @TODO
- */
-function maillard_output_homepage_widgets() {
 
-	if ( is_active_sidebar( 'featured-post' ) || is_active_sidebar( 'featured-categories' ) ) {
-		echo '<div class="homepage-widget-area clear"><div class="wrap">';
-			echo '<div class="widget-area-featured-post">';
-				dynamic_sidebar( 'featured-post' );
-			echo '</div><!-- .widget-area-featured-post -->';
+	<?php if ( is_active_sidebar( 'featured-post' ) || is_active_sidebar( 'featured-categories' ) ) : ?>
+		<div class="homepage-widget-area clear">
+				<div class="widget-area-featured-post">
+					<?php dynamic_sidebar( 'featured-post' ); ?>
+				</div><!-- .widget-area-featured-post -->
 
-			echo '<div class="widget-area-featured-categories">';
-				dynamic_sidebar( 'featured-categories' );
-			echo '</div><!-- .wrap -->';
-			echo '</div><!-- .widget-area-featured-categories -->';
-		echo '</div>';
-	}
-}
+				<div class="widget-area-featured-categories">
+					<?php dynamic_sidebar( 'featured-categories' ); ?>
+				</div><!-- .widget-area-featured-categories -->
+		</div><!-- .homepage-widget-area -->
+	<?php else : ?>
 
-/**
- * @TODO
- */
-function maillard_home_loop() {
+	<hr class="no-features" />
 
-	$args = array(
-		'posts_per_page' => 3, // @TODO add a filter.
-	);
+	<?php endif; ?>
 
-	$loop = new WP_Query( $args );
+<div class="content-area">
+	<?php
+	while ( have_posts() ) :
+		the_post();
 
-	if ( $loop->have_posts() ) : while ( $loop->have_posts() ) : $loop->the_post();
+		get_template_part( 'template-parts/content', 'home' );
 
-			echo '<article ' . zeus_get_attr( 'post', '', 'class=clear' ) . '>';
-
-    			if ( has_post_thumbnail() ) {
-                    echo '<div class="home-post-thumbnail">';
-                        the_post_thumbnail( 'maillard-homepage-blog-thumbnail' );
-                    echo '</div>';
-    			}
-
-                echo '<div class="home-post-content">';
-
-        			the_title( sprintf( '<h2 %s><a href="%s" rel="bookmark">', zeus_get_attr( 'entry-title' ), esc_url( get_permalink() ) ), '</a></h2>' );
-
-                    the_excerpt();
-
-                echo '</div>';
-
-			echo '</article><!-- .post-'.get_the_ID().' -->';
+		// If comments are open or we have at least one comment, load up the comment template.
+		if ( comments_open() || get_comments_number() ) :
+			comments_template();
+		endif;
 
 	endwhile;
-endif;
+	?>
 
-wp_reset_postdata();
+</div><!-- .content-area -->
 
-}
-
-zeus();
+<?php
+get_sidebar();
+get_footer();

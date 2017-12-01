@@ -1,36 +1,62 @@
-jQuery(document).ready( function($) {
-	function media_upload( button_class ) {
-	    $( 'body' ).on( 'click', button_class, function( e ) {
-	        var $button = $( this ), frame;
+/**
+ * Widgets - Media Upload
+ */
+jQuery( document ).ready( function() {
 
-	        e.preventDefault();
+    // Upload / Change Image
+    function maillard_image_upload( button_class ) {
 
-	        // Create a proper popup for selecting an image
-	        frame = wp.media({
-	            title:    maillard_widget_translations.title,
-	            multiple: false,
-	            button: {
-	                text: maillard_widget_translations.button_text
-	            }
-	        });
+        var _custom_media = true,
+            _orig_send_attachment = wp.media.editor.send.attachment;
 
-	        // Add a callback for when an item is selected
-	        frame.state( 'library' ).on( 'select', function(){
-	            var image = this.get( 'selection' ).first();
+        jQuery( 'body' ).on( 'click', button_class, function(e) {
 
-	            // Inspect the image variable further
-	            // console.log( image.toJSON() )
+            var button_id           = '#' + jQuery( this ).attr( 'id' ),
+                self                = jQuery( button_id),
+                send_attachment_bkp = wp.media.editor.send.attachment,
+                button              = jQuery( button_id ),
+                id                  = button.attr( 'id' ).replace( '-button', '' );
 
-	            // Save the actual URL within the input
-	            $button.siblings( '.custom_media_url' ).val( image.get( 'url' ) );
-	        });
+            _custom_media = true;
 
-	        // Finally, open the frame
-	        frame.open();
-	    });
-	}
-    media_upload('.custom_media_upload');
+            wp.media.editor.send.attachment = function( props, attachment ){
 
+                if ( _custom_media ) {
 
+                    jQuery( '#' + id + '-preview'  ).attr( 'src', attachment.url ).css( 'display', 'block' );
+                    jQuery( '#' + id + '-remove'  ).css( 'display', 'inline-block' );
+                    jQuery( '#' + id + '-noimg' ).css( 'display', 'none' );
+                    jQuery( '#' + id ).val( attachment.url ).trigger( 'change' );
+
+                } else {
+
+                    return _orig_send_attachment.apply( button_id, [props, attachment] );
+
+                }
+            }
+
+            wp.media.editor.open( button );
+
+            return false;
+        });
+    }
+    maillard_image_upload( '.maillard-media-upload' );
+
+    // Remove Image
+    function maillard_image_remove( button_class ) {
+
+        jQuery( 'body' ).on( 'click', button_class, function(e) {
+
+            var button              = jQuery( this ),
+                id                  = button.attr( 'id' ).replace( '-remove', '' );
+
+            jQuery( '#' + id + '-preview' ).css( 'display', 'none' );
+            jQuery( '#' + id + '-noimg' ).css( 'display', 'block' );
+            button.css( 'display', 'none' );
+            jQuery( '#' + id ).val( '' ).trigger( 'change' );
+
+        });
+    }
+    maillard_image_remove( '.maillard-media-remove' );
 
 });

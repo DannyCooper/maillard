@@ -1,0 +1,44 @@
+div[id*="maillard"] .widget-top h3:before {
+    content:"Maillard";
+    background: #2e7dab;
+    color: white;
+    padding: 3px 5px;
+    border-radius: 3px;
+    margin-right: 4px
+}
+
+/**
+ * Widgets - Media Upload
+ */
+
+.maillard-media-container {
+	width: 98%;
+}
+
+.maillard-media-inner {
+	border: 1px solid #ddd;
+	padding: 10px;
+	text-align: center;
+	border-radius: 2px;
+	margin-bottom: 10px;
+}
+
+.widget-description img,
+.maillard-media-inner img {
+	max-width: 100%;
+	height: auto;
+}
+
+.maillard-media-url {
+	display: none;
+}
+
+.maillard-media-remove {
+	float: left;
+	width: 48%;
+}
+
+.maillard-media-upload {
+	float: right;
+	width: 48%;
+}

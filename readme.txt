@@ -1,38 +1,48 @@
 === Maillard ===
 
-Contributors: dannycooper
-Tags: food-and-drink, one-column, two-columns, featured-images, full-width-template, rtl-language-support, threaded-comments, custom-menu, custom-logo, custom-background
-
-Version: 1.1.8
+Contributors: DannyCooper
 Requires at least: 4.0
-Tested up to: 4.7.4
-Stable tag: 1.1.8
+Tested up to: 4.9
+Stable tag: 2.0.0
 License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+GitHub Theme URI: https://github.com/DannyCooper/maillard
+Tags: food-and-drink, one-column, two-columns, right-sidebar, custom-background, custom-header, flexible-header, custom-menu, custom-logo, editor-style, featured-images, full-width-template, threaded-comments, translation-ready, blog, e-commerce
+
+A WordPress Food Blog Theme called Maillard.
+
+Maillard WordPress Theme, Copyright 2017 Danny Cooper
+Maillard is distributed under the terms of the GNU GPL
 
 == Description ==
 
-Maillard is a beautiful WordPress Food Blog theme, that allows food bloggers to position their content, images and recipes in the best light possible.
+Maillard is a lightweight starter theme built using core WordPress functions. It doesn't use any frameworks or libraries, this makes it fast, simple and easy to customize!
+
+Maillard uses very minimal, low-specificity CSS rules, making it very easy to customize and overwrite using your own custom CSS code.
+
+The clean, fast, standards-compliant code makes this theme very SEO-friendly.
 
 == Installation ==
 
 1. In your admin panel, go to Appearance > Themes and click the Add New button.
 2. Click Upload and Choose File, then select the theme's .zip file. Click Install Now.
 3. Click Activate to use your new theme right away.
+4. View the documentation - http://docs.olympusthemes.com/section/maillard/
 
 == Frequently Asked Questions ==
 
 = Does this theme support any plugins? =
 
-Maillard includes support for Infinite Scroll in Jetpack.
+Maillard has added support for the following plugins:
 
-Maillard has been tested with the following plugins:
-
-* Contact Form 7
-* WP Instagram Widget
-* Yummly Rich Recipes
+* Featured Posts Widget - https://wordpress.org/plugins/olympus-featured-posts-widget
+* Yummly Rich Recipes - https://wordpress.org/plugins/yummly-rich-recipes/
+* WP Instagram Widget - https://wordpress.org/plugins/wp-instagram-widget/
 
 == Changelog ==
+
+= 2.0.0 - December 1, 2017 =
+* Remove dependancy on Zeus theme framework
 
 = 1.1.8 - March 7, 2017 =
 * FIXED post link in template-parts/widgets/featured-post.php
@@ -69,35 +79,11 @@ Maillard has been tested with the following plugins:
 
 == Credits ==
 
-Maillard WordPress Theme bundles the following third-party resources:
+* Based on Scaffold, (C) 2012-2017 Danny Cooper., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
+ * Source: https://github.com/DannyCooper/scaffold
 
-* Zues Framework, (C) 2016 Danny Cooper, [GPL-2](https://github.com/DannyCooper/zeus-framework)
- * Source: https://github.com/DannyCooper/zeus-framework
-
-* normalize.css, (C) 2012-2016 Nicolas Gallagher and Jonathan Neal, [MIT](http://opensource.org/licenses/MIT)
+* normalize.css, (C) 2012-2017 Nicolas Gallagher and Jonathan Neal, [MIT](http://opensource.org/licenses/MIT)
  * Source: http://necolas.github.io/normalize.css/
 
-* superfish.js , (C) 2013 jQuery Foundation and other contributors, [MIT](http://opensource.org/licenses/MIT)
- * Source: http://users.tpg.com.au/j_birch/plugins/superfish/
-
-* jquery.tinyNav.js, (C) 2011-2014 Viljami Salminen, [MIT](http://opensource.org/licenses/MIT)
- * Source: http://tinynav.viljamis.com/
-
- * Socicon, (C) Socicon [SIL OFL 1.1](http://scripts.sil.org/OFL)
+* Socicon, (C) Socicon [SIL OFL 1.1](http://scripts.sil.org/OFL)
   * Source: http://socicon.com/
-
-* FontAwesome, (C) Dave Gandy, [SIL OFL 1.1, MIT](http://fontawesome.io/license/)
- * Source: http://fontawesome.io/
-
-* Customizer_Library, (C) Devin Price, [GPL-2](http://opensource.org/licenses/gpl-2.0.php)
- * Source: https://github.com/devinsays/customizer-library
-
-* TGM-Plugin-Activation, (C) 2011 Thomas Griffin, [GPL-2](http://opensource.org/licenses/gpl-2.0.php)
- * Source: https://github.com/TGMPA/TGM-Plugin-Activation
-
- * Hybrid Core - functions-attr.php, (C) 2008-2015 Justin Tadlock, [GPL-2](http://opensource.org/licenses/gpl-2.0.php)
-  * Source: https://github.com/justintadlock/hybrid-core/blob/3.0/inc/functions-attr.php
-
-== Notes ==
-
-This theme uses zeus_comments_nav() rather than the_comments_navigation(). It's a pluggable function so can be overwritten or unhooked entirely.

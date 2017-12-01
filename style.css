@@ -1,23 +1,283 @@
 /*
 Theme Name: Maillard
-Theme URI: https://olympusthemes.com/maillard/
-Author: Danny Cooper
-Author URI: http://dannycooper.com
-Description: Maillard is a beautiful WordPress Food Blog theme, that allows food bloggers to position their content, images and recipes in the best light possible.
-Version: 1.1.8
+Theme URI: https://olympusthemes.com/theme/maillard
+Author: DannyCooper
+Author URI: https://dannycooper.com/
+Description: Maillard is a lightweight Food Blog Theme built using core WordPress functions. It doesn't use any frameworks or libraries, this makes it fast, simple and easy to customize!
+Version: 2.0.0
 License: GNU General Public License v2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: maillard
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Tags: food-and-drink, one-column, two-columns, right-sidebar, custom-background, custom-header, custom-menu, custom-logo, editor-style, featured-images, full-width-template, threaded-comments, translation-ready, blog, e-commerce
+GitHub Theme URI: https://github.com/DannyCooper/maillard
 
-Tags: food-and-drink, one-column, two-columns, right-sidebar, featured-images, full-width-template, rtl-language-support, threaded-comments, custom-menu, custom-logo, custom-background, custom-colors, blog, translation-ready, theme-options
-
-Maillard WordPress Theme, Copyright 2016 Danny Cooper
 This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.io/normalize.css/
 */
 
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Normalize
+# Typography
+# Elements
+# Forms
+# Navigation
+	## Links
+	## Menus
+# Accessibility
+# Alignments
+# Clearings
+# Structure
+# Header
+# Navigation
+# Content
+	## Posts and Pages
+	## Content Navigation
+	## Comments
+# Sidebar
+	## Widgets
+# Footer
+# Infinite Scroll
+# Media
+	## Captions
+	## Galleries
+# Responsive
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Normalize
+--------------------------------------------------------------*/
+
+html {
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust:     100%;
+}
 
 body {
-    color: #292929;
+	margin: 0;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+	display: block;
+}
+
+audio,
+canvas,
+progress,
+video {
+	display: inline-block;
+	vertical-align: baseline;
+}
+
+audio:not([controls]) {
+	display: none;
+	height: 0;
+}
+
+[hidden],
+template {
+	display: none;
+}
+
+a {
+	background-color: transparent;
+}
+
+a:active,
+a:hover {
+	outline: 0;
+}
+
+abbr[title] {
+	border-bottom: 1px dotted;
+}
+
+b,
+strong {
+	font-weight: bold;
+}
+
+dfn {
+	font-style: italic;
+}
+
+h1 {
+	font-size: 2em;
+	margin: 0.67em 0;
+}
+
+mark {
+	background: #ff0;
+	color: #000;
+}
+
+small {
+	font-size: 80%;
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+img {
+	border: 0;
+}
+
+svg:not(:root) {
+	overflow: hidden;
+}
+
+figure {
+	margin: 1em 40px;
+}
+
+hr {
+	box-sizing: content-box;
+	height: 0;
+}
+
+pre {
+	overflow: auto;
+}
+
+code,
+kbd,
+pre,
+samp {
+	font-family: monospace, monospace;
+	font-size: 1em;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+	color: inherit;
+	font: inherit;
+	margin: 0;
+}
+
+button {
+	overflow: visible;
+}
+
+button,
+select {
+	text-transform: none;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	-webkit-appearance: button;
+	cursor: pointer;
+}
+
+button[disabled],
+html input[disabled] {
+	cursor: default;
+}
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+input {
+	line-height: normal;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+	box-sizing: border-box;
+	padding: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	height: auto;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+fieldset {
+	border: 1px solid #c0c0c0;
+	margin: 0 2px;
+	padding: 0.35em 0.625em 0.75em;
+}
+
+legend {
+	border: 0;
+	padding: 0;
+}
+
+textarea {
+	overflow: auto;
+}
+
+optgroup {
+	font-weight: bold;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+td,
+th {
+	padding: 0;
+}
+
+/*--------------------------------------------------------------
+# Typography
+--------------------------------------------------------------*/
+
+body {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	color: #303135;
+	font-size: 16px;
+	line-height: 1.6;
+	overflow-wrap: break-word;
+}
+
+nav,
+label,
+input {
+	font-size: 14px
 }
 
 h1,
@@ -26,89 +286,1151 @@ h3,
 h4,
 h5,
 h6 {
-	margin-bottom: 1rem
-}
-
-a {
-	color: #0d842b
-}
-
-.site-title a {
-	color: #313131
-}
-
-.site-title,
-.entry-title {
-    font-size: 36px;
+	line-height: 1.25;
+	color: #2d2e33;
 }
 
 p {
-    margin: 0 0 1rem;
+	margin: 0 0 1.5em;
 }
 
-.menu-primary {
-    background: #191919;
+dfn,
+cite,
+em,
+i {
+	font-style: italic;
 }
 
-.menu-primary .zeus-nav-horizontal {
-    border: 0;
-}
-.menu-primary .zeus-nav-horizontal li a {
-    color: #c4c4c4;
-	padding: 16px 16px 13px;
-	border-bottom: 3px solid #191919;
-	font-size: 14px;
-	background: #191919;
-
+blockquote {
+	margin: 0 1.5em;
 }
 
-.menu-primary .zeus-nav-horizontal > li.current_page_item a,
-.menu-primary .zeus-nav-horizontal > li a:hover {
-	border-bottom: 3px solid #15ab15;
+address {
+	margin: 0 0 1.5em;
 }
 
-.menu-primary ul {
-	float: left
+pre {
+	background: #eee;
+	font-family: "Courier 10 Pitch", Courier, monospace;
+	font-size: 15px;
+	line-height: 1.6;
+	margin-bottom: 1.6em;
+	max-width: 100%;
+	overflow: auto;
+	padding: 1.6em;
 }
 
-.site-header {
+code,
+kbd,
+tt,
+var {
+	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+	font-size: 15px;
+}
+
+abbr,
+acronym {
+	border-bottom: 1px dotted #666;
+	cursor: help;
+}
+
+mark,
+ins {
+	background: #fff9c0;
+	text-decoration: none;
+}
+
+big {
+	font-size: 125%;
+}
+
+/*--------------------------------------------------------------
+# Elements
+--------------------------------------------------------------*/
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after { /* Inherit box-sizing to make it easier to change the property for components that leverage other behavior; see http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/ */
+	box-sizing: inherit;
+}
+
+body {
+	background-color: #fff; /* Fallback for when there is no custom background color defined. */
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: "";
+}
+
+blockquote,
+q {
+	quotes: "" "";
+}
+
+hr {
+	background-color: #ccc;
+	border: 0;
+	height: 1px;
+	margin-bottom: 1.5em;
+	clear: both
+}
+
+.widget ul,
+.widget ol {
+	margin: 0;
+	padding: 0 0 0 1em
+}
+
+.comments-area ol {
+	list-style: none;
 	padding: 0
 }
 
-.site-header .wrap {
-    padding: 75px 0 50px;
+ul {
+	list-style: disc;
+}
+
+ol {
+	list-style: decimal;
+}
+
+li > ul,
+li > ol {
+	margin-bottom: 0;
+}
+
+dt {
+	font-weight: bold;
+}
+
+dd {
+	margin: 0 1.5em 1.5em;
+}
+
+img {
+	height: auto; /* Make sure images are scaled correctly. */
+	max-width: 100%; /* Adhere to container width. */
+	vertical-align: bottom;
+}
+
+figure {
+	margin: 1em 0; /* Extra wide images within figure tags don't overflow the content area. */
+}
+
+table {
+	font-family: sans-serif;
+	margin: 0 0 1.5em;
+	width: 100%;
+	font-size: 14px;
+}
+
+table th {
+	border-bottom: 2px solid;
+	padding: 10px;
+	text-align: left
+}
+
+table td {
+	padding: 10px 10px 0;
+}
+
+/*--------------------------------------------------------------
+# Forms
+--------------------------------------------------------------*/
+
+label {
+	font-size: 14px;
+	color: #9e9e9e;
+}
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	border: 1px solid;
+	border-color: #ccc #ccc #bbb;
+	border-radius: 3px;
+	background-color: #e6e6e6;
+	padding: 8px;
+}
+
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover {
+	border-color: #ccc #bbb #aaa;
+}
+
+button:focus,
+input[type="button"]:focus,
+input[type="reset"]:focus,
+input[type="submit"]:focus,
+button:active,
+input[type="button"]:active,
+input[type="reset"]:active,
+input[type="submit"]:active {
+	border-color: #aaa #bbb #bbb;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+textarea {
+	color: #666;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	padding: 8px;
+}
+
+select {
+	border: 1px solid #ccc;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="range"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="time"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="color"]:focus,
+textarea:focus {
+	color: #111;
+}
+
+textarea {
+	width: 100%;
+}
+
+/*--------------------------------------------------------------
+## Links
+--------------------------------------------------------------*/
+
+a {
+	color: #0d842b;
+}
+
+a:hover,
+a:focus,
+a:active {
+	color: #253e80;
+}
+
+a:focus {
+	outline: thin dotted;
+}
+
+a:hover,
+a:active {
+	outline: 0;
+}
+
+.sidebar-1 a {
+	text-decoration: none
+}
+
+/*--------------------------------------------------------------
+# Accessibility
+--------------------------------------------------------------*/
+
+/* Do not show the outline on the skip link target. */
+#content[tabindex="-1"]:focus {
+	outline: 0;
+}
+
+.screen-reader-text {
+	display: none;
+}
+
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 1.5em;
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 1.5em;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*--------------------------------------------------------------
+# Clearings
+--------------------------------------------------------------*/
+.clear:before,
+.clear:after,
+.wrapper:before,
+.wrapper:after,
+.navigation:before,
+.navigation:after {
+	content: "";
+	display: table;
+	table-layout: fixed;
+}
+
+.clear:after,
+.wrapper:after,
+.navigation:after {
+	clear: both;
+}
+
+/*--------------------------------------------------------------
+# Structure
+--------------------------------------------------------------*/
+
+.wrapper {
+	max-width: 1040px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.site-content {
+	padding-bottom: 25px
+}
+
+.page-template-full-width .content-area,
+.post-template-full-width .content-area {
+	width: 100%;
+}
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+
+.site-header {
+	min-height: 173px;
+	margin-bottom: 50px
+}
+
+.site-header .wrapper {
+	padding: 50px 0;
 	border-bottom: 1px solid #e8e8e8;
-    margin-bottom: 50px;
 }
 
 .site-branding {
-    float: left;
+	width: 50%;
+	float: left
 }
 
 .site-title {
-    line-height: 1;
-	margin-bottom: .5rem;
+	margin: 0;
+	font-weight: 700;
+	font-size: 36px;
+	line-height: 1.2;
 	letter-spacing: -.5px;
 }
 
+.site-title a {
+	text-decoration: none;
+	color: #253e80;
+}
+
 .site-description {
-    font-size: 17px;
-    color: #6d6d6d;
-	line-height: 1
+	color: #6d6d6d;
+	margin: 0
 }
 
-.page-template-maillard-home .site-header .wrap {
-    border-bottom: 0;
-    margin-bottom: 25px;
+/*--------------------------------------------------------------
+# Navigation
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Horizontal Nav Component
+--------------------------------------------------------------*/
+
+.h-menu ul {
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
 }
 
-.page-template-maillard-home .site-content .wrap {
-	border-top: 1px solid #e8e8e8;
-	padding-top: 50px;
+.h-menu li {
+	display: inline-block;
+	position: relative;
 }
+
+.h-menu li:hover,
+.h-menu li.focus {
+	background-color: #eaeaea
+}
+
+.h-menu a {
+	text-decoration: none;
+	display: block;
+	color: #303135;
+	padding: 20px;
+}
+
+.h-menu ul ul {
+	box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.06);
+	float: left;
+	position: absolute;
+	left: -999em;
+	z-index: 99999;
+	background: #eaeaea;
+}
+
+.h-menu ul ul li:hover {
+	background-color: #dedbdb;
+}
+
+.h-menu ul ul a {
+	width: 200px;
+	text-align: left;
+	border-top: 1px solid #dedbdb;
+	border-right: 1px solid #dedbdb;
+}
+
+.h-menu ul ul ul {
+	left: -999em;
+	top: 0;
+}
+
+.h-menu ul li:hover > ul,
+.h-menu ul li.focus > ul {
+	left: auto;
+}
+
+.h-menu ul ul li:hover > ul,
+.h-menu ul ul li.focus > ul {
+	left: 100%;
+}
+
+.h-menu li.page_item_has_children > a:after,
+.h-menu li.menu-item-has-children > a:after {
+	content: '\25bc';
+	font-size: 7px;
+	vertical-align: 1px;
+	padding-left: 5px;
+	opacity: .75
+}
+.h-menu li li.page_item_has_children > a:after,
+.h-menu li li.menu-item-has-children > a:after {
+	content: '\25b6';
+	font-size: 7px;
+	vertical-align: 1px;
+	padding-left: 5px;
+	opacity: .75
+}
+
+/* Small menu. */
+.menu-toggle {
+	display: none
+}
+
+.menu-1 {
+	width: 50%;
+	float: left;
+	text-align: right;
+	margin-top: 3px;
+}
+
+.menu-1 .menu > li:last-child {
+	margin-right: -20px
+}
+
+#above-header-menu {
+	float: left
+}
+
+.menu-2 {
+	background-color: #040404;
+	display: block;
+}
+
+.menu-2 a {
+	color: rgba(255, 255, 255, 0.6);
+	padding: 15px;
+}
+.menu-2 a:hover {
+	color: rgba(255, 255, 255, 1);
+}
+
+.menu-2 .menu > li:first-child {
+	margin-left: -20px
+}
+
+.menu-2 ul ul li {
+	background-color: #079d46;
+}
+.menu-2 ul ul a {
+	border-top: 1px solid rgba(255, 255, 255, 0.15);
+	border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.menu-2 li:hover,
+.menu-2 li.focus {
+	background-color: #079d46
+}
+
+.menu-2 .sub-menu li:hover {
+	background-color: #3b8a38
+}
+
+.menu-2 .maillard-social-icons {
+	float: right
+}
+.menu-2 .maillard-social-icons a {
+	display: inline-block;
+	padding: 15px 8px;
+}
+
+/* Right Side Menu */
+
+.menu-1 li li.page_item_has_children > a:after,
+.menu-1 li li.menu-item-has-children > a:after {
+    content: none;
+}
+.menu-1 li li.page_item_has_children > a:before,
+.menu-1 li li.menu-item-has-children > a:before {
+    content: '\25c4';
+    font-size: 7px;
+    vertical-align: 1px;
+    padding-right: 5px;
+    opacity: .75;
+}
+
+.menu-1 ul li:hover > ul,
+.menu-1 ul li.focus > ul {
+    right: 0;
+}
+.menu-1 ul ul li:hover > ul,
+.menu-1 ul ul li.focus > ul {
+    left: auto;
+    right: 100%;
+}
+/*--------------------------------------------------------------
+# Content
+--------------------------------------------------------------*/
+
+.content-area {
+	width: 600px;
+	float: left;
+}
+
+.entry-header {
+	margin-bottom: 16px
+}
+
+.entry-title {
+	font-size: 30px;
+	margin: 0;
+}
+
+.entry-title a {
+	text-decoration: none;
+	color: black;
+}
+
+.entry-meta {
+	font-size: 14px;
+	color: #929292
+}
+.entry-meta a {
+	color: #929292;
+	text-decoration: none
+}
+
+.edit-link {
+	float: right;
+}
+
+.page .edit-link {
+	float: none;
+}
+
+.entry-footer {
+	border-bottom: 1px solid #e4e4e4;
+	border-top: 1px solid #e4e4e4;
+	padding: 20px 0;
+	margin: 0 0 50px;
+	font-size: 14px;
+}
+
+.entry-footer span {
+	display: block;
+}
+.entry-footer a {
+	text-decoration: none;
+	color: #303135
+}
+
+.comments-closed .entry-footer {
+	margin-bottom: 0;
+}
+
+.more-link {
+	text-decoration: none;
+}
+
+/*--------------------------------------------------------------
+## Posts and Pages
+--------------------------------------------------------------*/
+
+.sticky {
+	display: block;
+}
+
+.hentry {
+	margin: 0 0 1.5em;
+}
+
+.blog .hentry {
+	margin: 0 0 3em;
+}
+
+.byline,
+.updated:not(.published) {
+	display: none;
+}
+
+.single .byline,
+.group-blog .byline {
+	display: inline;
+}
+
+/*--------------------------------------------------------------
+## Archives
+--------------------------------------------------------------*/
+
+.archive-header,
+.index-header,
+.search-header {
+	margin-bottom: 25px;
+}
+
+.archive-header .archive-title,
+.index-header .index-title,
+.search-header .search-title {
+	font-size: 16px;
+	margin-top: 0
+}
+
+.archive-header .archive-description {
+	font-size: 16px;
+	border-bottom: 1px solid #e4e4e4;
+}
+
+.archive .post,
+.search .hentry {
+	margin-bottom: 50px;
+	border-bottom: 1px solid #e4e4e4;
+	padding-bottom: 26px;
+}
+
+/*--------------------------------------------------------------
+## Content Navigation
+--------------------------------------------------------------*/
+
+.page-links {
+	clear: both;
+	margin: 0 0 1.5em;
+}
+
+.post-navigation,
+.posts-navigation {
+	margin-bottom: 25px;
+}
+
+.site-main .comment-navigation,
+.site-main .posts-navigation,
+.site-main .post-navigation {
+	margin: 0 0 1.5em;
+	overflow: hidden;
+}
+
+.nav-links a {
+	text-decoration: none;
+	color: #303135;
+}
+
+.post-navigation .nav-links a  {
+	font-weight: bold
+}
+.post-navigation .nav-links a span {
+	text-decoration: underline;
+	font-weight: normal
+}
+
+.comment-navigation .nav-previous,
+.posts-navigation .nav-previous {
+	float: left;
+	width: 50%;
+}
+
+.comment-navigation .nav-next,
+.posts-navigation .nav-next {
+	float: right;
+	text-align: right;
+	width: 50%;
+}
+
+/*--------------------------------------------------------------
+## Comments
+--------------------------------------------------------------*/
+
+.comments-area .comment-body {
+	border-bottom: 1px solid #e4e4e4;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+}
+
+.comments-area ul.children {
+	margin: 0 0 0 25px;
+	padding: 0;
+	list-style: none;
+}
+
+.comments-area .children .comment-body  {
+	padding: 0 0 25px 0;
+	margin: 25px 0;
+}
+
+.comment-content a {
+	word-wrap: break-word;
+}
+
+.bypostauthor {
+	display: block;
+}
+
+.comment-meta {
+	margin-bottom: 16px
+}
+
+.comment-meta a {
+	text-decoration: none
+}
+.comment-author a {
+	color: #303135;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.comment-author img {
+	float: left;
+	margin-right: 10px;
+}
+
+.comment-author cite {
+	font-style: normal;
+	color: #303135;
+	font-weight: bold
+}
+
+.comment-metadata a {
+	color: gray;
+	font-size: 14px;
+
+}
+
+.logged-in-as a {
+	text-decoration: none;
+	color: gray;
+	font-size: 14px
+}
+
+.comment-reply-link {
+	text-decoration: none
+}
+
+#cancel-comment-reply-link {
+	text-decoration: none;
+	color: #bb0404;
+	font-weight: normal;
+	font-style: italic;
+	float: right;
+}
+
+.comment-respond input {
+	width: 100%;
+}
+
+.comment-form-author {
+	width: 47.5%;
+	float: left;
+	margin-right: 5%;
+}
+.comment-form-email {
+	width: 47.5%;
+	float: left;
+}
+
+/*--------------------------------------------------------------
+# Sidebar
+--------------------------------------------------------------*/
+
+.sidebar-1 {
+	width: 300px;
+	float: right;
+	font-size: 14px;
+}
+
+/*--------------------------------------------------------------
+## Widgets
+--------------------------------------------------------------*/
+
+.widget {
+	margin: 0 0 25px;
+}
+
+.widget-title {
+	margin-top: 0;
+	margin-bottom: .5em
+}
+
+/* Make sure select elements fit in widgets. */
+.widget select {
+	max-width: 100%;
+}
+
+
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+
+.site-footer .wrapper {
+	border-top: 1px solid #ccc;
+	padding: 25px 0;
+	font-size: 14px;
+}
+
+.site-footer .maillard-social-icons {
+	float: left;
+}
+.site-footer .maillard-social-icons a {
+	color: #656565;
+}
+.site-footer .site-info {
+	text-align: right;
+}
+
+/*--------------------------------------------------------------
+# Infinite Scroll
+--------------------------------------------------------------*/
+
+/* Globally hidden elements when Infinite Scroll is supported and in use. */
+.infinite-scroll .posts-navigation, /* Older / Newer Posts Navigation (always hidden) */
+.infinite-scroll.neverending .site-footer { /* Theme Footer (when set to scrolling) */
+	display: none;
+}
+
+/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before. */
+.infinity-end.neverending .site-footer {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+# Media
+--------------------------------------------------------------*/
+
+.page-content .wp-smiley,
+.entry-content .wp-smiley,
+.comment-content .wp-smiley {
+	border: none;
+	margin-bottom: 0;
+	margin-top: 0;
+	padding: 0;
+}
+
+/* Make sure embeds and iframes fit their containers. */
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+
+/*--------------------------------------------------------------
+## Captions
+--------------------------------------------------------------*/
+
+.wp-caption {
+	margin-bottom: 1.5em;
+	max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.wp-caption .wp-caption-text {
+	margin: 0.8075em 0;
+}
+
+.wp-caption-text {
+	text-align: center;
+}
+
+/*--------------------------------------------------------------
+## Galleries
+--------------------------------------------------------------*/
+
+.gallery {
+	margin-bottom: 1.5em;
+}
+
+.gallery-item {
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	width: 100%;
+}
+
+.gallery-columns-2 .gallery-item {
+	max-width: 50%;
+}
+
+.gallery-columns-3 .gallery-item {
+	max-width: 33.33%;
+}
+
+.gallery-columns-4 .gallery-item {
+	max-width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+	max-width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+	max-width: 16.66%;
+}
+
+.gallery-columns-7 .gallery-item {
+	max-width: 14.28%;
+}
+
+.gallery-columns-8 .gallery-item {
+	max-width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+	max-width: 11.11%;
+}
+
+.gallery-caption {
+	display: block;
+}
+
+/*--------------------------------------------------------------
+# Responsive
+--------------------------------------------------------------*/
+
+@media screen and (max-width: 600px) {
+
+	#site-menu {
+		display: none;
+	}
+
+	.menu-1 {
+		background: none
+	}
+
+	.menu-1 a {
+	    border-top: 1px solid #2c468a;
+	}
+
+	.menu-toggle {
+		background-color: #253e80;
+		color: white;
+		margin: 0 auto;
+		width: 100%;
+	    border: 0;
+	    border-radius: 0;
+	}
+
+	.toggled .menu-toggle {
+		background-color: #132658;
+		color: white;
+		margin: 0 auto
+	}
+
+	/* Small menu. */
+	.menu-toggle,
+	.menu-1.toggled #site-menu {
+		display: block;
+		background-color: #253e80;
+	}
+
+	.menu-1 li {
+		float: none;
+	    width: 100%;
+	}
+
+	.menu-1 ul ul {
+		position: relative;
+		float: none;
+		left: auto;
+		display: none
+	}
+
+	.menu-1 ul li:hover > ul,
+	.menu-1 ul li.focus > ul {
+		display: block;
+	}
+
+	.menu-1 ul ul a {
+		width: 100%;
+	}
+
+	.menu-1 ul ul ul {
+		left: auto
+	}
+
+	.menu-1 ul ul li:hover > ul,
+	.menu-1 ul ul li.focus > ul {
+		left: auto;
+	}
+
+}
+
+@media screen and (max-width: 1040px) {
+	.site-content,
+	.content-area,
+	.sidebar-1 {
+			width: 100%;
+			float: none
+	}
+
+}
+
+
+
 
 .homepage-widget-area {
 	margin-bottom: 50px;
+	padding-bottom: 50px;
+	border-bottom: 1px solid #e4e4e4;
+}
+
+.widget-area-featured-post {
+    width: 970px;
+    float: left;
+		max-width: 100%
+}
+
+.widget-area-featured-post .widget {
+    margin-bottom: 0
+}
+
+.widget-area-featured-categories {
+    width: 170px;
+    float: right;
+}
+
+.wrapper {
+	max-width: 1170px;
+}
+
+.home-post-thumbnail {
+	width: 250px;
+	float: left;
+	margin-right: 50px;
+	margin-bottom: 50px;
+}
+.home-post-content {
+	width: 470px;
+	float: left;
+	margin-bottom: 1.5rem;
+}
+
+
+.featured-post {
+	position: relative;
+}
+
+.featured-post-title-wrapper {
+	position: absolute;
+	bottom: 30px;
+	left: 30px;
+}
+
+.featured-post-title-heading {
+	background: #232323;
+	display: inline-block;
+	padding: 12px 16px;
+	color: #c9c9c9;
+	margin-bottom: 0;
+	font-weight: 500;
+	font-size: 17px;
+}
+
+.featured-post-title {
+	background: #079d46;
+	display: block;
+	padding: 15px 20px;
+	color: white;
+	font-weight: 700;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+.featured-category {
+	position: relative;
+}
+
+.featured-category-title-wrapper {
+	position: absolute;
+	bottom: 10px;
+	left: 10px
+}
+
+.featured-category-title {
+	background: #079d46;
+	display: inline-block;
+	padding: 8px;
+	color: white;
+	font-size: 15px;
+	font-weight: 500;
+	line-height: 1;
+	margin: 0;
+	display: block;
+}
+
+.widget-area-featured-categories .widget {
+	margin-bottom: 30px
+}
+
+.widget-area-featured-categories .widget:last-child {
+    margin-bottom: 0px;
 }
 
 .widget-area-featured-post {
@@ -125,150 +1447,104 @@ p {
     float: right;
 }
 
-.wrap {
-    max-width: 1170px;
+.widget-area-featured-post .featured-post {
+	width: 970px;
+	min-height: 550px;
+	background: #f3f3f3;
+	max-width: 100%
 }
 
-.home-post-thumbnail {
+.widget-area-featured-categories .featured-category {
+	width: 170px;
+	min-height: 115px;
+	background: #f3f3f3;
+}
+
+.content-area {
+    width: 770px;
+}
+
+.sidebar-1 {
+	width: 290px;
+	font-size: 15px
+}
+
+.page-template-maillard-home .post-thumbnail {
     width: 250px;
     float: left;
     margin-right: 50px;
     margin-bottom: 50px;
 }
-
-.site-content {
-	margin-top: 0
-}
-
-.content {
-    width: 770px;
-}
-
-.home-post-content {
-    width: 470px;
-    float: left;
-    margin-bottom: 1.5rem;
-	margin-top: 1rem
-}
-
-.page-template-maillard-home .site-content {
-    margin-top: 0;
-}
-
-.page-template-maillard-home .entry-title {
-    margin-bottom: 1rem;
-    font-size: 24px;
-}
-
-.page-template-maillard-home article,
-.blog article {
+.page-template-maillard-home article {
     border-bottom: 1px solid #e4e4e4;
     margin-bottom: 50px;
 }
 
-.page-template-maillard-home .moretag {
-    color: #292929;
-    border-bottom: 1px solid #292929;
-	text-decoration: none
-}
-
-.more-link {
-	text-decoration: none
-}
-
-.featured-post {
-	position: relative;
-}
-
-.featured-post-title-wrapper {
-	position: absolute;
-    bottom: 30px;
-    left: 30px;
-}
-
-.featured-post-title-heading {
-    background: #232323;
-    display: inline-block;
-    padding: 15px 20px;
-    color: #c9c9c9;
-    margin-bottom: 0;
-    font-weight: 500;
-    line-height: 1;
-	font-size: 17px;
-}
-
-.featured-post-title {
-    background: #079d46;
-    display: inline-block;
-    padding: 20px;
-    color: white;
-    font-weight: 500;
-    line-height: 1;
-	margin-bottom: 0
-}
-
-.featured-category {
-	position: relative;
-}
-
-.featured-category-title-wrapper {
-    position: absolute;
-	bottom: 10px;
-	left: 10px
-}
-
-.featured-category-title {
-    background: #079d46;
-    display: inline-block;
-    padding: 10px;
-    color: white;
-    font-size: 15px;
-    font-weight: 500;
-    line-height: 1;
-	margin-bottom: 0
-}
-
-.widget-area-featured-categories .widget {
-	margin-bottom: 30px
-}
-
-.widget-area-featured-categories .widget:last-child {
-    margin-bottom: 0px;
-}
-
-article:after {
-    content: ' ';
-    display: block;
-    clear: both;
-}
-
 .page-template-maillard-home article:last-child {
-border-bottom: 0
+    border-bottom: 0d;
+    margin-bottom: 0;
 }
 
-.maillard-social-icons {
-	float: right;
-	margin: 14px 0;
+.page-template-maillard-home .entry-title {
+	font-size: 24px;
+	margin-bottom: 24px;
 }
+
+.post-thumbnail {
+	margin-bottom: 32px;
+}
+
+.entry-title {
+	margin-bottom: 6px
+}
+.entry-header {
+	border-bottom: 1px solid #e8e7e7;
+	padding-bottom: 16px;
+	margin-bottom: 24px;
+}
+
+.page .entry-header {
+	border: 0;
+	padding-bottom: 0
+}
+
+.moretag {
+	text-decoration: none
+}
+
+.page-template-maillard-home .site-header {
+	margin-bottom: 0;
+}
+.page-template-maillard-home .site-header .wrapper {
+	border-bottom: 0
+}
+
+.widget-title {
+    font-size: 15px;
+		    margin-bottom: 24px;
+}
+
+.sidebar-1 {
+	    color: #717171;
+}
+
+/*--------------------------------------------------------------
+# Social Icons Component
+--------------------------------------------------------------*/
 
 .maillard-social-icons a {
 	text-decoration: none
 }
 
-
-.maillard-social-icons .socicon {
-	color: #717171 !important;
-	margin-left: 8px
-}
-
 .socicon:before {
-    content: "\e041";
-    padding: 8px;
-    border-radius: 9999px;
-    font-size: 13px;
-	vertical-align: middle;
-}
-
+	transition: background .25s;
+	padding: 8px;
+	border-radius: 100px;
+ }
+.socicon:hover:before {
+	color: white;
+	background: #3b5998;
+ }
 .socicon-facebook:hover:before {
      color: white;
      background: #3b5998;
@@ -323,26 +1599,26 @@ border-bottom: 0
 	 transition: background .25s;
  }
 
- .sub-footer .maillard-social-icons {
- 	margin: 10px 0
- }
+ /*--------------------------------------------------------------
+ # 'WP Instagram Widget' Styling
+ --------------------------------------------------------------*/
 
- .sub-footer .maillard-social-icons .socicon {
- 	color: #b5b5b5 !important;
- }
-
-.footer-copyright {
-    float: left;
-    text-align: left;
-	padding: 10px 0;
+.widget .instagram-pics {
+	list-style: none;
+	padding: 0
 }
 
-.instagram-pics.instagram-size-thumbnail li {
+.instagram-pics li {
+	margin-bottom: 25px
+}
+
+ .instagram-pics.instagram-size-thumbnail li {
 	padding-bottom: 0;
 	border-bottom: 0;
 	width: 48%;
-    float: left;
-    margin-right: 4%;
+  float: left;
+  margin-right: 4%;
+  margin-bottom: 4%;
 }
 
 .instagram-pics.instagram-size-thumbnail li:nth-child(2n) {
@@ -350,133 +1626,45 @@ border-bottom: 0
 }
 
 .instagram-pics.instagram-size-thumbnail li img {
-    border: 5px solid #eeeeee;
-}
-
-.primary-sidebar, .widget-title {
-	font-size: 15px
-}
-
-.primary-sidebar img {
-	margin-bottom: .5rem
-}
-
-.entry-content h1,
-.entry-content h2,
-.entry-content h3,
-.entry-content h4,
-.entry-content h5,
-.entry-content h6 {
-	margin-top: 2rem;
-	margin-bottom: 1rem
-}
-
-h6 {
-	font-size: 1rem;
-	text-transform: uppercase;
-	font-weight: normal;
-}
-
-input[type='submit'], button {
-	background-color: #0d842b;
-	color: white;
-	border: 0 /* @TODO */
-}
-
-input[type='submit']:hover, button:hover {
-	background-color: black;
-	color: white;
-	border: 0 /* @TODO */
-}
-
-.logged-in-as a {
-	text-decoration: none
-}
-
-@media only screen and (max-width: 1170px) {
-	body {
-		padding: 0;
-	}
-
-	.wrap {
-    margin: 0 5%;
-	}
-
-	.primary-sidebar {
-	    width: 100%;
-	    float: none;
-	}
-
-	.content {
-		width: 100%;
-		float: none;
-	}
-
-	.home-post-thumbnail {
-	    width: 15%;
-	    margin-right: 5%;
-	}
-
-	.home-post-content {
-	    width: 80%;
-		margin-top: 0
-	}
-
-	.tinynav {
-		margin: 0 auto
-	}
-
+    border: 3px solid #eeeeee;
 }
 
 .maillard-instagram-widget-link, .maillard-instagram-widget-link a {
-	background: url('http://instagramstatic-a.akamaihd.net/h1/thirdparty/images/badges/ig-badge-view-24.png/c2f23494e67d.png');
+	background: url('//instagramstatic-a.akamaihd.net/h1/thirdparty/images/badges/ig-badge-view-24.png/c2f23494e67d.png');
     text-indent: -9999px;
 	cursor: pointer;
 	width: 137px;
 	height: 24px;
+	clear: both
 }
 
 .maillard-instagram-widget-link a {
-    width: 137px;
-    height: 24px;
+  width: 137px;
+  height: 24px;
 	display: block;
 }
 
-@media (max-width: 1170px) {
-
-	.widget-area-featured-post {
-	    width: 100%;
-	}
-
-	.widget-area-featured-categories {
-		margin-top: 30px;
-	    width: 100%;
-	}
-
-	.widget-area-featured-categories .widget {
-	    width: 22%;
-	    float: left;
-	    margin-right: 4%;
-	}
-
-	.widget-area-featured-categories .widget:last-child {
-	    margin-bottom: 0px;
-	    margin-right: 0;
-	}
-
-	.menu-primary {
-		padding: 10px;
-	}
-
+.footer-widgets {
+	margin: 25px 0;
+	border-bottom: 1px solid #ccc;
 }
 
-@media (max-width: 600px) {
-
-	.homepage-widget-area {
-		display: none
-	}
-
+.footer-widgets .widget {
+	width: 22%;
+	margin-right: 4%;
+	float: left;
 }
+
+.last {
+	margin-right: 0 !important
+}
+
+.no-features {
+	margin-bottom: 50px;
+	background-color: #e8e8e8;
+	margin-top: 0;
+}
+
 
 .yrecipe {
 	background: #f7f7f7;
@@ -562,75 +1750,49 @@ input[type='submit']:hover, button:hover {
     clear: both;
 }
 
-.menu-primary .zeus-nav-horizontal .children li a {
-	border-bottom: 0
+@media screen and (max-width: 1170px) {
+
+	.wrapper {
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+
+	.content-area {
+	    width: 100%;
+			margin-bottom: 50px
+	}
+
+	.page-template-maillard-home .post-thumbnail {
+	    width: 30%;
+	    margin-right: 5%;
+	    margin-bottom: 5%;
+	}
+
+	.home-post-content {
+	    width: 65%;
+	}
+
+	.widget-area-featured-categories {
+    width: 100%;
+    float: none;
+	}
+	.widget-area-featured-categories .widget {
+		display: inline-block;
+		margin-right: 30px;
+		margin-bottom: 0
+	}
+
+	.widget-area-featured-post {
+    float: none;
+		margin-bottom: 5%
 }
 
-.menu-primary .zeus-nav-horizontal .children li a:hover {
-	border-bottom: 0;
-	border-color: #585858
-}
+.footer-widgets .widget {
+    width: 47.5%;
+    margin-right: 5%;
+	}
+.footer-widgets .widget:nth-child(2n+0) {
+    margin-right: 0%;
+	}
 
-.page-template-no-sidebar .content {
-	margin: 0 auto;
-	float: none;
-}
-
-
-/*.site-content .wrap {
-	border-top: 1px solid #dbdbdb;
-	padding-top: 50px
-}*/
-
-.page-template-no-sidebar .site-content .wrap {
-	border-top: 0;
-	padding-top: 0
-}
-
-.entry-meta {
-	display: inline-block;
-	border-bottom: 1px solid #e8e7e7;
-	padding-bottom: 20px;
-}
-
-.archive .archive-header, .search .archive-header {
-	background: #f7f7f7;
-	padding: 40px 50px 24px;
-	border: 0;
-}
-
-.comment-subscription-form {
-	margin-bottom: 0;
-}
-
-#subscribe_comments {
-	margin-top: 16px;
-}
-
-.menu-header-container {
-	float: right;
-	margin-top: 6px;
-}
-
-.zeus-nav-horizontal a {
-	color: #6d6d6d;
-	font-size: 16px;
-}
-
-.widget-area-featured-post .featured-post {
-	width: 970px;
-	min-height: 200px;
-	background: #f3f3f3;
-}
-
-.widget-area-featured-categories .featured-category {
-	width: 170px;
-	min-height: 100px;
-	background: #f3f3f3;
-}
-
-.featured-post img,
-.featured-category img {
-	max-width: 100%;
-	max-height: 100%;
 }

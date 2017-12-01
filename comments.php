@@ -1,11 +1,15 @@
 <?php
 /**
- * The template for displaying comments.
+ * The template for displaying comments
  *
- * The area of the page that contains both current comments
+ * This is the template that displays the area of the page that contains both the current comments
  * and the comment form.
  *
- * @package maillard
+ * @link       https://codex.wordpress.org/Template_Hierarchy
+ *
+ * @package    maillard
+ * @copyright  Copyright (c) 2017, Danny Cooper
+ * @license    http://opensource.org/licenses/gpl-2.0.php GNU Public License
  */
 
 /*
@@ -15,37 +19,68 @@
  */
 if ( post_password_required() ) {
 	return;
-}
-?>
+} ?>
 
-<section id="comments" class="comments-area">
+<div id="comments" class="comments-area">
 
-    <?php if ( have_comments() ) : ?>
-		<h3 class="comments-title">
-    <?php
+	<?php if ( have_comments() ) : ?>
+		<h4 class="comments-title">
+			<?php
+				$comments_number = get_comments_number();
+			if ( '1' === $comments_number ) {
+				// translators: %s: post title.
+				printf( esc_html_x( 'One Reply to &ldquo;%s&rdquo;', 'comments title', 'maillard' ), get_the_title() );
+			} else {
 				printf(
-					// WPCS: XSS OK.
-					esc_html( _nx( 'One comment on &ldquo;%2$s&rdquo;', '%1$s comments on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'maillard' ) ),
-					number_format_i18n( get_comments_number() ),
-					'<span>' . get_the_title() . '</span>'
+					/* translators: 1: number of comments, 2: post title */
+					esc_html( _nx(
+						'%1$s Reply to &ldquo;%2$s&rdquo;',
+						'%1$s Replies to &ldquo;%2$s&rdquo;',
+						$comments_number,
+						'comments title',
+						'maillard'
+					) ),
+					esc_html( number_format_i18n( $comments_number ) ),
+					get_the_title()
 				);
-	?>
-		</h3>
+			}
+			?>
+		</h2><!-- .comments-title -->
 
 		<ol class="comment-list">
-   			<?php wp_list_comments( 'callback=zeus_comment' ); ?>
+			<?php wp_list_comments(); ?>
 		</ol><!-- .comment-list -->
 
-		<?php zeus_comments_nav(); ?>
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // Are there comments to navigate through? ?>
 
-    <?php
-	// If comments are closed and there are comments, let's leave a little note, shall we?
-	if ( ! comments_open() && '0' !== get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) : ?>
-	    	<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'maillard' ); ?></p>
-	    <?php endif; ?>
+			<nav id="comment-nav-below" class="navigation comment-navigation clear">
+				<div class="nav-links">
 
-    <?php endif; ?>
+					<div class="nav-previous">
+						<?php previous_comments_link( esc_html__( '&larr; Older Comments', 'maillard' ) ); ?>
+					</div>
+					<div class="nav-next">
+						<?php next_comments_link( esc_html__( 'Newer Comments &rarr;', 'maillard' ) ); ?>
+					</div>
 
-    <?php comment_form(); ?>
+				</div><!-- .nav-links -->
+			</nav><!-- #comment-nav-below -->
 
-</section><!-- #comments -->
+		<?php endif; // Check for comment navigation. ?>
+
+		<?php
+		if ( ! comments_open() ) : // If comments are closed and there are comments, let's leave a little note, shall we? ?>
+
+			<p class="no-comments">
+				<?php esc_html_e( 'Comments are closed.', 'maillard' ); ?>
+			</p>
+
+		<?php
+		endif;
+
+	endif; // Check for have_comments().
+
+	comment_form();
+	?>
+
+</div><!-- #comments -->
