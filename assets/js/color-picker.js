@@ -1,3 +1,11 @@
+/**
+ * Maillard ColorPicker JS
+ *
+ * @package     maillard
+ * @copyright   Copyright (c) 2017, Danny Cooper
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+*/
+
 ( function( $ ){
 function maillard_initColorPicker( widget ) {
    widget.find( '.color-picker' ).wpColorPicker( {

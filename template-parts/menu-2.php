@@ -18,8 +18,8 @@
 		<?php
 		wp_nav_menu( array(
 			'theme_location' => 'menu-2',
-			'menu_id' => 'above-header-menu',
-			'fallback_cb' => false,
+			'menu_id'        => 'above-header-menu',
+			'fallback_cb'    => false,
 		) );
 		?>
 		<?php maillard_social_output_header(); ?>

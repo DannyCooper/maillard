@@ -48,7 +48,7 @@ class Maillard_Featured_Post_Widget extends WP_Widget {
 
 			// Localize the script with new data.
 			$translation_array = array(
-				'title' => esc_html__( 'Select image', 'maillard' ),
+				'title'       => esc_html__( 'Select image', 'maillard' ),
 				'button_text' => esc_html__( 'Use this image', 'maillard' ),
 			);
 			wp_localize_script( 'maillard-upload-media-widget', 'maillard_widget_translations', $translation_array );
@@ -70,7 +70,7 @@ class Maillard_Featured_Post_Widget extends WP_Widget {
 		$post_id = ( ! empty( $instance['post_id'] ) ) ? $instance['post_id'] : false;
 
 		$post_title = ( ! empty( $instance['post_title'] ) ) ? $instance['post_title'] : '';
-		$image_url = ( ! empty( $instance['image_url'] ) ) ? $instance['image_url'] : '';
+		$image_url  = ( ! empty( $instance['image_url'] ) ) ? $instance['image_url'] : '';
 
 		$bg_color = ( ! empty( $instance['bg_color'] ) ) ? $instance['bg_color'] : '#079d46';
 
@@ -119,10 +119,10 @@ class Maillard_Featured_Post_Widget extends WP_Widget {
 	 */
 	public function form( $instance ) {
 
-		$post_id = ! empty( $instance['post_id'] ) ? $instance['post_id'] : '';
+		$post_id    = ! empty( $instance['post_id'] ) ? $instance['post_id'] : '';
 		$post_title = ! empty( $instance['post_title'] ) ? $instance['post_title'] : '';
-		$image_url = ! empty( $instance['image_url'] ) ? $instance['image_url'] : '';
-		$bg_color = ! empty( $instance['bg_color'] ) ? $instance['bg_color'] : '#079d46';
+		$image_url  = ! empty( $instance['image_url'] ) ? $instance['image_url'] : '';
+		$bg_color   = ! empty( $instance['bg_color'] ) ? $instance['bg_color'] : '#079d46';
 		?>
 
 		<p>
@@ -141,14 +141,14 @@ class Maillard_Featured_Post_Widget extends WP_Widget {
 				<div class="maillard-media-container">
 						<div class="maillard-media-inner">
 							<?php $img_style = ( '' !== $image_url ) ? '' : 'style="display:none;"'; ?>
-							<img id="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>-preview" src="<?php echo esc_attr( $image_url ); ?>" <?php echo $img_style; ?> />
+							<img id="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>-preview" src="<?php echo esc_attr( $image_url ); ?>" <?php echo esc_attr( $img_style ); ?> />
 							<?php $no_img_style = ( '' !== $image_url ) ? 'style="display:none;"' : ''; ?>
-							<span class="maillard-no-image" id="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>-noimg" <?php echo $no_img_style; ?>><?php esc_attr_e( 'No image selected', 'maillard' ); ?></span>
+							<span class="maillard-no-image" id="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>-noimg" <?php echo esc_attr( $no_img_style ); ?>><?php esc_attr_e( 'No image selected', 'maillard' ); ?></span>
 						</div>
 
 				<input type="text" id="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'image_url' ) ); ?>" value="<?php echo esc_url( $image_url ); ?>" class="maillard-media-url" />
 
-				<input type="button" value="<?php echo esc_attr_e( 'Remove', 'maillard' ); ?>" class="button maillard-media-remove" id="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>-remove" <?php echo $img_style; ?> />
+				<input type="button" value="<?php echo esc_attr_e( 'Remove', 'maillard' ); ?>" class="button maillard-media-remove" id="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>-remove" <?php echo esc_attr( $img_style ); ?> />
 
 				<?php $button_text = ( '' !== $image_url ) ? esc_attr__( 'Change Image', 'maillard' ) : esc_attr__( 'Select Image', 'maillard' ); ?>
 				<input type="button" value="<?php echo esc_attr( $button_text ); ?>" class="button maillard-media-upload" id="<?php echo esc_attr( $this->get_field_id( 'image_url' ) ); ?>-button" />
@@ -182,10 +182,10 @@ class Maillard_Featured_Post_Widget extends WP_Widget {
 
 		$instance = array();
 
-		$instance['post_id'] = ( ! empty( $new_instance['post_id'] ) ) ? intval( $new_instance['post_id'] ) : '';
+		$instance['post_id']    = ( ! empty( $new_instance['post_id'] ) ) ? intval( $new_instance['post_id'] ) : '';
 		$instance['post_title'] = ( ! empty( $new_instance['post_title'] ) ) ? esc_html( $new_instance['post_title'] ) : '';
-		$instance['image_url'] = ( ! empty( $new_instance['image_url'] ) ) ? esc_url_raw( $new_instance['image_url'] ) : '';
-		$instance['bg_color'] = ( ! empty( $new_instance['bg_color'] ) ) ? sanitize_hex_color( $new_instance['bg_color'] ) : '#079d46';
+		$instance['image_url']  = ( ! empty( $new_instance['image_url'] ) ) ? esc_url_raw( $new_instance['image_url'] ) : '';
+		$instance['bg_color']   = ( ! empty( $new_instance['bg_color'] ) ) ? sanitize_hex_color( $new_instance['bg_color'] ) : '#079d46';
 
 		return $instance;
 	}

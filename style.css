@@ -1481,7 +1481,7 @@ object {
 }
 
 .page-template-maillard-home article:last-child {
-    border-bottom: 0d;
+    border-bottom: 0;
     margin-bottom: 0;
 }
 
@@ -1693,7 +1693,6 @@ object {
 }
 
 .yrecipe-print-link a {
-	background: url("http://localhost:8888/zues/wp-content/plugins/yummly-rich-recipes/images/print-icon.png") no-repeat scroll 0 1px transparent;
 	cursor: pointer;
 	padding: 0 0 0 20px;
 	display: block;

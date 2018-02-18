@@ -1,6 +1,11 @@
 /**
- * Widgets - Media Upload
- */
+ * Maillard Widget Media Uploader JS
+ *
+ * @package     maillard
+ * @copyright   Copyright (c) 2017, Danny Cooper
+ * @license     http://opensource.org/licenses/gpl-2.0.php GNU Public License
+*/
+
 jQuery( document ).ready( function() {
 
     // Upload / Change Image

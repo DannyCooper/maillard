@@ -98,8 +98,8 @@ if ( ! function_exists( 'maillard_the_post_navigation' ) ) :
 	 */
 	function maillard_the_post_navigation() {
 		$args = array(
-			'prev_text'                  => __( 'Previous Post: <span>%title</span>', 'maillard' ),
-			'next_text'                  => __( 'Next Post: <span>%title</span>', 'maillard' ),
+			'prev_text' => __( 'Previous Post: <span>%title</span>', 'maillard' ),
+			'next_text' => __( 'Next Post: <span>%title</span>', 'maillard' ),
 		);
 
 		the_post_navigation( $args );

@@ -55,7 +55,7 @@ if ( ! function_exists( 'maillard_header_style' ) ) :
 		else :
 	?>
 		.site-title a {
-			color: #<?php echo esc_attr( $header_text_color ); ?>;
+			color: #<?php echo sanitize_hex_color( $header_text_color ); ?>;
 		}
 	<?php endif; ?>
 

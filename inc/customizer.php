@@ -35,37 +35,31 @@ add_action( 'customize_preview_init', 'maillard_customize_preview_js' );
 function maillard_customizer_settings( $wp_customize ) {
 
 	$wp_customize->add_setting( 'accent-color', array(
-		'default' => '#079d46',
+		'default'           => '#079d46',
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
-	$wp_customize->add_control(
-		'accent-color-control',
-		array(
-			'label'    => esc_html__( 'Accent Color', 'maillard' ),
-			'section'  => 'colors',
-			'settings' => 'accent-color',
-			'type'     => 'color',
-		)
-	);
+	$wp_customize->add_control( 'accent-color-control', array(
+		'label'    => esc_html__( 'Accent Color', 'maillard' ),
+		'section'  => 'colors',
+		'settings' => 'accent-color',
+		'type'     => 'color',
+	) );
 
 	$wp_customize->add_setting( 'accent-hover-color', array(
-		'default' => '#3b8a38',
+		'default'           => '#3b8a38',
 		'sanitize_callback' => 'sanitize_hex_color',
 	) );
 
-	$wp_customize->add_control(
-		'accent-hover-color-control',
-		array(
-			'label'    => esc_html__( 'Accent Hover Color', 'maillard' ),
-			'section'  => 'colors',
-			'settings' => 'accent-hover-color',
-			'type'     => 'color',
-		)
-	);
+	$wp_customize->add_control( 'accent-hover-color-control', array(
+		'label'    => esc_html__( 'Accent Hover Color', 'maillard' ),
+		'section'  => 'colors',
+		'settings' => 'accent-hover-color',
+		'type'     => 'color',
+	) );
 
-	$wp_customize->add_section( 'maillard_social_settings' , array(
-		'title' => esc_html__( 'Social Settings','maillard' ),
+	$wp_customize->add_section( 'maillard_social_settings', array(
+		'title'    => esc_html__( 'Social Settings', 'maillard' ),
 		'priority' => 30,
 	) );
 
@@ -73,40 +67,34 @@ function maillard_customizer_settings( $wp_customize ) {
 		'sanitize_callback' => 'maillard_sanitize_checkbox',
 	) );
 
-	$wp_customize->add_control(
-		'social_header_display_control',
-		array(
-			'label'    => esc_html__( 'Display in Header?', 'maillard' ),
-			'section'  => 'maillard_social_settings',
-			'settings' => 'social_header_display',
-			'type'     => 'checkbox',
-		)
-	);
+	$wp_customize->add_control( 'social_header_display_control', array(
+		'label'    => esc_html__( 'Display in Header?', 'maillard' ),
+		'section'  => 'maillard_social_settings',
+		'settings' => 'social_header_display',
+		'type'     => 'checkbox',
+	) );
 
 	$wp_customize->add_setting( 'social_footer_display', array(
 		'sanitize_callback' => 'maillard_sanitize_checkbox',
 	) );
 
-	$wp_customize->add_control(
-		'social_footer_display_control',
-		array(
-			'label'    => esc_html__( 'Display in Footer?', 'maillard' ),
-			'section'  => 'maillard_social_settings',
-			'settings' => 'social_footer_display',
-			'type'     => 'checkbox',
-		)
-	);
+	$wp_customize->add_control( 'social_footer_display_control', array(
+		'label'    => esc_html__( 'Display in Footer?', 'maillard' ),
+		'section'  => 'maillard_social_settings',
+		'settings' => 'social_footer_display',
+		'type'     => 'checkbox',
+	) );
 
 	$websites = array(
-		'facebook' => 'Facebook',
-		'twitter' => 'Twitter',
-		'instagram' => 'Instagram',
-		'youtube' => 'YouTube',
-		'pinterest' => 'Pinterest',
-		'linkedin' => 'LinkedIn',
+		'facebook'   => 'Facebook',
+		'twitter'    => 'Twitter',
+		'instagram'  => 'Instagram',
+		'youtube'    => 'YouTube',
+		'pinterest'  => 'Pinterest',
+		'linkedin'   => 'LinkedIn',
 		'googleplus' => 'Google+',
-		'rss' => 'RSS',
-		'mail' => 'Contact Form',
+		'rss'        => 'RSS',
+		'mail'       => 'Contact Form',
 	);
 
 	foreach ( $websites as $id => $name ) {
@@ -146,21 +134,21 @@ function maillard_customizer_css() {
 	<style>
 
 	a {
-		color: <?php echo get_theme_mod( 'accent-color' ); ?>;
+		color: <?php echo sanitize_hex_color( get_theme_mod( 'accent-color' ) ); ?>;
 	}
 
 	a:hover {
-		color: <?php echo get_theme_mod( 'accent-hover-color' ); ?>;
+		color: <?php echo sanitize_hex_color( get_theme_mod( 'accent-hover-color' ) ); ?>;
 	}
 
 	.menu-2 li:hover,
 	.menu-2 li.focus,
 	.menu-2 ul ul li {
-		background-color: <?php echo get_theme_mod( 'accent-color' ); ?>;
+		background-color: <?php echo sanitize_hex_color( get_theme_mod( 'accent-color' ) ); ?>;
 	}
 
 	.menu-2 .sub-menu li:hover {
-		background-color: <?php echo get_theme_mod( 'accent-hover-color' ); ?>;
+		background-color: <?php echo sanitize_hex_color( get_theme_mod( 'accent-hover-color' ) ); ?>;
 	}
 
 	</style>

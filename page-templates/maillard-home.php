@@ -23,7 +23,7 @@ get_header(); ?>
 		</div><!-- .homepage-widget-area -->
 	<?php else : ?>
 
-	<hr class="no-features" />
+		<hr class="no-features" />
 
 	<?php endif; ?>
 

@@ -186,8 +186,6 @@ function maillard_scripts() {
 	wp_enqueue_style( 'maillard-style', get_stylesheet_uri() );
 	wp_enqueue_style( 'socicons', get_template_directory_uri() . '/assets/css/socicons.css' );
 
-	wp_enqueue_script( 'maillard-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '20151215', true );
-
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -231,10 +229,16 @@ if ( class_exists( 'WooCommerce' ) ) {
 }
 
 /**
+ * Load the widgets.
+ */
+require get_stylesheet_directory() . '/template-parts/widgets/featured-category.php';
+require get_stylesheet_directory() . '/template-parts/widgets/featured-post.php';
+
+/**
  * Display the admin notice.
  */
 function maillard_admin_notice() {
-	global $current_user ;
+	global $current_user;
 	$user_id = $current_user->ID;
 
 	if ( class_exists( 'Olympus_Google_Fonts' ) ) {
@@ -246,7 +250,7 @@ function maillard_admin_notice() {
 		return;
 	}
 
-	if ( ! get_user_meta( $user_id, 'maillard_ignore_notice') ) {
+	if ( ! get_user_meta( $user_id, 'maillard_ignore_notice' ) ) {
 		?>
 
 		<div class="notice notice-info">
@@ -259,7 +263,9 @@ function maillard_admin_notice() {
 				);
 				?>
 				<span style="float:right">
-					<a href="?maillard_ignore_notice=0"><?php esc_html_e( 'Hide Notice', 'maillard' ); ?></a>
+					<a href="?maillard_ignore_notice=0">
+						<?php esc_html_e( 'Hide Notice', 'maillard' ); ?>
+					</a>
 				</span>
 			</p>
 		</div>
@@ -277,17 +283,11 @@ function maillard_dismiss_admin_notice() {
 	global $current_user;
 	$user_id = $current_user->ID;
 	/* If user clicks to ignore the notice, add that to their user meta */
-	if ( isset( $_GET['maillard_ignore_notice'] ) && '0' == $_GET['maillard_ignore_notice'] ) {
+	if ( isset( $_GET['maillard_ignore_notice'] ) && '0' === $_GET['maillard_ignore_notice'] ) {
 		add_user_meta( $user_id, 'maillard_ignore_notice', 'true', true );
 	}
 }
 add_action( 'admin_init', 'maillard_dismiss_admin_notice' );
-
-/**
- * Load the widgets.
- */
-require( get_stylesheet_directory() . '/template-parts/widgets/featured-category.php' );
-require( get_stylesheet_directory() . '/template-parts/widgets/featured-post.php' );
 
 /**
  * Output the social profile icons.
@@ -295,15 +295,15 @@ require( get_stylesheet_directory() . '/template-parts/widgets/featured-post.php
 function maillard_social_output() {
 
 	$social_websites = array(
-		'facebook' => esc_html__( 'Facebook', 'maillard' ),
-		'twitter' => esc_html__( 'Twitter', 'maillard' ),
-		'instagram' => esc_html__( 'Instagram', 'maillard' ),
-		'youtube' => esc_html__( 'YouTube', 'maillard' ),
-		'pinterest' => esc_html__( 'Pinterest', 'maillard' ),
-		'linkedin' => esc_html__( 'LinkedIn', 'maillard' ),
+		'facebook'   => esc_html__( 'Facebook', 'maillard' ),
+		'twitter'    => esc_html__( 'Twitter', 'maillard' ),
+		'instagram'  => esc_html__( 'Instagram', 'maillard' ),
+		'youtube'    => esc_html__( 'YouTube', 'maillard' ),
+		'pinterest'  => esc_html__( 'Pinterest', 'maillard' ),
+		'linkedin'   => esc_html__( 'LinkedIn', 'maillard' ),
 		'googleplus' => esc_html__( 'Google+', 'maillard' ),
-		'rss' => esc_html__( 'RSS', 'maillard' ),
-		'mail' => esc_html__( 'Contact', 'maillard' ),
+		'rss'        => esc_html__( 'RSS', 'maillard' ),
+		'mail'       => esc_html__( 'Contact', 'maillard' ),
 	);
 
 	echo '<div class="maillard-social-icons">';
@@ -360,3 +360,6 @@ function maillard_get_image_id( $image_url ) {
 		return $attachment[0];
 	}
 }
+
+// Remove yummly-rich-recipes styles.
+add_filter( 'wp_head', 'amd_yrecipe_process_head' );
